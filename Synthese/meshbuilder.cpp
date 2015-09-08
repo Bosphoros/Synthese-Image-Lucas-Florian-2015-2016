@@ -50,6 +50,47 @@ void MeshBuilder::saveMesh(QString &nom, Mesh& mesh)
     cout<<"fichier fermé"<<endl;
 }
 
+// Ne prend pas les textures en compte
+Mesh MeshBuilder::loadMesh(QString &nom)
+{
+    QList<QVector3D> geoms;
+    QList<QVector3D> norms;
+    QList<int> topos;
+    QFile file(nom);
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+    QTextStream in(&file);
+    QString read;
+
+    while(true) {
+        read = in.readLine();
+        QStringList l = read.split(" ");
+        if(l.at(0) == "v") {
+            QVector3D tmp(l.at(1).toDouble(), l.at(2).toDouble(), l.at(3).toDouble());
+            geoms.append(tmp);
+        }
+        if(l.at(0) == "vn") {
+            QVector3D tmp(l.at(1).toDouble(), l.at(2).toDouble(), l.at(3).toDouble());
+            norms.append(tmp);
+        }
+        if(l.at(0) == "f") {
+            for(int i = 1; i < 4; ++i){
+                QStringList l2 = l.at(i).split("/");
+                for(int j = 0; j < l2.length(); ++j) {
+                    topos.append(l2.at(j).toInt()-1);
+                }
+            }
+        }
+        if(in.atEnd()) {
+            break;
+        }
+    }
+
+    Mesh res(geoms, topos, norms);
+    std::cout << nom.toStdString() << " chargé" << std::endl;
+    return res;
+
+}
+
 MeshBuilder::~MeshBuilder()
 {
 
