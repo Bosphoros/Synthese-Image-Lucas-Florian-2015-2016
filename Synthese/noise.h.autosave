@@ -1,0 +1,15 @@
+#ifndef NOISE_H
+#define NOISE_H
+#include <QVector2D>
+class Noise
+{
+private:
+    quint16 freq;
+    quint16 ampli;
+public:
+    Noise(quint16 f, quint16 a);
+    float pointToValue(QVector2D& p);
+    QVector2D pointToPoint(QVector2D& p);
+};
+
+#endif // NOISE_H

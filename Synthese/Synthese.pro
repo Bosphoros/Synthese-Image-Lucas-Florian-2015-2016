@@ -17,10 +17,16 @@ SOURCES += main.cpp \
     mesh.cpp \
     meshbuilder.cpp \
     terrainimage.cpp \
-    terrain.cpp
+    terrain.cpp \
+    mathutils.cpp \
+    foncteurwarp.cpp \
+    noise.cpp
 
 HEADERS += \
     mesh.h \
     meshbuilder.h \
     terrain.h \
-    terrainimage.h
+    terrainimage.h \
+    mathutils.h \
+    foncteurwarp.h \
+    noise.h

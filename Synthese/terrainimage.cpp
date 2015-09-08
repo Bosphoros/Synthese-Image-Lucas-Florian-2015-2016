@@ -41,15 +41,6 @@ quint16 TerrainImage::getHauteur(QVector2D &p)
                 (1-rx)*ry*mat[(j+1)*w+i]+
                 rx*ry*mat[(j+1)*w+i+1];
 
-    if(z > 256) {
-        std::cout << "Trop : " << (int) z << std::endl;
-        std::cout << "u :" << u << std::endl;
-        std::cout << "w :" << w << std::endl;
-        std::cout << "x : " << p.x() << ", y :" << p.y() << ", i :" << i << ", j :" << j << std::endl;
-        std::cout << rx<< std::endl;
-        std::cout << ry<< std::endl;
-    }
-
     return z;
 }
 
