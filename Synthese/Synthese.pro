@@ -14,7 +14,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    mesh.cpp
+    mesh.cpp \
+    meshbuilder.cpp
 
 HEADERS += \
-    mesh.h
+    mesh.h \
+    meshbuilder.h
