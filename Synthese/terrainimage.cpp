@@ -9,13 +9,11 @@ TerrainImage::TerrainImage(QImage& i, quint16 lo, quint16 la, QVector2D &aa, QVe
     b=bb;
     h=i.height();
     w=i.width();
-    std::cout<<"coucou"<<std::endl;
     for(int j=0;j<h;j++){
         for(int k=0;k<w;k++){
             QRgb p=i.pixel(k,j);
             quint8 c=(quint8)qGray(p);
             mat.push_back(c);
-            std::cout<<c<<std::endl;
         }
     }
 }
@@ -24,21 +22,33 @@ quint16 TerrainImage::getHauteur(QVector2D &p)
 {
     float u=(p.x()-a.x())/(b.x()-a.x());
     float v=(p.y()-a.y())/(b.y()-a.y());
-
-    int i=(int)(u*(w-1));
-    int j=(int)(v*(h-1));
+    float resteI = (u*(w-1));
+    float resteJ=(v*(h-1));
+    int i =(int) resteI;
+    resteI-=i;
+    int j = (int) resteJ;
+    resteJ -= j;
 
     if(i<0||j<0||i>w-1||j>h-1){
         return 0;
     }
 
-    float rx=(p.x()-a.x())*w/(b.x()-a.x())-i;
-    float ry=(p.y()-a.y())*h/(b.y()-a.y())-j;
+    float rx= resteI; //(p.x()-a.x())*w/(b.x()-a.x())-i;
+    float ry= resteJ;//(p.y()-a.y())*h/(b.y()-a.y())-j;
 
     quint16 z=(1-rx)*(1-ry)*mat[j*w+i]+
                 rx*(1-ry)*mat[j*w+i+1]+
                 (1-rx)*ry*mat[(j+1)*w+i]+
                 rx*ry*mat[(j+1)*w+i+1];
+
+    if(z > 256) {
+        std::cout << "Trop : " << (int) z << std::endl;
+        std::cout << "u :" << u << std::endl;
+        std::cout << "w :" << w << std::endl;
+        std::cout << "x : " << p.x() << ", y :" << p.y() << ", i :" << i << ", j :" << j << std::endl;
+        std::cout << rx<< std::endl;
+        std::cout << ry<< std::endl;
+    }
 
     return z;
 }
