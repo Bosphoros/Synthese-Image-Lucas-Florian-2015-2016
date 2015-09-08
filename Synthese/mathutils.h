@@ -1,14 +1,15 @@
 #ifndef MATHUTILS_H
 #define MATHUTILS_H
 
-class mathUtils
+class MathUtils
 {
 public:
-    mathUtils();
+    MathUtils();
     static double fonctionQuadratique(double min, double max, double x);
     static double fonctionQuadratiqueInv(double min, double max, double x);
     static double interpolate(double before_p0, double p0, double p1, double after_p1, double t);
-    static quint16 ridge(quint16 n, quint16 s);
+    static unsigned short ridge(unsigned short n, unsigned short s);
+    static double mod(double a, double b);
 };
 
 #endif // MATHUTILS_H

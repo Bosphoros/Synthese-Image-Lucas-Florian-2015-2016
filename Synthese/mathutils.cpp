@@ -2,21 +2,21 @@
 #include <cmath>
 #include <iostream>
 
-mathUtils::mathUtils()
+MathUtils::MathUtils()
 {
 }
 
-double mathUtils::fonctionQuadratique(double min, double max, double x) {
+double MathUtils::fonctionQuadratique(double min, double max, double x) {
 
     return x<min?0:x>=max?1:1-pow((1-pow((x-min)/(max-min),2)),2);
 }
 
-double mathUtils::fonctionQuadratiqueInv(double min, double max, double x) {
+double MathUtils::fonctionQuadratiqueInv(double min, double max, double x) {
 
     return 1-fonctionQuadratique(max,min,x);
 }
 
-double mathUtils::interpolate(double before_p0, double p0, double p1, double after_p1, double t)
+double MathUtils::interpolate(double before_p0, double p0, double p1, double after_p1, double t)
 {
     //Calcul des coefficients de notre polynôme
     double a3 = -0.5*before_p0 + 1.5*p0 - 1.5*p1 + 0.5*after_p1;
@@ -28,6 +28,12 @@ double mathUtils::interpolate(double before_p0, double p0, double p1, double aft
     return (a3 * t*t*t) + (a2 * t*t) + (a1 * t) + a0;
 }
 
-quint16 mathUtils::ridge(quint16 n, quint16 s) {
+unsigned short MathUtils::ridge(unsigned short n, unsigned short s) {
+    //std::cout<<s<<std::endl;
     return n>s?2*s-n:n;
+}
+
+double MathUtils::mod(double a, double b) {
+    while(a>b) {a-=b;}
+    return a;
 }

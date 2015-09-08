@@ -20,7 +20,10 @@ SOURCES += main.cpp \
     terrain.cpp \
     mathutils.cpp \
     foncteurwarp.cpp \
-    noise.cpp
+    noise.cpp \
+    octave.cpp \
+    terrainoctaves.cpp \
+    smoothnoise.cpp
 
 HEADERS += \
     mesh.h \
@@ -29,4 +32,7 @@ HEADERS += \
     terrainimage.h \
     mathutils.h \
     foncteurwarp.h \
-    noise.h
+    noise.h \
+    octave.h \
+    terrainoctaves.h \
+    smoothnoise.h

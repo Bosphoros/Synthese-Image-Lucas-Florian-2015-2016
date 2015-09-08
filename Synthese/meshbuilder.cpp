@@ -84,7 +84,7 @@ Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString 
             p.setX(a.x()+dif.x()*((float)i/e));
             p.setY(a.y()+dif.y()*((float)j/e));
             QVector3D n;
-            QVector2D ptemp(p.x(),p.y());
+            QVector2D ptemp(p.x()/dif.x(),p.y()/dif.y());
             double h=t.getHauteurNormale(ptemp,n);
 
             geom.append(QVector3D(p.x(),(float)h,p.y()));

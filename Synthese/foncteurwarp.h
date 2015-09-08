@@ -5,7 +5,7 @@ class FoncteurWarp
 {
 public:
     FoncteurWarp();
-    virtual QVector2D operator()(QVector2D& p)=0;
+    virtual QVector2D operator()(QVector2D& p);
 };
 
 #endif // FONCTEURWARP_H
