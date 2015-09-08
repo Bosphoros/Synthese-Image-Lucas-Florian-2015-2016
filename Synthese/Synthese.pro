@@ -15,8 +15,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     mesh.cpp \
-    meshbuilder.cpp
+    meshbuilder.cpp \
+    terrainimage.cpp \
+    terrain.cpp
 
 HEADERS += \
     mesh.h \
-    meshbuilder.h
+    meshbuilder.h \
+    terrain.h \
+    terrainimage.h
