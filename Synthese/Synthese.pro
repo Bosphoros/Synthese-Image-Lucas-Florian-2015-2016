@@ -1,18 +1,20 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2015-09-08T10:37:58
+# Project created by QtCreator 2015-04-07T18:14:53
 #
 #-------------------------------------------------
 
-QT       += core
+QT       += core gui
 
-QT       -= gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = Synthese
-CONFIG   += console
-CONFIG   -= app_bundle
 
 TEMPLATE = app
 
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    mesh.cpp
+
+HEADERS += \
+    mesh.h
