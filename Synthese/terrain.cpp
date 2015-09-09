@@ -1,6 +1,6 @@
 #include "terrain.h"
 
-QVector3D Terrain::norm(QVector2D &p)
+QVector3D Terrain::norm(const QVector2D &p)
 {
     QVector2D px(p.x()+epsilon,p.y());
     QVector2D py(p.x(),p.y()+epsilon);
@@ -25,7 +25,19 @@ QVector3D Terrain::norm(QVector2D &p)
 
 }
 
-quint16 Terrain::getHauteurNormale(QVector2D &p, QVector3D &n)
+bool Terrain::isIn(const QVector3D &p)
+{
+    QVector2D p2(p.x(),p.z());
+    return p.y()<=getHauteur(p2);
+}
+
+bool Terrain::isOut(const QVector3D &p)
+{
+    QVector2D p2(p.x(),p.z());
+    return p.y()>getHauteur(p2);
+}
+
+quint16 Terrain::getHauteurNormale(const QVector2D &p, QVector3D &n)
 {
     n=norm(p);
     quint16 resu=getHauteur(p);

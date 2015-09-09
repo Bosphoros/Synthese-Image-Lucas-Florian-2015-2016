@@ -22,7 +22,7 @@ public:
     Octave();
     Octave(const Octave& o);
     Octave(float f, float a, float ms, float as, float fs, FoncteurWarp wPoint, FoncteurWarp wSeuil, Noise nPoint, Noise nSeuil);
-    quint16 getHauteur(QVector2D& p);
+    quint16 getHauteur(const QVector2D &p);
 };
 
 #endif // OCTAVE_H

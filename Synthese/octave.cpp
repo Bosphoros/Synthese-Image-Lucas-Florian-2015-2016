@@ -15,7 +15,7 @@ Octave::Octave(float f, float a, float ms, float as, float fs, FoncteurWarp wPoi
 {
 }
 
-quint16 Octave::getHauteur(QVector2D &p)
+quint16 Octave::getHauteur(const QVector2D &p)
 {
     QVector2D pSurFreq = p/freq;
     QVector2D pFreqS = p/freqS;

@@ -13,7 +13,7 @@ private:
 
 public:
     TerrainImage(QImage& i, quint16 lo,quint16 la,QVector2D& aa,QVector2D& bb);
-    virtual quint16 getHauteur(QVector2D& p);
+    virtual quint16 getHauteur(const QVector2D &p);
     virtual quint16 getHauteurMin();
     virtual quint16 getHauteurMax();
     virtual double getPenteMax();

@@ -7,7 +7,7 @@ TerrainOctaves::TerrainOctaves(QVector<Octave> &o, QVector2D &aa, QVector2D &bb,
     b = bb;
 }
 
-quint16 TerrainOctaves::getHauteur(QVector2D &p)
+quint16 TerrainOctaves::getHauteur(const QVector2D &p)
 {
     quint16 resu=0;
     int length= octaves.length();

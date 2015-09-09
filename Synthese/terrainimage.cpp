@@ -18,7 +18,7 @@ TerrainImage::TerrainImage(QImage& i, quint16 lo, quint16 la, QVector2D &aa, QVe
     }
 }
 
-quint16 TerrainImage::getHauteur(QVector2D &p)
+quint16 TerrainImage::getHauteur(const QVector2D &p)
 {
     QVector2D pTmp;
     QVector2D diff = b-a;
