@@ -1,10 +1,8 @@
 #include "terrainoctaves.h"
 #include "smoothnoise.h"
 #include <iostream>
-TerrainOctaves::TerrainOctaves(QVector<Octave> &o, QVector2D &aa, QVector2D &bb, quint16 e):octaves(o),echantillons(e)
+TerrainOctaves::TerrainOctaves(QVector<Octave> &o):octaves(o)
 {
-    a = aa;
-    b = bb;
 }
 
 quint16 TerrainOctaves::getHauteur(const QVector2D &p)

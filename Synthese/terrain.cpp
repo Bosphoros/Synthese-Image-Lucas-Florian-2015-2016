@@ -37,6 +37,11 @@ bool Terrain::isOut(const QVector3D &p)
     return p.y()>getHauteur(p2);
 }
 
+QVector3D Terrain::intersect(Ray &r)
+{
+
+}
+
 quint16 Terrain::getHauteurNormale(const QVector2D &p, QVector3D &n)
 {
     n=norm(p);

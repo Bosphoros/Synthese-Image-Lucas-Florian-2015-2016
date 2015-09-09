@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     noise.cpp \
     octave.cpp \
     terrainoctaves.cpp \
-    smoothnoise.cpp
+    smoothnoise.cpp \
+    ray.cpp
 
 HEADERS += \
     mesh.h \
@@ -35,4 +36,5 @@ HEADERS += \
     noise.h \
     octave.h \
     terrainoctaves.h \
-    smoothnoise.h
+    smoothnoise.h \
+    ray.h

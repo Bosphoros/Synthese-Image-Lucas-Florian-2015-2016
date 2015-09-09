@@ -10,6 +10,8 @@ private:
     quint16 largeur;
     int w;
     int h;
+    QVector2D a;
+    QVector2D b;
 
 public:
     TerrainImage(QImage& i, quint16 lo,quint16 la,QVector2D& aa,QVector2D& bb);
