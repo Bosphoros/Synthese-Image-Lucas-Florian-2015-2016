@@ -42,7 +42,12 @@ bool Terrain::isOut(const QVector3D &p)
     return p.y()>getHauteur(p2);
 }
 
-QVector3D Terrain::intersect(Ray &r)
+QVector3D Terrain::intersectRayMarching(Ray &r)
+{
+
+}
+
+QVector3D Terrain::intersectAdvanced(Ray &r)
 {
 
 }

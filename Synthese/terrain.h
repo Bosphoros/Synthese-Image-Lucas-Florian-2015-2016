@@ -19,7 +19,8 @@ public:
     Terrain();
     bool isIn(const QVector3D& p);
     bool isOut(const QVector3D& p);
-    QVector3D intersect(Ray& r);
+    QVector3D intersectRayMarching(Ray& r);
+    QVector3D intersectAdvanced(Ray& r);
     virtual float getHauteur(const QVector2D& p)=0;
     virtual float getHauteurMin(QVector2D a,QVector2D b)=0;
     virtual float getHauteurMax(QVector2D a,QVector2D b)=0;

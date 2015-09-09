@@ -1,9 +1,10 @@
 #include "terrainimage.h"
 #include "QColor"
 #include <iostream>
+#include <cmath>
 
 
-TerrainImage::TerrainImage(QImage& i, bool b):Terrain(),blanc(b)
+TerrainImage::TerrainImage(QImage& i, bool blanc):Terrain()
 {
     h=i.height();
     w=i.width();
@@ -11,6 +12,8 @@ TerrainImage::TerrainImage(QImage& i, bool b):Terrain(),blanc(b)
         for(int k=0;k<w;k++){
             QRgb p=i.pixel(k,j);
             quint8 c=(quint8)qGray(p);
+            if(!blanc)
+                c=255-c;
             mat.push_back(c);
         }
     }
@@ -44,25 +47,64 @@ float TerrainImage::getHauteur(const QVector2D &p)
                 (1-rx)*ry*mat[(j+1)*w+i]+
                 rx*ry*mat[(j+1)*w+i+1];
 
-    if(!blanc)
-        z=255-z;
     return z;
-}
-
-float TerrainImage::getHauteurMin(QVector2D a,QVector2D b)
-{
-    //TODO
-    return 0;
 }
 
 float TerrainImage::getHauteurMax(QVector2D a,QVector2D b)
 {
-    //TODO
-    return 0;
+    int mini=a.y()<0?0:a.y();
+    int minj=a.x()<0?0:a.x();
+    int maxi=b.y()<h?b.y():h-1;
+    int maxj=b.x()<w?b.x():w-1;
+
+    quint8 max=0;
+    for(int i=mini;i<=maxi;i++){
+        for(int j=minj;j<=maxj;j++){
+            if(max<mat[i*w+j]){
+                max=mat[i*w+j];
+            }
+        }
+    }
+    return max;
+}
+
+float TerrainImage::getHauteurMin(QVector2D a,QVector2D b)
+{
+    int mini=0;
+    int minj=0;
+    int maxi=h-1;
+    int maxj=w-1;
+
+    quint8 min=255;
+    for(int i=mini;i<=maxi;i++){
+        for(int j=minj;j<=maxj;j++){
+            if(min>mat[i*w+j]){
+                min=mat[i*w+j];
+            }
+        }
+    }
+    return min;
 }
 
 double TerrainImage::getPenteMax(QVector2D a, QVector2D b)
 {
-    //TODO
-    return 0;
+    int mini=a.y()<0?0:a.y();
+    int minj=a.x()<0?0:a.x();
+    int maxi=b.y()<h?b.y():h-1;
+    int maxj=b.x()<w?b.x():w-1;
+
+    quint8 max=0;
+    for(int i=mini;i<=maxi-1;i++){
+        for(int j=minj;j<=maxj-1;j++){
+            int tmp=abs((int)(mat[i*w+j])-(int)(mat[(i+1)*w+j]));
+            if(max<tmp){
+                max=tmp;
+            }
+            tmp=abs((int)(mat[i*w+j])-(int)(mat[i*w+j+1]));
+            if(max<tmp){
+                max=tmp;
+            }
+        }
+    }
+    return max;
 }
