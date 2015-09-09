@@ -9,7 +9,7 @@ class Terrain
 {
 
 public:
-    quint16 getHauteurNormale(const QVector2D& p, QVector3D &n);
+    float getHauteurNormale(const QVector2D& p, QVector3D &n);
 
 protected:
     static double epsilon;
@@ -20,9 +20,9 @@ public:
     bool isIn(const QVector3D& p);
     bool isOut(const QVector3D& p);
     QVector3D intersect(Ray& r);
-    virtual quint16 getHauteur(const QVector2D& p)=0;
-    virtual quint16 getHauteurMin()=0;
-    virtual quint16 getHauteurMax()=0;
+    virtual float getHauteur(const QVector2D& p)=0;
+    virtual float getHauteurMin()=0;
+    virtual float getHauteurMax()=0;
     virtual double getPenteMax()=0;
 };
 

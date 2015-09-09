@@ -16,7 +16,7 @@ TerrainImage::TerrainImage(QImage& i, quint16 lo, quint16 la, QVector2D &aa, QVe
     }
 }
 
-quint16 TerrainImage::getHauteur(const QVector2D &p)
+float TerrainImage::getHauteur(const QVector2D &p)
 {
     QVector2D pTmp;
     QVector2D diff = b-a;
@@ -48,13 +48,13 @@ quint16 TerrainImage::getHauteur(const QVector2D &p)
     return 256-z;
 }
 
-quint16 TerrainImage::getHauteurMin()
+float TerrainImage::getHauteurMin()
 {
     //TODO
     return 0;
 }
 
-quint16 TerrainImage::getHauteurMax()
+float TerrainImage::getHauteurMax()
 {
     //TODO
     return 0;

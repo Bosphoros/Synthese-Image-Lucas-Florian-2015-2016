@@ -15,13 +15,13 @@ Octave::Octave(float f, float a, float ms, float as, float fs, FoncteurWarp wPoi
 {
 }
 
-quint16 Octave::getHauteur(const QVector2D &p)
+float Octave::getHauteur(const QVector2D &p)
 {
     QVector2D pSurFreq = p/freq;
     QVector2D pFreqS = p/freqS;
     QVector2D wPoint = warpPoint(pSurFreq);
     QVector2D wSeuil = warpSeuil(pFreqS);
-    quint16 r = MathUtils::ridge(ampli*noisePoint.pointToValue(wPoint),
+    float r = MathUtils::ridge(ampli*noisePoint.pointToValue(wPoint),
                 minSeuil+ampliS*noiseSeuil.pointToValue(wSeuil));
     return r;
 }

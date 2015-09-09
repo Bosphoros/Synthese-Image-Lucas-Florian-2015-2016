@@ -5,9 +5,9 @@ TerrainOctaves::TerrainOctaves(QVector<Octave> &o):Terrain(),octaves(o)
 {
 }
 
-quint16 TerrainOctaves::getHauteur(const QVector2D &p)
+float TerrainOctaves::getHauteur(const QVector2D &p)
 {
-    quint16 resu=0;
+    float resu=0;
     int length= octaves.length();
     for(int i = 0; i <length; ++i)
     {
@@ -17,13 +17,13 @@ quint16 TerrainOctaves::getHauteur(const QVector2D &p)
     return resu;
 }
 
-quint16 TerrainOctaves::getHauteurMin()
+float TerrainOctaves::getHauteurMin()
 {
     //TODO
     return 0;
 }
 
-quint16 TerrainOctaves::getHauteurMax()
+float TerrainOctaves::getHauteurMax()
 {
     //TODO
     return 0;

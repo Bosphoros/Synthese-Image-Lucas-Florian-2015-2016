@@ -47,7 +47,7 @@ QVector3D Terrain::intersect(Ray &r)
 
 }
 
-quint16 Terrain::getHauteurNormale(const QVector2D &p, QVector3D &n)
+float Terrain::getHauteurNormale(const QVector2D &p, QVector3D &n)
 {
     n=norm(p);
     quint16 resu=getHauteur(p);

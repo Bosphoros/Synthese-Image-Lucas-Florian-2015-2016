@@ -12,9 +12,9 @@ private:
 
 public:
     TerrainOctaves(QVector<Octave>& o);
-    virtual quint16 getHauteur(const QVector2D &p);
-    virtual quint16 getHauteurMin();
-    virtual quint16 getHauteurMax();
+    virtual float getHauteur(const QVector2D &p);
+    virtual float getHauteurMin();
+    virtual float getHauteurMax();
     virtual double getPenteMax();
 
 };

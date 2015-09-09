@@ -28,7 +28,7 @@ double MathUtils::interpolate(double before_p0, double p0, double p1, double aft
     return (a3 * t*t*t) + (a2 * t*t) + (a1 * t) + a0;
 }
 
-unsigned short MathUtils::ridge(unsigned short n, unsigned short s) {
+float MathUtils::ridge(float n, float s) {
     //std::cout<<s<<std::endl;
     return n>s?2*s-n:n;
 }
