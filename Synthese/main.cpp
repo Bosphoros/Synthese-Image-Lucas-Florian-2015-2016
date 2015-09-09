@@ -4,7 +4,7 @@
 #include "terrainoctaves.h"
 int main(int argc, char *argv[])
 {
-    QString nm="D:/Marilyn2.jpg";
+    QString nm="D:/Marlyn2.jpg";
     QImage im;
     im.load(nm);
     QVector2D a(0,0);
