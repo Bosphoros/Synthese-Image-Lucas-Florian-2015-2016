@@ -14,8 +14,9 @@ public:
 protected:
     static double epsilon;
     QVector3D norm(const QVector2D &p);
-    double penteMax=-1;
+    double penteMax;
 public:
+    Terrain();
     bool isIn(const QVector3D& p);
     bool isOut(const QVector3D& p);
     QVector3D intersect(Ray& r);

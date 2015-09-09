@@ -11,7 +11,7 @@ Noise::Noise(int s):seed(s)
 
 float Noise::pointToValue(QVector2D &p)
 {
-    return smooth_noiseABS(p,seed);
+    return smooth_noiseBilinear(p,seed);
 }
 
 QVector2D Noise::pointToPoint(QVector2D &p)

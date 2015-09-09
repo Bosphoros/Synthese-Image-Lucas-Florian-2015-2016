@@ -3,7 +3,7 @@
 #include <iostream>
 
 
-TerrainImage::TerrainImage(QImage& i, quint16 lo, quint16 la, QVector2D &aa, QVector2D &bb):longueur(lo),largeur(la),a(aa),b(bb)
+TerrainImage::TerrainImage(QImage& i, quint16 lo, quint16 la, QVector2D &aa, QVector2D &bb):Terrain(),longueur(lo),largeur(la),a(aa),b(bb)
 {
     h=i.height();
     w=i.width();

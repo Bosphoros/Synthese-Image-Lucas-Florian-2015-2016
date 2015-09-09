@@ -1,7 +1,7 @@
 #include "terrainoctaves.h"
 #include "smoothnoise.h"
 #include <iostream>
-TerrainOctaves::TerrainOctaves(QVector<Octave> &o):octaves(o)
+TerrainOctaves::TerrainOctaves(QVector<Octave> &o):Terrain(),octaves(o)
 {
 }
 

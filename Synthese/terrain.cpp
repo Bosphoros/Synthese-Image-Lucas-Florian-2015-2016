@@ -1,4 +1,8 @@
 #include "terrain.h"
+Terrain::Terrain():penteMax(-1)
+{
+
+}
 
 QVector3D Terrain::norm(const QVector2D &p)
 {
@@ -24,6 +28,7 @@ QVector3D Terrain::norm(const QVector2D &p)
     return n;
 
 }
+
 
 bool Terrain::isIn(const QVector3D &p)
 {
