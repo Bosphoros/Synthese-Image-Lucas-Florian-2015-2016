@@ -21,9 +21,9 @@ public:
     bool isOut(const QVector3D& p);
     QVector3D intersect(Ray& r);
     virtual float getHauteur(const QVector2D& p)=0;
-    virtual float getHauteurMin()=0;
-    virtual float getHauteurMax()=0;
-    virtual double getPenteMax()=0;
+    virtual float getHauteurMin(QVector2D a,QVector2D b)=0;
+    virtual float getHauteurMax(QVector2D a,QVector2D b)=0;
+    virtual double getPenteMax(QVector2D a,QVector2D b)=0;
 };
 
 

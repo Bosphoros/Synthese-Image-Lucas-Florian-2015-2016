@@ -6,19 +6,16 @@ class TerrainImage : public Terrain
 {
 private:
     std::vector<quint8> mat;
-    quint16 longueur;
-    quint16 largeur;
+    bool blanc;
     int w;
     int h;
-    QVector2D a;
-    QVector2D b;
 
 public:
-    TerrainImage(QImage& i, quint16 lo,quint16 la,QVector2D& aa,QVector2D& bb);
+    TerrainImage(QImage& i,bool b);
     virtual float getHauteur(const QVector2D &p);
-    virtual float getHauteurMin();
-    virtual float getHauteurMax();
-    virtual double getPenteMax();
+    virtual float getHauteurMin(QVector2D a,QVector2D b);
+    virtual float getHauteurMax(QVector2D a,QVector2D b);
+    virtual double getPenteMax(QVector2D a,QVector2D b);
 };
 
 #endif // TERRAINIMAGE_H

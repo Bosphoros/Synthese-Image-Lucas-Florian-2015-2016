@@ -17,19 +17,19 @@ float TerrainOctaves::getHauteur(const QVector2D &p)
     return resu;
 }
 
-float TerrainOctaves::getHauteurMin()
+float TerrainOctaves::getHauteurMin(QVector2D a, QVector2D b)
 {
     //TODO
     return 0;
 }
 
-float TerrainOctaves::getHauteurMax()
+float TerrainOctaves::getHauteurMax(QVector2D a,QVector2D b)
 {
     //TODO
     return 0;
 }
 
-double TerrainOctaves::getPenteMax()
+double TerrainOctaves::getPenteMax(QVector2D a,QVector2D b)
 {
     //TODO
     return 0;
