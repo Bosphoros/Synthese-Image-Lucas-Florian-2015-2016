@@ -50,7 +50,7 @@ void MeshBuilder::saveMesh(QString &nom, Mesh& mesh)
     cout<<"fichier fermé"<<endl;
 }
 
-Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString nom){
+Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString nom,double echelle){
     QVector2D aa,bb;
     if(a.x()<b.x()){
          aa.setX(a.x());
@@ -87,7 +87,7 @@ Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString 
             QVector2D ptemp(p.x()/dif.x(),p.y()/dif.y());
             double h=t.getHauteurNormale(ptemp,n);
 
-            geom.append(QVector3D(p.x(),(float)h,p.y()));
+            geom.append(QVector3D(p.x(),(float)h,p.y())*echelle);
             norm.append(n);
             if(i<e-1&&j<e-1){
                 topo.append(e*j+i);

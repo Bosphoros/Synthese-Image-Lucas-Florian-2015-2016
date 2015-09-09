@@ -13,7 +13,7 @@ public:
     Mesh loadMesh(QString& nom);
     void saveMesh(QString& nom, Mesh &mesh);
     ~MeshBuilder();
-    Mesh terrain(Terrain &t, QVector2D &a, QVector2D &b, int e, QString nom);
+    Mesh terrain(Terrain &t, QVector2D &a, QVector2D &b, int e, QString nom, double echelle);
 
 
 };

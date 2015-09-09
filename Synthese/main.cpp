@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     TerrainOctaves t(os);
     MeshBuilder bu;
     QString nom="terrain";
-    Mesh m =bu.terrain(t,a,b,300,nom);
+    Mesh m =bu.terrain(t,a,b,300,nom,0.01);
     QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);
     return 0;
