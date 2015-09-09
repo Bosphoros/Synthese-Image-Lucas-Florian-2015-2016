@@ -3,7 +3,6 @@
 
 #include <QVector2D>
 #include <QVector3D>
-#include "ray.h"
 
 class Terrain
 {
@@ -13,15 +12,12 @@ public:
 
 protected:
     static double epsilon;
-    static float pas;
     QVector3D norm(const QVector2D &p);
     double penteMax;
 public:
     Terrain();
     bool isIn(const QVector3D& p);
     bool isOut(const QVector3D& p);
-    QVector3D intersectRayMarching(Ray& r, QVector2D& a, QVector2D& b);
-    QVector3D intersectAdvanced(Ray& r, QVector2D &a, QVector2D &b);
     virtual float getHauteur(const QVector2D& p)=0;
     virtual float getHauteurMin(QVector2D a,QVector2D b)=0;
     virtual float getHauteurMax(QVector2D a,QVector2D b)=0;

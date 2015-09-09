@@ -42,28 +42,6 @@ bool Terrain::isOut(const QVector3D &p)
     return p.y()>getHauteur(p2);
 }
 
-QVector3D Terrain::intersectRayMarching(Ray &r, QVector2D &a, QVector2D &b)
-{
-    QVector3D resu=r.origine;
-    float min =getHauteurMin(a,b);
-    float max =getHauteurMax(a,b);
-    if(r.origine.y()>max&&r.direction.y()>=0){
-         return resu;
-    }
-
-    if(r.origine.y()<min&&r.direction.y()<=0){
-         return resu;
-    }
-
-
-
-}
-
-QVector3D Terrain::intersectAdvanced(Ray &r, QVector2D& a, QVector2D& b)
-{
-
-}
-
 float Terrain::getHauteurNormale(const QVector2D &p, QVector3D &n)
 {
     n=norm(p);
@@ -72,4 +50,4 @@ float Terrain::getHauteurNormale(const QVector2D &p, QVector3D &n)
 }
 
 double Terrain::epsilon=0.00001;
-float Terrain::pas=0.1;
+
