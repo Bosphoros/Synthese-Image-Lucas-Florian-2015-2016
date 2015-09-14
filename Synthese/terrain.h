@@ -14,8 +14,11 @@ protected:
     static double epsilon;
     QVector3D norm(const QVector2D &p);
     double penteMax;
+    QVector2D a;
+    QVector2D b;
+
 public:
-    Terrain();
+    Terrain(const QVector2D& aa, const QVector2D& bb);
     bool isIn(const QVector3D& p);
     bool isOut(const QVector3D& p);
     virtual float getHauteur(const QVector2D& p)=0;

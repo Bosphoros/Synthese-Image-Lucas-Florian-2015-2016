@@ -4,8 +4,9 @@
 #include <cmath>
 
 
-TerrainImage::TerrainImage(QImage& i, bool blanc):Terrain()
+TerrainImage::TerrainImage(QImage& i, bool blanc,const QVector2D& a,const QVector2D& b):Terrain(a,b)
 {
+
     h=i.height();
     w=i.width();
     for(int j=0;j<h;j++){
@@ -21,9 +22,9 @@ TerrainImage::TerrainImage(QImage& i, bool blanc):Terrain()
 
 float TerrainImage::getHauteur(const QVector2D &p)
 {
-    QVector2D pTmp;
-    pTmp.setX(p.x());
-    pTmp.setY(p.y());
+    QVector2D pTmp=p-a;
+    pTmp.setX(pTmp.x()/(b.x()-a.x()));
+    pTmp.setY(pTmp.y()/(b.y()-a.y()));
     float u=pTmp.x();
     float v=pTmp.y();
     float rx = (u*(w-1));
