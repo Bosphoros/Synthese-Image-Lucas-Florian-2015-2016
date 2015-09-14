@@ -1,6 +1,7 @@
 #include "ray.h"
 #include <cmath>
 #include <iostream>
+#include <QTime>
 
 Ray::Ray(QVector3D& o, QVector3D& d):origine(o),direction(d.normalized())
 {
@@ -194,14 +195,11 @@ int Ray::intersectsBox(const QVector3D &a, const QVector3D &b, QVector3D &in, QV
     }
 }
 
-bool Ray::intersectRayMarching(Terrain& t, QVector2D &a, QVector2D &b,QVector3D& resu)
+bool Ray::intersectRayMarching(Terrain& t, const QVector3D &aBox, const QVector3D &bBox, QVector3D& resu, bool& isBox)
 {
+    isBox=false;
     resu=origine;
-    float min =t.getHauteurMin(a,b);
-    float max =t.getHauteurMax(a,b);
 
-    QVector3D aBox(a.x(), min, a.y());
-    QVector3D bBox(b.x(), max, b.y());
     QVector3D in;
     QVector3D out;
 
@@ -214,12 +212,16 @@ bool Ray::intersectRayMarching(Terrain& t, QVector2D &a, QVector2D &b,QVector3D&
     float distInOut = in.distanceToPoint(out);
     QVector3D dir=direction;
     Ray r(in,dir);
-
+    //std::cout << pas << " " << dir.x() << "," << dir.y() << "," << dir.z() << " / " << origine.x() << "," << origine.y() << "," << origine.z() << std::endl;
     for(float tt = 0; tt <= distInOut+pas; tt+= pas)
     {
         //std::cout<<r.getPoint(tt).y()<<std::endl;
         if(t.isIn(r.getPoint(tt))){
+
             resu=r.getPoint(tt-pas/2);
+            if(tt==0){
+                isBox=true;
+            }
             return true;
          }
 
@@ -230,7 +232,8 @@ bool Ray::intersectRayMarching(Terrain& t, QVector2D &a, QVector2D &b,QVector3D&
 
 bool Ray::intersectAdvanced(Terrain &t, QVector2D& a, QVector2D& b, QVector3D& resu)
 {
-    resu=origine;
+
+    /*resu=origine;
     float min =t.getHauteurMin(a,b);
     float max =t.getHauteurMax(a,b);
 
@@ -268,6 +271,7 @@ bool Ray::intersectAdvanced(Terrain &t, QVector2D& a, QVector2D& b, QVector3D& r
         tt+=dif/(penteMax-direction.y());
 
     }
+*/
     return false;
 }
 

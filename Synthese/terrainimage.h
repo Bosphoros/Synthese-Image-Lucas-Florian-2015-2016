@@ -10,7 +10,7 @@ private:
     int h;
 
 public:
-    TerrainImage(QImage& i, bool blanc);
+    TerrainImage(QImage& i, bool blanc,const QVector2D& a,const QVector2D& b);
     virtual float getHauteur(const QVector2D &p);
     virtual float getHauteurMin(QVector2D a,QVector2D b);
     virtual float getHauteurMax(QVector2D a,QVector2D b);

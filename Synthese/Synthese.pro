@@ -24,7 +24,9 @@ SOURCES += main.cpp \
     octave.cpp \
     terrainoctaves.cpp \
     smoothnoise.cpp \
-    ray.cpp
+    ray.cpp \
+    camera.cpp \
+    terrainpentex.cpp
 
 HEADERS += \
     mesh.h \
@@ -37,4 +39,6 @@ HEADERS += \
     octave.h \
     terrainoctaves.h \
     smoothnoise.h \
-    ray.h
+    ray.h \
+    camera.h \
+    terrainpentex.h

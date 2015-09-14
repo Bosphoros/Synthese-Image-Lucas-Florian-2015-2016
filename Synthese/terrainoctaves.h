@@ -11,7 +11,7 @@ private:
     QVector<Octave> octaves;
 
 public:
-    TerrainOctaves(QVector<Octave>& o);
+    TerrainOctaves(QVector<Octave>& o, const QVector2D &aa, const QVector2D &bb);
     virtual float getHauteur(const QVector2D &p);
     virtual float getHauteurMin(QVector2D a,QVector2D b);
     virtual float getHauteurMax(QVector2D a,QVector2D b);
