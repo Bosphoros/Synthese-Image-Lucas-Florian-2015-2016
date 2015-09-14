@@ -230,7 +230,45 @@ bool Ray::intersectRayMarching(Terrain& t, QVector2D &a, QVector2D &b,QVector3D&
 
 bool Ray::intersectAdvanced(Terrain &t, QVector2D& a, QVector2D& b, QVector3D& resu)
 {
+    resu=origine;
+    float min =t.getHauteurMin(a,b);
+    float max =t.getHauteurMax(a,b);
 
+    QVector3D aBox(a.x(), min, a.y());
+    QVector3D bBox(b.x(), max, b.y());
+    QVector3D in;
+    QVector3D out;
+
+    int pointsBox = intersectsBox(aBox, bBox, in, out);
+
+    if(pointsBox == 0) {
+        //std::cout<<"return false"<<std::endl;
+        return false;
+    }
+    float distInOut = in.distanceToPoint(out);
+    QVector3D dir=direction;
+    Ray r(in,dir);
+    float penteMax=t.getPenteMax(a,b);
+    for(float tt = 0; tt <= distInOut+pas; tt+= pas)
+    {
+        //std::cout<<r.getPoint(tt).y()<<std::endl;
+        QVector3D point=r.getPoint(tt);
+        if(t.isIn(point)){
+            resu=r.getPoint(tt-pas/2);
+            return true;
+        }
+
+        QVector2D p(point.x(),point.z());
+        float hauteur=t.getHauteur(p);
+        float dif=point.y()-hauteur;
+        if (direction.y()>penteMax){
+            return false;
+        }
+        //std::cout << dif/(penteMax-direction.y()) << std::endl;
+        tt+=dif/(penteMax-direction.y());
+
+    }
+    return false;
 }
 
 float Ray::pas=0.1;
