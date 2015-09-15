@@ -47,10 +47,10 @@ double bilinearInterpolate(double xy, double x1y,double xy1, double x1y1, Vector
 }
 
 double smooth_noiseBilinear(Vector2D p,int seed){
-    float x;
-    float y;
-    float fractional_x;
-    float fractional_y;
+    double x;
+    double y;
+    double fractional_x;
+    double fractional_y;
     int integer_x;
     int integer_y;
     if(p.x()>=0){

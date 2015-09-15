@@ -13,7 +13,7 @@ public:
     Vector3D();
     Vector3D(double xpos, double ypos, double zpos):xp(xpos), yp(ypos), zp(zpos){}
     Vector3D(const Vector2D& vector);
-    Vector3D(const Vector2D& vector, float zpos);
+    Vector3D(const Vector2D& vector, double zpos);
 
     double x() const;
     double y() const;
@@ -49,10 +49,10 @@ public:
     friend inline bool operator!=(const Vector3D &v1, const Vector3D &v2);
     friend inline const Vector3D operator+(const Vector3D &v1, const Vector3D &v2);
     friend inline const Vector3D operator-(const Vector3D &v1, const Vector3D &v2);
-    friend inline const Vector3D operator*(float factor, const Vector3D &vector);
-    friend inline const Vector3D operator*(const Vector3D &vector, float factor);
+    friend inline const Vector3D operator*(double factor, const Vector3D &vector);
+    friend inline const Vector3D operator*(const Vector3D &vector, double factor);
     friend inline const Vector3D operator-(const Vector3D &vector);
-    friend inline const Vector3D operator/(const Vector3D &vector, float divisor);
+    friend inline const Vector3D operator/(const Vector3D &vector, double divisor);
 
     friend inline bool fuzzyCompare(const Vector3D& v1, const Vector3D& v2);
     friend inline std::ostream& operator<<(std::ostream& out, const Vector3D& v);

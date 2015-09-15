@@ -81,13 +81,13 @@ Mesh MeshBuilder::terrain(Terrain &t, Vector2D &a, Vector2D &b, int e,QString no
     for(int i=0;i<e;i++){
         for(int j=0;j<e;j++){
             Vector2D p;
-            p.setX(a.x()+dif.x()*((float)i/e));
-            p.setY(a.y()+dif.y()*((float)j/e));
+            p.setX(a.x()+dif.x()*((double)i/e));
+            p.setY(a.y()+dif.y()*((double)j/e));
             Vector3D n;
             Vector2D ptemp(p.x()/dif.x(),p.y()/dif.y());
             double h=t.getHauteurNormale(ptemp,n);
 
-            geom.append(Vector3D(p.x(),(float)h,p.y())*echelle);
+            geom.append(Vector3D(p.x(),(double)h,p.y())*echelle);
             norm.append(n);
             if(i<e-1&&j<e-1){
                 topo.append(e*j+i);

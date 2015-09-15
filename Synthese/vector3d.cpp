@@ -5,7 +5,7 @@
 
 Vector3D::Vector3D(const Vector2D &vector):xp(vector.x()), yp(vector.y()), zp(0.0){}
 
-Vector3D::Vector3D(const Vector2D &vector, float zpos):xp(vector.x()), yp(vector.y()), zp(zpos){}
+Vector3D::Vector3D(const Vector2D &vector, double zpos):xp(vector.x()), yp(vector.y()), zp(zpos){}
 
 Vector3D Vector3D::normal(const Vector3D &v1, const Vector3D &v2)
 {

@@ -8,7 +8,7 @@ public:
     static double fonctionQuadratique(double min, double max, double x);
     static double fonctionQuadratiqueInv(double min, double max, double x);
     static double interpolate(double before_p0, double p0, double p1, double after_p1, double t);
-    static float ridge(float n, float s);
+    static double ridge(double n, double s);
     static double mod(double a, double b);
 };
 

@@ -37,7 +37,7 @@ QRgb Camera::ptScreen(Terrain &t,const Vector3D& aBox, const Vector3D& bBox, con
 
     //std::cout << "Touch" << std::endl;
     Vector3D normale;
-    float hauteur = t.getHauteurNormale(Vector2D(inter.x(),inter.z()),normale);
+    double hauteur = t.getHauteurNormale(Vector2D(inter.x(),inter.z()),normale);
     if(isBox) {
         QColor couleur(255,0,0,255);
         return couleur.rgb();
@@ -66,7 +66,7 @@ QImage Camera::printScreen(Terrain &t,const Vector2D& a, const Vector2D& b, cons
     double min=t.getHauteurMin(a,b);
     double max=t.getHauteurMax(a,b);
     Vector3D aBox(a.x(),min,a.y());
-    Vector3D bBox(b.x(),max*1.01,b.y());
+    Vector3D bBox(b.x(),max*1.5,b.y());
 
     for(int i=0;i<l;++i){
         for(int j=0;j<h;++j){

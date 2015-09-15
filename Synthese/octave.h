@@ -6,11 +6,11 @@
 class Octave
 {
 private:
-    float freq;
-    float ampli;
-    float minSeuil;
-    float ampliS;
-    float freqS;
+    double freq;
+    double ampli;
+    double minSeuil;
+    double ampliS;
+    double freqS;
 
     FoncteurWarp warpPoint;
     FoncteurWarp warpSeuil;
@@ -21,8 +21,8 @@ private:
 public:
     Octave();
     Octave(const Octave& o);
-    Octave(float f, float a, float ms, float as, float fs, FoncteurWarp wPoint, FoncteurWarp wSeuil, Noise nPoint, Noise nSeuil);
-    float getHauteur(const Vector2D &p);
+    Octave(double f, double a, double ms, double as, double fs, FoncteurWarp wPoint, FoncteurWarp wSeuil, Noise nPoint, Noise nSeuil);
+    double getHauteur(const Vector2D &p);
 };
 
 #endif // OCTAVE_H

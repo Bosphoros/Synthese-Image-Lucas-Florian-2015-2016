@@ -7,7 +7,7 @@ private:
     int seed;
 public:
     Noise(int seed=0);
-    float pointToValue(Vector2D& p);
+    double pointToValue(Vector2D& p);
     Vector2D pointToPoint(Vector2D& p);
 };
 

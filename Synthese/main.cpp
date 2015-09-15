@@ -13,10 +13,10 @@ int main(int argc, char *argv[])
     Vector2D a(0,0);
     Vector2D b(1000,1000);
 
-    QString nm="D:/Heightmap5_DISP.png";
+    QString nm="D:/heightmapMono.png";
     QImage im;
     im.load(nm);
-    TerrainImage t(im,false,a,b);//*/
+    TerrainImage t(im,255,0,a,b);//*/
     //TerrainPenteX t(a,b);
     /*FoncteurWarp w;
     Noise n(15641);
@@ -47,8 +47,8 @@ int main(int argc, char *argv[])
     //std::cout << i << " " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
     std::cout << j << " " << resuIn.x() << ", " << resuIn.y() << ", " << resuIn.z() << std::endl << " out " << resuOut.x() << ", " << resuOut.y() << ", " << resuOut.z();*/
 
-    float min = t.getHauteurMin(a,b);
-    float max = t.getHauteurMax(a,b);
+    double min = t.getHauteurMin(a,b);
+    double max = t.getHauteurMax(a,b);
     Vector3D aBox(a.x(), min, a.y());
     Vector3D bBox(b.x(), max, b.y());
     /*QTime time;
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
     Vector3D dirCam(o+d);
     Camera cam(o, dirCam);
-    QImage result = cam.printScreen(t,a,b,d.normalized(),192*5,108*5);
+    QImage result = cam.printScreen(t,a,b,d.normalized(),192*3,108*3);
     QString nameImage = "D:/result.png";
     result.save(nameImage);
 

@@ -9,15 +9,15 @@ Noise::Noise(int s):seed(s)
 }
 
 
-float Noise::pointToValue(Vector2D &p)
+double Noise::pointToValue(Vector2D &p)
 {
     return smooth_noiseBilinear(p,seed);
 }
 
 Vector2D Noise::pointToPoint(Vector2D &p)
 {
-    float rayon = pointToValue(p);
-    float angle = pointToValue(p)*2*M_PI;
+    double rayon = pointToValue(p);
+    double angle = pointToValue(p)*2*M_PI;
     Vector2D v(cos(angle)*rayon, sin(angle)*rayon);
     return v;
 }

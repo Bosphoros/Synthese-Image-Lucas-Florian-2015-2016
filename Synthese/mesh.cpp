@@ -26,9 +26,9 @@ void Mesh::rotate(const QMatrix3x3 &mat)
 {
     QList<Vector3D>::iterator itv=geom.begin();
         for(;itv!=geom.end();++itv){
-            float x=(*itv).x()*mat(0,0)+(*itv).y()*mat(0,1)+(*itv).z()*mat(0,2);
-            float y=(*itv).x()*mat(1,0)+(*itv).y()*mat(1,1)+(*itv).z()*mat(1,2);
-            float z=(*itv).x()*mat(2,0)+(*itv).y()*mat(2,1)+(*itv).z()*mat(2,2);
+            double x=(*itv).x()*mat(0,0)+(*itv).y()*mat(0,1)+(*itv).z()*mat(0,2);
+            double y=(*itv).x()*mat(1,0)+(*itv).y()*mat(1,1)+(*itv).z()*mat(1,2);
+            double z=(*itv).x()*mat(2,0)+(*itv).y()*mat(2,1)+(*itv).z()*mat(2,2);
             (*itv).setX(x);
             (*itv).setY(y);
             (*itv).setZ(z);

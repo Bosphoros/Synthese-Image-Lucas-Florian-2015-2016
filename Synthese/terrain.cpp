@@ -10,15 +10,15 @@ Vector3D Terrain::norm(const Vector2D &p)
    /* Vector2D px(p.x()+epsilon,p.y());
     Vector2D py(p.x(),p.y()+epsilon);
 
-    float hp=getHauteur(p);
-    float hpx=getHauteur(px);
-    float hpy=getHauteur(py);
+    double hp=getHauteur(p);
+    double hpx=getHauteur(px);
+    double hpy=getHauteur(py);
 
-    Vector3D vp(p.x(),p.y(),(float)hp);
+    Vector3D vp(p.x(),p.y(),(double)hp);
 
-    Vector3D vpx(px.x(),px.y(),(float)hpx);
+    Vector3D vpx(px.x(),px.y(),(double)hpx);
 
-    Vector3D vpy(py.x(),py.y(),(float)hpy);
+    Vector3D vpy(py.x(),py.y(),(double)hpy);
 
     Vector3D u=vpx-vp;
     Vector3D v=vpy-vp;
@@ -35,10 +35,10 @@ Vector3D Terrain::norm(const Vector2D &p)
     Vector2D py(p.x(),p.y()+epsilon);
     Vector2D pyminus(p.x(),p.y()-epsilon);
 
-    float hpx=getHauteur(px);
-    float hpxminus = getHauteur(pxminus);
-    float hpy=getHauteur(py);
-    float hpyminus = getHauteur(pyminus);
+    double hpx=getHauteur(px);
+    double hpxminus = getHauteur(pxminus);
+    double hpy=getHauteur(py);
+    double hpyminus = getHauteur(pyminus);
     //std::cout<<hpx<<" "<<hpxminus<<std::endl;
     Vector3D resu(-(hpx-hpxminus),2*epsilon,-(hpy-hpyminus));
     resu.normalize();
@@ -60,7 +60,7 @@ bool Terrain::isOut(const Vector3D &p)
     return p.y()>getHauteur(p2);
 }
 
-float Terrain::getHauteurNormale(const Vector2D &p, Vector3D &n)
+double Terrain::getHauteurNormale(const Vector2D &p, Vector3D &n)
 {
     n=norm(p);
     double resu=getHauteur(p);

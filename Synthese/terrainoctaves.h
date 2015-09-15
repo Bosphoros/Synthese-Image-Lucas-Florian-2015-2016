@@ -11,9 +11,9 @@ private:
 
 public:
     TerrainOctaves(QVector<Octave>& o, const Vector2D &aa, const Vector2D &bb);
-    virtual float getHauteur(const Vector2D &p);
-    virtual float getHauteurMin(Vector2D a,Vector2D b);
-    virtual float getHauteurMax(Vector2D a,Vector2D b);
+    virtual double getHauteur(const Vector2D &p);
+    virtual double getHauteurMin(Vector2D a,Vector2D b);
+    virtual double getHauteurMax(Vector2D a,Vector2D b);
     virtual double getPenteMax(Vector2D a, Vector2D b);
 
 };

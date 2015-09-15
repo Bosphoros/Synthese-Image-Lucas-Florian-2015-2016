@@ -5,7 +5,7 @@
 class Ray
 {
 private:
-    static float pas;
+    static double pas;
 public:
     const Vector3D origine;
     const Vector3D direction;
