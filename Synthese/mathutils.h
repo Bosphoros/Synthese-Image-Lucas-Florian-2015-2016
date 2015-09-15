@@ -10,6 +10,7 @@ public:
     static double interpolate(double before_p0, double p0, double p1, double after_p1, double t);
     static double ridge(double n, double s);
     static double mod(double a, double b);
+    static double dabs(double d);
 };
 
 #endif // MATHUTILS_H
