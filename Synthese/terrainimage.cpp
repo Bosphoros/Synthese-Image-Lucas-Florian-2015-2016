@@ -102,12 +102,20 @@ double TerrainImage::getHauteurMin(Vector2D aa,Vector2D bb)
     return noir +(min*(blanc-noir)/255);
 }
 
-double TerrainImage::getPenteMax(Vector2D a, Vector2D b)
+double TerrainImage::getPenteMax(Vector2D aa, Vector2D bb)
 {
-    int mini=a.y()<0?0:a.y();
-    int minj=a.x()<0?0:a.x();
-    int maxi=b.y()<h?b.y():h-1;
-    int maxj=b.x()<w?b.x():w-1;
+    Vector2D pTmpa=aa-a;
+    pTmpa.setX(pTmpa.x()/(b.x()-a.x()));
+    pTmpa.setY(pTmpa.y()/(b.y()-a.y()));
+
+    Vector2D pTmpb=bb-a;
+    pTmpb.setX(pTmpb.x()/(b.x()-a.x()));
+    pTmpb.setY(pTmpb.y()/(b.y()-a.y()));
+
+    int mini=pTmpa.y()<0?0:pTmpa.y()*h;
+    int minj=pTmpa.x()<0?0:pTmpa.x()*w;
+    int maxi=pTmpb.y()<1?pTmpb.y()*h:h-1;
+    int maxj=pTmpb.x()<1?pTmpb.x()*w:w-1;
 
     quint8 max=0;
     for(int i=mini;i<=maxi-1;i++){

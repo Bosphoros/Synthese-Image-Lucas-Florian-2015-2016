@@ -17,8 +17,8 @@ private:
     double lh;
 public:
     Camera(Vector3D& o, Vector3D& at);
-    QRgb ptScreen(Terrain& t, const Vector3D &aBox, const Vector3D &bBox, const Vector3D &s, int i, int j, int l, int h);
-    QImage printScreen(Terrain& t, const Vector2D &a, const Vector2D &b, const Vector3D &s, int l, int h);
+    QRgb ptScreen(Terrain* const t, const Vector3D &aBox, const Vector3D &bBox, const Vector3D &s, int i, int j, int l, int h);
+    QImage printScreen(Terrain * const t,Vector2D& a, const Vector2D& b, const Vector3D& s, int l, int h);
 
 };
 
