@@ -6,7 +6,7 @@ TerrainPenteX::TerrainPenteX(Vector2D &a, Vector2D &b):Terrain(a,b)
 
 }
 
-double TerrainPenteX::getHauteur(const Vector2D &p)
+double TerrainPenteX::getHauteur(const Vector2D &p) const
 {
     return 255/2*(sin(p.x()/100)+1);
 }

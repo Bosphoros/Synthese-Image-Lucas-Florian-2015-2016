@@ -22,7 +22,7 @@ public:
     Terrain(const Vector2D& aa, const Vector2D& bb);
     bool isIn(const Vector3D& p);
     bool isOut(const Vector3D& p);
-    virtual double getHauteur(const Vector2D& p)=0;
+    virtual double getHauteur(const Vector2D& p) const =0;
     virtual double getHauteurMin() const =0;
     virtual double getHauteurMax() const =0;
     virtual double getPenteMax() const =0;
