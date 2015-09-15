@@ -1,11 +1,11 @@
 #ifndef FONCTEURWARP_H
 #define FONCTEURWARP_H
-#include <QVector2D>
+#include "vector2d.h"
 class FoncteurWarp
 {
 public:
     FoncteurWarp();
-    virtual QVector2D operator()(QVector2D& p);
+    virtual Vector2D operator()(Vector2D& p);
 };
 
 #endif // FONCTEURWARP_H

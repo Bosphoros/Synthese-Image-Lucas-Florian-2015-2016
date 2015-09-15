@@ -9,14 +9,14 @@ Mesh::Mesh(const Mesh &m):geom(m.geom),norm(m.norm),topo(m.topo),nom(m.nom)
 
 }
 
-Mesh::Mesh(QList<QVector3D> &v, QList<int> &t, QList<QVector3D> &n,QString& no):geom(v),topo(t),norm(n),nom(no)
+Mesh::Mesh(QList<Vector3D> &v, QList<int> &t, QList<Vector3D> &n,QString& no):geom(v),topo(t),norm(n),nom(no)
 {
 
 }
 
-void Mesh::translate(QVector3D &t)
+void Mesh::translate(Vector3D &t)
 {
-    QList<QVector3D>::iterator itv=geom.begin();
+    QList<Vector3D>::iterator itv=geom.begin();
         for(;itv!=geom.end();++itv){
             (*itv)+=t;
         }
@@ -24,7 +24,7 @@ void Mesh::translate(QVector3D &t)
 
 void Mesh::rotate(const QMatrix3x3 &mat)
 {
-    QList<QVector3D>::iterator itv=geom.begin();
+    QList<Vector3D>::iterator itv=geom.begin();
         for(;itv!=geom.end();++itv){
             float x=(*itv).x()*mat(0,0)+(*itv).y()*mat(0,1)+(*itv).z()*mat(0,2);
             float y=(*itv).x()*mat(1,0)+(*itv).y()*mat(1,1)+(*itv).z()*mat(1,2);
@@ -35,9 +35,9 @@ void Mesh::rotate(const QMatrix3x3 &mat)
         }
 }
 
-void Mesh::homotecie(QVector3D &c, float h)
+void Mesh::homotecie(Vector3D &c, double h)
 {
-    QList<QVector3D>::iterator itv=geom.begin();
+    QList<Vector3D>::iterator itv=geom.begin();
         for(;itv!=geom.end();++itv){
             (*itv)=(((*itv)-c)*h)+c;
         }
@@ -71,21 +71,21 @@ void Mesh::merge(const Mesh &mesh)
         }
 }
 
-int Mesh::containsGeom(const QVector3D &g)
+int Mesh::containsGeom(const Vector3D &g)
 {
     return geom.indexOf(g);
 }
 
-int Mesh::containsNorm(const QVector3D &n)
+int Mesh::containsNorm(const Vector3D &n)
 {
     return norm.indexOf(n);
 }
 
-QList<QVector3D>& Mesh::getGeom(){
+QList<Vector3D>& Mesh::getGeom(){
     return geom;
 }
 
-QList<QVector3D>& Mesh::getNorm(){
+QList<Vector3D>& Mesh::getNorm(){
     return norm;
 }
 

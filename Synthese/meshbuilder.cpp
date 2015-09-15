@@ -21,14 +21,14 @@ void MeshBuilder::saveMesh(QString &nom, Mesh& mesh)
     QTextStream out(&file);
     cout<<"flux créé"<<endl;
     out << "o "<<mesh.getNom()<<"\n";
-    for(QList<QVector3D>::iterator itVect = mesh.getGeom().begin(); itVect != mesh.getGeom().end(); ++itVect) {
+    for(QList<Vector3D>::iterator itVect = mesh.getGeom().begin(); itVect != mesh.getGeom().end(); ++itVect) {
     out << "v " << itVect->x() << " " << itVect->y() << " " << itVect->z() << "\n";
     }
     out << "\n";
 
     cout<<"geom ok"<<endl;
 
-    for(QList<QVector3D>::iterator itNorm = mesh.getNorm().begin(); itNorm != mesh.getNorm().end(); ++itNorm) {
+    for(QList<Vector3D>::iterator itNorm = mesh.getNorm().begin(); itNorm != mesh.getNorm().end(); ++itNorm) {
     out << "vn " << itNorm->x() << " " << itNorm->y() << " " << itNorm->z() << "\n";
     }
     out << "\n";
@@ -50,8 +50,8 @@ void MeshBuilder::saveMesh(QString &nom, Mesh& mesh)
     cout<<"fichier fermé"<<endl;
 }
 
-Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString nom,double echelle){
-    QVector2D aa,bb;
+Mesh MeshBuilder::terrain(Terrain &t, Vector2D &a, Vector2D &b, int e,QString nom,double echelle){
+    Vector2D aa,bb;
     if(a.x()<b.x()){
          aa.setX(a.x());
          bb.setX(b.x());
@@ -72,22 +72,22 @@ Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString 
 
     a=aa;
     b=bb;
-    QList<QVector3D> geom;
-    QList<QVector3D> norm;
+    QList<Vector3D> geom;
+    QList<Vector3D> norm;
     QList<int> topo;
 
-    QVector2D dif=b-a;
+    Vector2D dif=b-a;
 
     for(int i=0;i<e;i++){
         for(int j=0;j<e;j++){
-            QVector2D p;
+            Vector2D p;
             p.setX(a.x()+dif.x()*((float)i/e));
             p.setY(a.y()+dif.y()*((float)j/e));
-            QVector3D n;
-            QVector2D ptemp(p.x()/dif.x(),p.y()/dif.y());
+            Vector3D n;
+            Vector2D ptemp(p.x()/dif.x(),p.y()/dif.y());
             double h=t.getHauteurNormale(ptemp,n);
 
-            geom.append(QVector3D(p.x(),(float)h,p.y())*echelle);
+            geom.append(Vector3D(p.x(),(float)h,p.y())*echelle);
             norm.append(n);
             if(i<e-1&&j<e-1){
                 topo.append(e*j+i);
@@ -121,8 +121,8 @@ Mesh MeshBuilder::terrain(Terrain &t, QVector2D &a, QVector2D &b, int e,QString 
 // Ne prend pas les textures en compte
 Mesh MeshBuilder::loadMesh(QString &nom)
 {
-    QList<QVector3D> geoms;
-    QList<QVector3D> norms;
+    QList<Vector3D> geoms;
+    QList<Vector3D> norms;
     QList<int> topos;
     QFile file(nom);
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -133,11 +133,11 @@ Mesh MeshBuilder::loadMesh(QString &nom)
         read = in.readLine();
         QStringList l = read.split(" ");
         if(l.at(0) == "v") {
-            QVector3D tmp(l.at(1).toDouble(), l.at(2).toDouble(), l.at(3).toDouble());
+            Vector3D tmp(l.at(1).toDouble(), l.at(2).toDouble(), l.at(3).toDouble());
             geoms.append(tmp);
         }
         if(l.at(0) == "vn") {
-            QVector3D tmp(l.at(1).toDouble(), l.at(2).toDouble(), l.at(3).toDouble());
+            Vector3D tmp(l.at(1).toDouble(), l.at(2).toDouble(), l.at(3).toDouble());
             norms.append(tmp);
         }
         if(l.at(0) == "f") {

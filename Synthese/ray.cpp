@@ -3,43 +3,43 @@
 #include <iostream>
 #include <QTime>
 
-Ray::Ray(QVector3D& o, QVector3D& d):origine(o),direction(d.normalized())
+Ray::Ray(Vector3D& o, Vector3D& d):origine(o),direction(d.normalized())
 {
 }
 
-QVector3D Ray::getPoint(float f)
+Vector3D Ray::getPoint(double f)
 {
     return origine+f*direction;
 }
 
 
-bool Ray::intersects(const QVector3D &a, const QVector3D &b, const QVector3D &c, QVector3D &out)
+bool Ray::intersects(const Vector3D &a, const Vector3D &b, const Vector3D &c, Vector3D &out)
 {
     // Vecteurs du plan
-    QVector3D u(a - c);
-    QVector3D v(b - c);
+    Vector3D u(a - c);
+    Vector3D v(b - c);
 
     // Normale au plan
-    QVector3D w = QVector3D::crossProduct(u, v);
+    Vector3D w =u^v;//Vector3D::crossProduct(u, v);
 
     // Produit scalaire, si 0 pas de solution ou une infinité
-    float scalaire = QVector3D::dotProduct(direction, w); //direction.x()*w.x()+direction.y()*w.y()+direction.z()*w.z();
+    float scalaire = direction*w;//Vector3D::dotProduct(direction, w); //direction.x()*w.x()+direction.y()*w.y()+direction.z()*w.z();
     if(abs(scalaire) < 0.0001)
         return false;
-    float delta = QVector3D::dotProduct(a, w);
-    float t = (delta - QVector3D::dotProduct(origine, w))/scalaire;
+    float delta = a*w;//Vector3D::dotProduct(a, w);
+    float t = (delta - origine*w)/scalaire; //Vector3D::dotProduct(origine, w)
 
     out = getPoint(t);
     return true;
 
 }
 
-int Ray::intersectsBox(const QVector3D &a, const QVector3D &b, QVector3D &in, QVector3D &out)
+int Ray::intersectsBox(const Vector3D &a, const Vector3D &b, Vector3D &in, Vector3D &out)
 {
-    QVector3D ax(b.x(), a.y(), a.z()); // a décalé en x
-    QVector3D az(a.x(), a.y(), b.z()); // a décalé en z
-    QVector3D bx(a.x(), b.y(), b.z()); // b décalé en x
-    QVector3D bz(b.x(), b.y(), a.z()); // b décalé en z
+    Vector3D ax(b.x(), a.y(), a.z()); // a décalé en x
+    Vector3D az(a.x(), a.y(), b.z()); // a décalé en z
+    Vector3D bx(a.x(), b.y(), b.z()); // b décalé en x
+    Vector3D bz(b.x(), b.y(), a.z()); // b décalé en z
     if(origine.x() > a.x() && origine.x() < b.x() && origine.y() > a.y() && origine.y() < b.y() && origine.z() > a.z() && origine.z() < b.z())
     {
         in=origine;
@@ -79,12 +79,12 @@ int Ray::intersectsBox(const QVector3D &a, const QVector3D &b, QVector3D &in, QV
     else { // Origine hors de la boite
         int resu=0;
 
-        QVector3D aaxaz;
-        QVector3D aazbx;
-        QVector3D aaxbz;
-        QVector3D bbxbz;
-        QVector3D bbxaz;
-        QVector3D bbzax;
+        Vector3D aaxaz;
+        Vector3D aazbx;
+        Vector3D aaxbz;
+        Vector3D bbxbz;
+        Vector3D bbxaz;
+        Vector3D bbzax;
 
         bool ifaaxaz = intersects(a, ax, az, aaxaz);
         bool ifaazbx = intersects(a, az, bx, aazbx);
@@ -185,7 +185,7 @@ int Ray::intersectsBox(const QVector3D &a, const QVector3D &b, QVector3D &in, QV
 
         if(origine.distanceToPoint(in) > origine.distanceToPoint(out)) // Inversion si les deux points trouvés ne l'ont pas été dans le bon ordre
         {
-            QVector3D tmp = in;
+            Vector3D tmp = in;
             in = out;
             out = tmp;
         }
@@ -195,13 +195,13 @@ int Ray::intersectsBox(const QVector3D &a, const QVector3D &b, QVector3D &in, QV
     }
 }
 
-bool Ray::intersectRayMarching(Terrain& t, const QVector3D &aBox, const QVector3D &bBox, QVector3D& resu, bool& isBox)
+bool Ray::intersectRayMarching(Terrain& t, const Vector3D &aBox, const Vector3D &bBox, Vector3D& resu, bool& isBox)
 {
     isBox=false;
     resu=origine;
 
-    QVector3D in;
-    QVector3D out;
+    Vector3D in;
+    Vector3D out;
 
     int pointsBox = intersectsBox(aBox, bBox, in, out);
 
@@ -210,7 +210,7 @@ bool Ray::intersectRayMarching(Terrain& t, const QVector3D &aBox, const QVector3
         return false;
     }
     float distInOut = in.distanceToPoint(out);
-    QVector3D dir=direction;
+    Vector3D dir=direction;
     Ray r(in,dir);
     //std::cout << pas << " " << dir.x() << "," << dir.y() << "," << dir.z() << " / " << origine.x() << "," << origine.y() << "," << origine.z() << std::endl;
     for(float tt = 0; tt <= distInOut+pas; tt+= pas)
@@ -230,17 +230,17 @@ bool Ray::intersectRayMarching(Terrain& t, const QVector3D &aBox, const QVector3
     return false;
 }
 
-bool Ray::intersectAdvanced(Terrain &t, QVector2D& a, QVector2D& b, QVector3D& resu)
+bool Ray::intersectAdvanced(Terrain &t, Vector2D& a, Vector2D& b, Vector3D& resu)
 {
 
     /*resu=origine;
     float min =t.getHauteurMin(a,b);
     float max =t.getHauteurMax(a,b);
 
-    QVector3D aBox(a.x(), min, a.y());
-    QVector3D bBox(b.x(), max, b.y());
-    QVector3D in;
-    QVector3D out;
+    Vector3D aBox(a.x(), min, a.y());
+    Vector3D bBox(b.x(), max, b.y());
+    Vector3D in;
+    Vector3D out;
 
     int pointsBox = intersectsBox(aBox, bBox, in, out);
 
@@ -249,19 +249,19 @@ bool Ray::intersectAdvanced(Terrain &t, QVector2D& a, QVector2D& b, QVector3D& r
         return false;
     }
     float distInOut = in.distanceToPoint(out);
-    QVector3D dir=direction;
+    Vector3D dir=direction;
     Ray r(in,dir);
     float penteMax=t.getPenteMax(a,b);
     for(float tt = 0; tt <= distInOut+pas; tt+= pas)
     {
         //std::cout<<r.getPoint(tt).y()<<std::endl;
-        QVector3D point=r.getPoint(tt);
+        Vector3D point=r.getPoint(tt);
         if(t.isIn(point)){
             resu=r.getPoint(tt-pas/2);
             return true;
         }
 
-        QVector2D p(point.x(),point.z());
+        Vector2D p(point.x(),point.z());
         float hauteur=t.getHauteur(p);
         float dif=point.y()-hauteur;
         if (direction.y()>penteMax){

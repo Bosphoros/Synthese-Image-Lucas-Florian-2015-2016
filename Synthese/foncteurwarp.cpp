@@ -1,14 +1,14 @@
 #include "foncteurwarp.h"
 #include "noise.h"
-#include <QVector2D>
+#include "vector2d.h"
 FoncteurWarp::FoncteurWarp()
 {
 
 }
 
-QVector2D FoncteurWarp::operator()(QVector2D &p)
+Vector2D FoncteurWarp::operator()(Vector2D &p)
 {
     Noise n(156874);
-    QVector2D v=n.pointToPoint(p);
+    Vector2D v=n.pointToPoint(p);
     return p+v;
 }

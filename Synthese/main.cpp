@@ -10,8 +10,8 @@
 int main(int argc, char *argv[])
 {
 
-    QVector2D a(0,0);
-    QVector2D b(1000,1000);
+    Vector2D a(0,0);
+    Vector2D b(1000,1000);
 
     QString nm="D:/Heightmap5_DISP.png";
     QImage im;
@@ -33,15 +33,15 @@ int main(int argc, char *argv[])
     Mesh m =bu.terrain(t,a,b,300,nom,0.01);
     QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);//*/
-    QVector3D o(-300, 400, -200);
-    QVector3D d(1,-1,1);
+    Vector3D o(-300, 400, -200);
+    Vector3D d(1,-1,1);
     Ray r(o, d);
-    /*QVector3D a(-3,-3,0);
-    QVector3D b(3, 3, 5);
-    QVector3D c(1.62,1.24,3);*/
-    QVector3D resu;
-    //QVector3D resuIn;
-    //QVector3D resuOut;
+    /*Vector3D a(-3,-3,0);
+    Vector3D b(3, 3, 5);
+    Vector3D c(1.62,1.24,3);*/
+    Vector3D resu;
+    //Vector3D resuIn;
+    //Vector3D resuOut;
     /*bool i = r.intersects(a,b,c,resu);
     int j = r.intersectsBox(a,b,resuIn, resuOut);
     //std::cout << i << " " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
@@ -49,8 +49,8 @@ int main(int argc, char *argv[])
 
     float min = t.getHauteurMin(a,b);
     float max = t.getHauteurMax(a,b);
-    QVector3D aBox(a.x(), min, a.y());
-    QVector3D bBox(b.x(), max, b.y());
+    Vector3D aBox(a.x(), min, a.y());
+    Vector3D bBox(b.x(), max, b.y());
     /*QTime time;
     time.start();
     for(int i = 0; i < 1000; ++i) {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     std::cout << time.restart() << std::endl;*/
     //std::cout << touche << " en " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
 
-    QVector3D dirCam(o+d);
+    Vector3D dirCam(o+d);
     Camera cam(o, dirCam);
     QImage result = cam.printScreen(t,a,b,d.normalized(),192*5,108*5);
     QString nameImage = "D:/result.png";

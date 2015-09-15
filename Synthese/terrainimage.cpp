@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-TerrainImage::TerrainImage(QImage& i, bool blanc,const QVector2D& a,const QVector2D& b):Terrain(a,b)
+TerrainImage::TerrainImage(QImage& i, bool blanc,const Vector2D& a,const Vector2D& b):Terrain(a,b)
 {
 
     h=i.height();
@@ -20,9 +20,9 @@ TerrainImage::TerrainImage(QImage& i, bool blanc,const QVector2D& a,const QVecto
     }
 }
 
-float TerrainImage::getHauteur(const QVector2D &p)
+float TerrainImage::getHauteur(const Vector2D &p)
 {
-    QVector2D pTmp=p-a;
+    Vector2D pTmp=p-a;
     pTmp.setX(pTmp.x()/(b.x()-a.x()));
     pTmp.setY(pTmp.y()/(b.y()-a.y()));
     float u=pTmp.x();
@@ -51,7 +51,7 @@ float TerrainImage::getHauteur(const QVector2D &p)
     return z;
 }
 
-float TerrainImage::getHauteurMax(QVector2D a,QVector2D b)
+float TerrainImage::getHauteurMax(Vector2D a,Vector2D b)
 {
     int mini=a.y()<0?0:a.y();
     int minj=a.x()<0?0:a.x();
@@ -69,7 +69,7 @@ float TerrainImage::getHauteurMax(QVector2D a,QVector2D b)
     return max;
 }
 
-float TerrainImage::getHauteurMin(QVector2D a,QVector2D b)
+float TerrainImage::getHauteurMin(Vector2D a,Vector2D b)
 {
     int mini=0;
     int minj=0;
@@ -87,7 +87,7 @@ float TerrainImage::getHauteurMin(QVector2D a,QVector2D b)
     return min;
 }
 
-double TerrainImage::getPenteMax(QVector2D a, QVector2D b)
+double TerrainImage::getPenteMax(Vector2D a, Vector2D b)
 {
     int mini=a.y()<0?0:a.y();
     int minj=a.x()<0?0:a.x();

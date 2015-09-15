@@ -3,7 +3,7 @@
 #include "mesh.h"
 #include <QString>
 #include "terrain.h"
-#include "QVector2D"
+#include "vector2d.h"
 class MeshBuilder
 {
 private:
@@ -13,7 +13,7 @@ public:
     Mesh loadMesh(QString& nom);
     void saveMesh(QString& nom, Mesh &mesh);
     ~MeshBuilder();
-    Mesh terrain(Terrain &t, QVector2D &a, QVector2D &b, int e, QString nom, double echelle);
+    Mesh terrain(Terrain &t, Vector2D &a, Vector2D &b, int e, QString nom, double echelle);
 
 
 };

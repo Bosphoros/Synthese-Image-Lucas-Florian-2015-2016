@@ -7,15 +7,14 @@
 class TerrainOctaves : public Terrain
 {
 private:
-    std::vector<quint16> mat;
     QVector<Octave> octaves;
 
 public:
-    TerrainOctaves(QVector<Octave>& o, const QVector2D &aa, const QVector2D &bb);
-    virtual float getHauteur(const QVector2D &p);
-    virtual float getHauteurMin(QVector2D a,QVector2D b);
-    virtual float getHauteurMax(QVector2D a,QVector2D b);
-    virtual double getPenteMax(QVector2D a, QVector2D b);
+    TerrainOctaves(QVector<Octave>& o, const Vector2D &aa, const Vector2D &bb);
+    virtual float getHauteur(const Vector2D &p);
+    virtual float getHauteurMin(Vector2D a,Vector2D b);
+    virtual float getHauteurMax(Vector2D a,Vector2D b);
+    virtual double getPenteMax(Vector2D a, Vector2D b);
 
 };
 

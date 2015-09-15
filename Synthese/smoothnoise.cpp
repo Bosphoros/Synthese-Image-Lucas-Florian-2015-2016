@@ -40,13 +40,13 @@ double smooth_noise_firstdim(int integer_x,
     return cubic_interpolate(v0, v1, v2, v3, fractional_x);
 }
 
-double bilinearInterpolate(double xy, double x1y,double xy1, double x1y1, QVector2D p){
+double bilinearInterpolate(double xy, double x1y,double xy1, double x1y1, Vector2D p){
 
     return (1-p.x())*(1-p.y())*xy + p.x()*(1-p.y())*x1y +
            (1-p.x())*p.y()*xy1 +  p.x()*p.y()*x1y1;
 }
 
-double smooth_noiseBilinear(QVector2D p,int seed){
+double smooth_noiseBilinear(Vector2D p,int seed){
     float x;
     float y;
     float fractional_x;
@@ -74,7 +74,7 @@ double smooth_noiseBilinear(QVector2D p,int seed){
         fractional_y=p.y()-integer_y;
 
     }
-        QVector2D pf(fractional_x,fractional_y);
+        Vector2D pf(fractional_x,fractional_y);
         double xy = noise(integer_x,integer_y,seed);
         double x1y = noise(integer_x+1,integer_y,seed);
         double xy1 = noise(integer_x,integer_y+1,seed);
@@ -84,7 +84,7 @@ double smooth_noiseBilinear(QVector2D p,int seed){
 }
 
 
-double smooth_noise(QVector2D p,int seed){
+double smooth_noise(Vector2D p,int seed){
     double x=p.x();
     double y=p.y();
     int integer_x = (int)x;
