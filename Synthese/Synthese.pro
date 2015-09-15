@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     smoothnoise.cpp \
     ray.cpp \
     camera.cpp \
-    terrainpentex.cpp
+    terrainpentex.cpp \
+    vector2d.cpp
 
 HEADERS += \
     mesh.h \
@@ -41,4 +42,5 @@ HEADERS += \
     smoothnoise.h \
     ray.h \
     camera.h \
-    terrainpentex.h
+    terrainpentex.h \
+    vector2d.h
