@@ -59,13 +59,13 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
 
 }
 
-QImage Camera::printScreen(Terrain * const t,Vector2D& a, const Vector2D& b, const Vector3D& s, int l, int h) const
+QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) const
 {
     QImage im(l,h,QImage::Format_ARGB32);
-    double min=t->getHauteurMin(a,b);
-    double max=t->getHauteurMax(a,b);
-    Vector3D aBox(a.x(),min,a.y());
-    Vector3D bBox(b.x(),max*1.5,b.y());
+    double min=t->getHauteurMin();
+    double max=t->getHauteurMax();
+    Vector3D aBox(t->getA().x(),min,t->getA().y());
+    Vector3D bBox(t->getB().x(),max*1.5,t->getB().y());
 
     for(int i=0;i<l;++i){
         for(int j=0;j<h;++j){

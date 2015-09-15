@@ -45,8 +45,8 @@ int main(int argc, char *argv[])
     //std::cout << i << " " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
     std::cout << j << " " << resuIn.x() << ", " << resuIn.y() << ", " << resuIn.z() << std::endl << " out " << resuOut.x() << ", " << resuOut.y() << ", " << resuOut.z();*/
 
-    double min = t.getHauteurMin(a,b);
-    double max = t.getHauteurMax(a,b);
+    double min = t.getHauteurMin();
+    double max = t.getHauteurMax();
     Vector3D aBox(a.x(), min, a.y());
     Vector3D bBox(b.x(), max, b.y());
     /*QTime time;
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
     //std::cout << touche << " en " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
 
     Vector3D dirCam(o+d);
-    Camera cam(o, dirCam);
+    Camera cam(o, dirCam,o.distanceToPoint(dirCam));
     QImage result = cam.printScreen(&t,a,b,d.normalized(),192*3,108*3);
     QString nameImage = "D:/result.png";
     result.save(nameImage);
