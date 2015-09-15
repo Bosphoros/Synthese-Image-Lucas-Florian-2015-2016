@@ -1,13 +1,8 @@
 #include "terrainimage.h"
-#include "QColor"
+#include <QColor>
 #include <iostream>
 #include <cmath>
-#ifndef fmin
-    #define fmin(a,b) a<b?a:b
-#endif
-#ifndef fmax
-    #define fmax(a,b) a>b?a:b
-#endif
+
 
 TerrainImage::TerrainImage(QImage& i, double bl, double no, const Vector2D& a, const Vector2D& b):Terrain(a,b), blanc(bl), noir(no)
 {
@@ -54,15 +49,7 @@ double TerrainImage::getHauteur(const Vector2D &p) const
     return noir +(z*(blanc-noir)/255);;
 }
 
-double TerrainImage::getHauteurMax() const
-{
-    return fmax(blanc,noir);
-}
 
-double TerrainImage::getHauteurMin() const
-{
-    return fmin(blanc,noir);
-}
 
 double TerrainImage::getPenteMax() const
 {
