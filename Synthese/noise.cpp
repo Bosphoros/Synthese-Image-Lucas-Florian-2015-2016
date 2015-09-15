@@ -11,7 +11,7 @@ Noise::Noise(int s):seed(s)
 
 double Noise::pointToValue(Vector2D &p)
 {
-    return smooth_noiseBilinear(p,seed);
+    return raw_noise_2d(p.x(),p.y());
 }
 
 Vector2D Noise::pointToPoint(Vector2D &p)
