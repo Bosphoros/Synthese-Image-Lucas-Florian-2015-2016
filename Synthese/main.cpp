@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
     QVector2D a(0,0);
     QVector2D b(1000,1000);
 
-    QString nm="C:/Users/etu/Desktop/Heightmap.png";
+    QString nm="D:/Heightmap5_DISP.png";
     QImage im;
     im.load(nm);
     TerrainImage t(im,false,a,b);//*/
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     MeshBuilder bu;
     QString nom="terrain";
     Mesh m =bu.terrain(t,a,b,300,nom,0.01);
-    QString fichier="C:/Users/etu/Desktop/terrain.obj";
+    QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);//*/
     QVector3D o(-300, 400, -200);
     QVector3D d(1,-1,1);
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
     QVector3D dirCam(o+d);
     Camera cam(o, dirCam);
     QImage result = cam.printScreen(t,a,b,d.normalized(),192*5,108*5);
-    QString nameImage = "C:/Users/etu/Desktop/result2.png";
+    QString nameImage = "D:/result.png";
     result.save(nameImage);
 
     return 0;
