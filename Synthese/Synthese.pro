@@ -14,15 +14,9 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    mesh.cpp \
-    meshbuilder.cpp \
     terrainimage.cpp \
     terrain.cpp \
     mathutils.cpp \
-    foncteurwarp.cpp \
-    noise.cpp \
-    octave.cpp \
-    terrainoctaves.cpp \
     smoothnoise.cpp \
     ray.cpp \
     camera.cpp \
@@ -31,15 +25,9 @@ SOURCES += main.cpp \
     vector3d.cpp
 
 HEADERS += \
-    mesh.h \
-    meshbuilder.h \
     terrain.h \
     terrainimage.h \
     mathutils.h \
-    foncteurwarp.h \
-    noise.h \
-    octave.h \
-    terrainoctaves.h \
     smoothnoise.h \
     ray.h \
     camera.h \
