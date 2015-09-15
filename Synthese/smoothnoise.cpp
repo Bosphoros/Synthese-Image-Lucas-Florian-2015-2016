@@ -1,7 +1,11 @@
 #include "smoothnoise.h"
 #include <cmath>
 #include "mathutils.h"
+#include <iostream>
 
+#ifndef racine3
+    #define racine3 1.73205080756887729352
+#endif
 int fastfloor( const double x ) { return x > 0 ? (int) x : (int) x - 1; }
 double dot( const int* g, const double x, const double y ) { return g[0]*x + g[1]*y; }
 
@@ -12,13 +16,13 @@ double raw_noise_2d( const double x, const double y )
     double n0, n1, n2;
 
     // Skew the input space to determine which simplex cell we're in
-    double F2 = 0.5 * (sqrt(3.0) - 1.0);
+    double F2 = 0.5 * (racine3 - 1.0);
     // Hairy factor for 2D
     double s = (x + y) * F2;
     int i = fastfloor( x + s );
     int j = fastfloor( y + s );
 
-    double G2 = (3.0 - sqrt(3.0)) / 6.0;
+    double G2 = (3.0 - racine3) / 6.0;
     double t = (i + j) * G2;
     // Unskew the cell origin back to (x,y) space
     double X0 = i-t;

@@ -16,9 +16,10 @@ private:
     double lw;
     double lh;
 public:
-    Camera(Vector3D& o, Vector3D& at,double d);
+    Camera(const Vector3D& o, const Vector3D& at,double d);
     QRgb ptScreen(Terrain* const t, const Vector3D &aBox, const Vector3D &bBox, const Vector3D &s, int i, int j, int l, int h) const;
     QImage printScreen(Terrain * const t, const Vector3D& s, int l, int h) const;
+    void translate(const Vector3D& v);
 
 };
 

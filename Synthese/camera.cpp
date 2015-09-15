@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cmath>
 
-Camera::Camera(Vector3D &o, Vector3D &at, double d):origine(o),dw(d)
+Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
 {
     Vector3D oat=(at-o);
     w=oat.normalized();
@@ -75,5 +75,10 @@ QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) c
 
     return im;
 
+}
+
+void Camera::translate(const Vector3D &v)
+{
+    origine+=v;
 }
 
