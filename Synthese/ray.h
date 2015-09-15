@@ -8,7 +8,7 @@ private:
 public:
     const Vector3D origine;
     const Vector3D direction;
-    Ray(Vector3D &o, Vector3D &d);
+    Ray(const Vector3D &o, const Vector3D &d);
     Vector3D getPoint(double f) const;
     bool intersects(const Vector3D& a, const Vector3D& b, const Vector3D& c, Vector3D& out) const;
     int intersectsBox(const Vector3D& a, const Vector3D& b, Vector3D& in, Vector3D& out) const;
