@@ -4,7 +4,7 @@
 class TerrainNoise: public Terrain
 {
 public:
-    TerrainNoise();
+    TerrainNoise(const Vector2D &aa, const Vector2D &bb);
     virtual double getHauteur(const Vector2D& p) const;
     virtual double getHauteurMin() const;
     virtual double getHauteurMax() const;

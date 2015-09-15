@@ -15,4 +15,8 @@ public:
 
 };
 
+    inline Vector3D Ray::getPoint(double f) const{
+        return origine+direction*f;
+    }
+
 #endif // RAY_H

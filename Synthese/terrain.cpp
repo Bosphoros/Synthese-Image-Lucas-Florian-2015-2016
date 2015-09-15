@@ -60,16 +60,6 @@ bool Terrain::isOut(const Vector3D &p)
     return p.y()>getHauteur(p2);
 }
 
-Vector2D Terrain::getA() const
-{
-    return a;
-}
-
-Vector2D Terrain::getB() const
-{
-    return b;
-}
-
 double Terrain::getHauteurNormale(const Vector2D &p, Vector3D &n)
 {
     n=norm(p);

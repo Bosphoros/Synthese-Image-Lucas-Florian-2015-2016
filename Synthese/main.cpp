@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 
     Vector3D dirCam(o+d);
     Camera cam(o, dirCam,o.distanceToPoint(dirCam));
-    QImage result = cam.printScreen(&t,a,b,d.normalized(),192*3,108*3);
+    QImage result = cam.printScreen(&t,d.normalized(),192*3,108*3);
     QString nameImage = "D:/result.png";
     result.save(nameImage);
 

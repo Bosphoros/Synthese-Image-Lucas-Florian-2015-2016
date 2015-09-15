@@ -7,12 +7,6 @@ Ray::Ray(const Vector3D &o, const Vector3D &d):origine(o),direction(d.normalized
 {
 }
 
-Vector3D Ray::getPoint(double f) const
-{
-    return origine+f*direction;
-}
-
-
 bool Ray::intersects(const Vector3D &a, const Vector3D &b, const Vector3D &c, Vector3D &out) const
 {
     // Vecteurs du plan

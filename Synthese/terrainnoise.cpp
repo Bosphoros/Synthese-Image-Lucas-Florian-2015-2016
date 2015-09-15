@@ -1,6 +1,6 @@
 #include "terrainnoise.h"
 
-terrainNoise::terrainNoise()
+TerrainNoise::TerrainNoise(const Vector2D& aa, const Vector2D& bb):Terrain(aa,bb)
 {
 }
 
