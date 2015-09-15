@@ -27,7 +27,8 @@ SOURCES += main.cpp \
     ray.cpp \
     camera.cpp \
     terrainpentex.cpp \
-    vector2d.cpp
+    vector2d.cpp \
+    vector3d.cpp
 
 HEADERS += \
     mesh.h \
@@ -43,4 +44,5 @@ HEADERS += \
     ray.h \
     camera.h \
     terrainpentex.h \
-    vector2d.h
+    vector2d.h \
+    vector3d.h
