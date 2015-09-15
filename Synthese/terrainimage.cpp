@@ -58,8 +58,8 @@ double TerrainImage::getPenteMax() const
     double pasy=(b.y()-a.y())/h;
     double max=0;
     for(int i=0;i<h-1;i++){
-        for(int j=0;j<=w-1;j++){
-            int tmp=abs((int)(mat[i*w+j])-(int)(mat[(i+1)*w+j]))/pasy;
+        for(int j=0;j<w-1;j++){
+            double tmp=abs((int)(mat[i*w+j])-(int)(mat[(i+1)*w+j]))/pasy;
             if(max<tmp){
                 max=tmp;
             }

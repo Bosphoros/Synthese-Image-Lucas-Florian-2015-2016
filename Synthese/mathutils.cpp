@@ -39,5 +39,5 @@ double MathUtils::mod(double a, double b) {
 }
 
 double MathUtils::dabs(double d) {
-    return a>=0?a:-a;
+    return d>=0?d:-d;
 }

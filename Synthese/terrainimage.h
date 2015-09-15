@@ -1,13 +1,6 @@
 #ifndef TERRAINIMAGE_H
 #define TERRAINIMAGE_H
 
-#ifndef fmin
-    #define fmin(a,b) a<b?a:b
-#endif
-#ifndef fmax
-    #define fmax(a,b) a>b?a:b
-#endif
-
 #include "terrain.h"
 #include <QImage>
 class TerrainImage : public Terrain
@@ -29,12 +22,12 @@ public:
 
 inline double TerrainImage::getHauteurMax() const
 {
-    return fmax(blanc,noir);
+    return blanc>noir?blanc:noir;
 }
 
 inline double TerrainImage::getHauteurMin() const
 {
-    return fmin(blanc,noir);
+    return blanc<noir?blanc:noir;
 }
 
 #endif // TERRAINIMAGE_H
