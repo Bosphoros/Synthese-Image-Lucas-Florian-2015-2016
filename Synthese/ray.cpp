@@ -7,13 +7,13 @@ Ray::Ray(Vector3D& o, Vector3D& d):origine(o),direction(d.normalized())
 {
 }
 
-Vector3D Ray::getPoint(double f)
+Vector3D Ray::getPoint(double f) const
 {
     return origine+f*direction;
 }
 
 
-bool Ray::intersects(const Vector3D &a, const Vector3D &b, const Vector3D &c, Vector3D &out)
+bool Ray::intersects(const Vector3D &a, const Vector3D &b, const Vector3D &c, Vector3D &out) const
 {
     // Vecteurs du plan
     Vector3D u(a - c);
@@ -34,7 +34,7 @@ bool Ray::intersects(const Vector3D &a, const Vector3D &b, const Vector3D &c, Ve
 
 }
 
-int Ray::intersectsBox(const Vector3D &a, const Vector3D &b, Vector3D &in, Vector3D &out)
+int Ray::intersectsBox(const Vector3D &a, const Vector3D &b, Vector3D &in, Vector3D &out) const
 {
     Vector3D ax(b.x(), a.y(), a.z()); // a décalé en x
     Vector3D az(a.x(), a.y(), b.z()); // a décalé en z
@@ -195,84 +195,3 @@ int Ray::intersectsBox(const Vector3D &a, const Vector3D &b, Vector3D &in, Vecto
     }
 }
 
-bool Ray::intersectRayMarching(Terrain& t, const Vector3D &aBox, const Vector3D &bBox, Vector3D& resu, bool& isBox)
-{
-    isBox=false;
-    resu=origine;
-
-    Vector3D in;
-    Vector3D out;
-
-    int pointsBox = intersectsBox(aBox, bBox, in, out);
-
-    if(pointsBox == 0) {
-        //std::cout<<"return false"<<std::endl;
-        return false;
-    }
-    double distInOut = in.distanceToPoint(out);
-    Vector3D dir=direction;
-    Ray r(in,dir);
-    //std::cout << pas << " " << dir.x() << "," << dir.y() << "," << dir.z() << " / " << origine.x() << "," << origine.y() << "," << origine.z() << std::endl;
-    for(double tt = 0; tt <= distInOut+pas; tt+= pas)
-    {
-        //std::cout<<r.getPoint(tt).y()<<std::endl;
-        if(t.isIn(r.getPoint(tt))){
-
-            resu=r.getPoint(tt-pas/2);
-            if(tt==0){
-                isBox=true;
-            }
-            return true;
-         }
-
-    }
-
-    return false;
-}
-
-bool Ray::intersectAdvanced(Terrain &t, Vector2D& a, Vector2D& b, Vector3D& resu)
-{
-
-    /*resu=origine;
-    double min =t.getHauteurMin(a,b);
-    double max =t.getHauteurMax(a,b);
-
-    Vector3D aBox(a.x(), min, a.y());
-    Vector3D bBox(b.x(), max, b.y());
-    Vector3D in;
-    Vector3D out;
-
-    int pointsBox = intersectsBox(aBox, bBox, in, out);
-
-    if(pointsBox == 0) {
-        //std::cout<<"return false"<<std::endl;
-        return false;
-    }
-    double distInOut = in.distanceToPoint(out);
-    Vector3D dir=direction;
-    Ray r(in,dir);
-    double penteMax=t.getPenteMax(a,b);
-    for(double tt = 0; tt <= distInOut+pas; tt+= pas)
-    {
-        //std::cout<<r.getPoint(tt).y()<<std::endl;
-        Vector3D point=r.getPoint(tt);
-        if(t.isIn(point)){
-            resu=r.getPoint(tt-pas/2);
-            return true;
-        }
-
-        Vector2D p(point.x(),point.z());
-        double hauteur=t.getHauteur(p);
-        double dif=point.y()-hauteur;
-        if (direction.y()>penteMax){
-            return false;
-        }
-        //std::cout << dif/(penteMax-direction.y()) << std::endl;
-        tt+=dif/(penteMax-direction.y());
-
-    }
-*/
-    return false;
-}
-
-double Ray::pas=0.1;
