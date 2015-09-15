@@ -13,10 +13,10 @@ private:
 
 public:
     TerrainImage(QImage& i, double bl, double no, const Vector2D& a, const Vector2D& b);
-    virtual double getHauteur(const Vector2D &p);
-    virtual double getHauteurMin(Vector2D aa, Vector2D bb);
-    virtual double getHauteurMax(Vector2D aa, Vector2D bb);
-    virtual double getPenteMax(Vector2D aa, Vector2D bb);
+    virtual double getHauteur(const Vector2D &p) const;
+    virtual double getHauteurMin() const;
+    virtual double getHauteurMax() const;
+    virtual double getPenteMax() const;
 };
 
 #endif // TERRAINIMAGE_H

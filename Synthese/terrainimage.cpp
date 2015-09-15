@@ -2,7 +2,12 @@
 #include "QColor"
 #include <iostream>
 #include <cmath>
-
+#ifndef fmin
+    #define fmin(a,b) a<b?a:b
+#endif
+#ifndef fmax
+    #define fmax(a,b) a>b?a:b
+#endif
 
 TerrainImage::TerrainImage(QImage& i, double bl, double no, const Vector2D& a, const Vector2D& b):Terrain(a,b), blanc(bl), noir(no)
 {
@@ -18,7 +23,7 @@ TerrainImage::TerrainImage(QImage& i, double bl, double no, const Vector2D& a, c
     }
 }
 
-double TerrainImage::getHauteur(const Vector2D &p)
+double TerrainImage::getHauteur(const Vector2D &p) const
 {
     Vector2D pTmp=p-a;
     pTmp.setX(pTmp.x()/(b.x()-a.x()));
@@ -49,82 +54,29 @@ double TerrainImage::getHauteur(const Vector2D &p)
     return noir +(z*(blanc-noir)/255);;
 }
 
-double TerrainImage::getHauteurMax(Vector2D aa,Vector2D bb)
+double TerrainImage::getHauteurMax() const
 {
-
-    Vector2D pTmpa=aa-a;
-    pTmpa.setX(pTmpa.x()/(b.x()-a.x()));
-    pTmpa.setY(pTmpa.y()/(b.y()-a.y()));
-
-    Vector2D pTmpb=bb-a;
-    pTmpb.setX(pTmpb.x()/(b.x()-a.x()));
-    pTmpb.setY(pTmpb.y()/(b.y()-a.y()));
-
-    int mini=pTmpa.y()<0?0:pTmpa.y()*h;
-    int minj=pTmpa.x()<0?0:pTmpa.x()*w;
-    int maxi=pTmpb.y()<1?pTmpb.y()*h:h-1;
-    int maxj=pTmpb.x()<1?pTmpb.x()*w:w-1;
-
-    quint8 max=0;
-    for(int i=mini;i<=maxi;i++){
-        for(int j=minj;j<=maxj;j++){
-            if(max<mat[i*w+j]){
-                max=mat[i*w+j];
-            }
-        }
-    }
-    return noir +(max*(blanc-noir)/255);
+    return fmax(blanc,noir);
 }
 
-double TerrainImage::getHauteurMin(Vector2D aa,Vector2D bb)
+double TerrainImage::getHauteurMin() const
 {
-    Vector2D pTmpa=aa-a;
-    pTmpa.setX(pTmpa.x()/(b.x()-a.x()));
-    pTmpa.setY(pTmpa.y()/(b.y()-a.y()));
-
-    Vector2D pTmpb=bb-a;
-    pTmpb.setX(pTmpb.x()/(b.x()-a.x()));
-    pTmpb.setY(pTmpb.y()/(b.y()-a.y()));
-
-    int mini=pTmpa.y()<0?0:pTmpa.y()*h;
-    int minj=pTmpa.x()<0?0:pTmpa.x()*w;
-    int maxi=pTmpb.y()<1?pTmpb.y()*h:h-1;
-    int maxj=pTmpb.x()<1?pTmpb.x()*w:w-1;
-
-    quint8 min=255;
-    for(int i=mini;i<=maxi;i++){
-        for(int j=minj;j<=maxj;j++){
-            if(min>mat[i*w+j]){
-                min=mat[i*w+j];
-            }
-        }
-    }
-    return noir +(min*(blanc-noir)/255);
+    return fmin(blanc,noir);
 }
 
-double TerrainImage::getPenteMax(Vector2D aa, Vector2D bb)
+double TerrainImage::getPenteMax() const
 {
-    Vector2D pTmpa=aa-a;
-    pTmpa.setX(pTmpa.x()/(b.x()-a.x()));
-    pTmpa.setY(pTmpa.y()/(b.y()-a.y()));
 
-    Vector2D pTmpb=bb-a;
-    pTmpb.setX(pTmpb.x()/(b.x()-a.x()));
-    pTmpb.setY(pTmpb.y()/(b.y()-a.y()));
-
-    int mini=pTmpa.y()<0?0:pTmpa.y()*h;
-    int minj=pTmpa.x()<0?0:pTmpa.x()*w;
-    int maxi=pTmpb.y()<1?pTmpb.y()*h:h-1;
-    int maxj=pTmpb.x()<1?pTmpb.x()*w:w-1;
-
-    quint8 max=0;
-    for(int i=mini;i<=maxi-1;i++){
-        for(int j=minj;j<=maxj-1;j++){
-            int tmp=abs((int)(mat[i*w+j])-(int)(mat[(i+1)*w+j]));
+    double pasx=(b.x()-a.x())/w;
+    double pasy=(b.y()-a.y())/h;
+    double max=0;
+    for(int i=0;i<h-1;i++){
+        for(int j=0;j<=w-1;j++){
+            int tmp=abs((int)(mat[i*w+j])-(int)(mat[(i+1)*w+j]))/pasy;
             if(max<tmp){
                 max=tmp;
             }
-            tmp=abs((int)(mat[i*w+j])-(int)(mat[i*w+j+1]));
+            tmp=abs((int)(mat[i*w+j])-(int)(mat[i*w+j+1]))/pasx;
             if(max<tmp){
                 max=tmp;
             }

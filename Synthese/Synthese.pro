@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     camera.cpp \
     terrainpentex.cpp \
     vector2d.cpp \
-    vector3d.cpp
+    vector3d.cpp \
+    terrainnoise.cpp
 
 HEADERS += \
     terrain.h \
@@ -33,4 +34,5 @@ HEADERS += \
     camera.h \
     terrainpentex.h \
     vector2d.h \
-    vector3d.h
+    vector3d.h \
+    terrainnoise.h
