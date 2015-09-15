@@ -3,7 +3,7 @@
 #include <iostream>
 #include <QTime>
 
-Ray::Ray(Vector3D& o, Vector3D& d):origine(o),direction(d.normalized())
+Ray::Ray(const Vector3D &o, const Vector3D &d):origine(o),direction(d.normalized())
 {
 }
 
