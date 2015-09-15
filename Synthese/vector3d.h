@@ -1,6 +1,6 @@
 #ifndef VECTOR3D_H
 #define VECTOR3D_H
-
+#include "vector2d.h"
 #include <cmath>
 #include <iostream>
 

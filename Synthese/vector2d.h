@@ -27,8 +27,8 @@ public:
     Vector2D normalized() const;
     void normalize();
 
-    double distanceToPoint(const Vector2D& point) const;
-    double distanceToPointSquared(const Vector2D& point) const;
+    double distanceToPoint2D(const Vector2D& point) const;
+    double distanceToPoint2DSquared(const Vector2D& point) const;
     double distanceToLine(const Vector2D& point, const Vector2D& direction) const;
 
     Vector2D &operator+=(const Vector2D& vector);
@@ -42,7 +42,7 @@ public:
     friend inline const Vector2D operator-(const Vector2D& v1, const Vector2D& v2);
     friend inline const Vector2D operator*(double factor, const Vector2D& v2);
     friend inline const Vector2D operator*(const Vector2D& v1, double factor);
-    friend inline const double operator*(const Vector2D& v1, const Vector2D& v2);
+    friend inline double operator*(const Vector2D& v1, const Vector2D& v2);
     friend inline const Vector2D operator-(const Vector2D& v1);
     friend inline const Vector2D operator/(const Vector2D& v1, double divisor);
 
@@ -73,11 +73,11 @@ inline double Vector2D::lengthSquared() const {
     return xp*xp+yp*yp;
 }
 
-double Vector2D::distanceToPoint(const Vector2D& point) const {
+inline double Vector2D::distanceToPoint2D(const Vector2D& point) const {
     return (point-(*this)).length();
 }
 
-double Vector2D::distanceToPointSquared(const Vector2D& point) const {
+inline double Vector2D::distanceToPoint2DSquared(const Vector2D& point) const {
     return (point-(*this)).lengthSquared();
 }
 
@@ -129,7 +129,7 @@ inline const Vector2D operator*(const Vector2D& v, double factor) {
     return Vector2D(v.xp * factor, v.yp * factor);
 }
 
-inline const double operator*(const Vector2D& v1, const Vector2D& v2) {
+inline double operator*(const Vector2D& v1, const Vector2D& v2) {
     return (v1.xp * v2.xp + v1.yp * v2.yp);
 }
 
@@ -142,7 +142,7 @@ inline const Vector2D operator/(const Vector2D& v, double divisor) {
 }
 
 inline bool fuzzyCompare(const Vector2D& v1, const Vector2D& v2) {
-    return v1.distanceToPointSquared(v2) < 0.0000001;
+    return v1.distanceToPoint2DSquared(v2) < 0.0000001;
 }
 
 inline std::ostream& operator<<(std::ostream& os, const Vector2D& v) {

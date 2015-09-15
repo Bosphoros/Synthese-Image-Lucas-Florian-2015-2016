@@ -17,7 +17,7 @@ void Vector2D::normalize()
 double Vector2D::distanceToLine(const Vector2D &point, const Vector2D &direction) const
 {
     double t = -(point*direction-(*this)*direction)/(direction*direction);
-    return (*this).distanceToPoint(Vector2D(point + t*direction));
+    return (*this).distanceToPoint2D(Vector2D(point + t*direction));
 }
 
 Vector3D Vector2D::toVector3D() const
