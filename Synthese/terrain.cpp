@@ -39,7 +39,8 @@ Vector3D Terrain::norm(const Vector2D &p)
     double hpxminus = getHauteur(pxminus);
     double hpy=getHauteur(py);
     double hpyminus = getHauteur(pyminus);
-    //std::cout<<hpx<<" "<<hpxminus<<std::endl;
+    //std::cout<<hpx<<" "<<hpxminus << "/ " << hpy << " " << hpyminus<<std::endl;
+    //std::cout<<(hpx-hpxminus)/(2*epsilon)<<std::endl;
     Vector3D resu(-(hpx-hpxminus),2*epsilon,-(hpy-hpyminus));
     resu.normalize();
     return resu;
@@ -148,5 +149,5 @@ bool Terrain::intersectAdvanced(const Ray &r, const Vector2D &aa, const Vector2D
     return false;
 }
 
-double Terrain::epsilon=0.001;
+double Terrain::epsilon=0.0000001;
 double Terrain::pas=0.1;

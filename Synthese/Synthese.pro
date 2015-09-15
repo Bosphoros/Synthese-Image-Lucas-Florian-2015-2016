@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     terrainpentex.cpp \
     vector2d.cpp \
     vector3d.cpp \
-    terrainnoise.cpp
+    terrainnoise.cpp \
+    terrainnoisesmultiples.cpp
 
 HEADERS += \
     terrain.h \
@@ -35,4 +36,5 @@ HEADERS += \
     terrainpentex.h \
     vector2d.h \
     vector3d.h \
-    terrainnoise.h
+    terrainnoise.h \
+    terrainnoisesmultiples.h

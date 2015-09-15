@@ -4,6 +4,8 @@
 #include "ray.h"
 #include <QTime>
 #include "camera.h"
+#include "terrainnoisesmultiples.h"
+#include <vector>
 
 int main(int argc, char *argv[])
 {
@@ -11,11 +13,23 @@ int main(int argc, char *argv[])
     Vector2D a(0,0);
     Vector2D b(1000,1000);
 
-    QString nm="D:/heightmapMono.png";
+    /*QString nm="D:/degradeDroit.png";
     QImage im;
     im.load(nm);
-    TerrainImage t(im,255,0,a,b);//*/
+    TerrainImage t(im,300,0,a,b);//*/
     //TerrainPenteX t(a,b);
+    std::vector<double> ampl;
+    ampl.push_back(200);
+    ampl.push_back(100);
+    ampl.push_back(10);
+    ampl.push_back(2);
+    std::vector<double> freq;
+    freq.push_back(500);
+    freq.push_back(250);
+    freq.push_back(80);
+    freq.push_back(20);
+    TerrainNoisesMultiples t(0,freq,ampl,a,b);//0,100,100
+
     /*FoncteurWarp w;
     Noise n(15641);
     Noise n2(0);
@@ -31,7 +45,7 @@ int main(int argc, char *argv[])
     Mesh m =bu.terrain(t,a,b,300,nom,0.01);
     QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);//*/
-    Vector3D o(-300, 400, -200);
+    Vector3D o(-300, 700, -200);
     Vector3D d(1,-1,1);
     Ray r(o, d);
     /*Vector3D a(-3,-3,0);
