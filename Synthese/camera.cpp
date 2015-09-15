@@ -4,11 +4,10 @@
 #include <iostream>
 #include <cmath>
 
-Camera::Camera(Vector3D &o, Vector3D &at):origine(o)
+Camera::Camera(Vector3D &o, Vector3D &at, double d):origine(o),dw(d)
 {
     Vector3D oat=(at-o);
     w=oat.normalized();
-    dw=oat.length();
     u=-(w^Vector3D(0,1,0)).normalized();
     v= (w^u).normalized();
     lh=1;
