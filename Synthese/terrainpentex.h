@@ -8,9 +8,9 @@ class TerrainPenteX:public Terrain
 public:
     TerrainPenteX(Vector2D& a, Vector2D& b);
     virtual double getHauteur(const Vector2D &p);
-    virtual double getHauteurMin(Vector2D a,Vector2D b);
-    virtual double getHauteurMax(Vector2D a,Vector2D b);
-    virtual double getPenteMax(Vector2D a,Vector2D b);
+    virtual double getHauteurMin();
+    virtual double getHauteurMax();
+    virtual double getPenteMax();
 };
 
 #endif // TERRAINPENTEX_H
