@@ -22,9 +22,9 @@ public:
     bool isIn(const Vector3D& p);
     bool isOut(const Vector3D& p);
     virtual double getHauteur(const Vector2D& p)=0;
-    virtual double getHauteurMin(Vector2D a,Vector2D b)=0;
-    virtual double getHauteurMax(Vector2D a,Vector2D b)=0;
-    virtual double getPenteMax(Vector2D a,Vector2D b)=0;
+    virtual double getHauteurMin(const Vector2D& a, const Vector2D& b)=0;
+    virtual double getHauteurMax(const Vector2D& a, const Vector2D& b)=0;
+    virtual double getPenteMax(const Vector2D& a, const Vector2D& b)=0;
 };
 
 

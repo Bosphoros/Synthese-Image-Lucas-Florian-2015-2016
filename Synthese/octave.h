@@ -21,7 +21,7 @@ private:
 public:
     Octave();
     Octave(const Octave& o);
-    Octave(double f, double a, double ms, double as, double fs, FoncteurWarp wPoint, FoncteurWarp wSeuil, Noise nPoint, Noise nSeuil);
+    Octave(double f, double a, double ms, double as, double fs, const FoncteurWarp& wPoint, const FoncteurWarp& wSeuil, const Noise& nPoint, const Noise& nSeuil);
     double getHauteur(const Vector2D &p);
 };
 

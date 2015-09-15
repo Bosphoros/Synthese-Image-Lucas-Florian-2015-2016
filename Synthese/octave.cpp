@@ -11,7 +11,7 @@ Octave::Octave(const Octave &o):freq(o.freq), ampli(o.ampli), minSeuil(o.minSeui
 
 }
 
-Octave::Octave(double f, double a, double ms, double as, double fs, FoncteurWarp wPoint, FoncteurWarp wSeuil, Noise nPoint, Noise nSeuil):freq(f), ampli(a), minSeuil(ms), ampliS(as), freqS(fs), warpPoint(wPoint), warpSeuil(wSeuil), noisePoint(nPoint), noiseSeuil(nSeuil)
+Octave::Octave(double f, double a, double ms, double as, double fs, const FoncteurWarp &wPoint, const FoncteurWarp &wSeuil, const Noise &nPoint, const Noise &nSeuil):freq(f), ampli(a), minSeuil(ms), ampliS(as), freqS(fs), warpPoint(wPoint), warpSeuil(wSeuil), noisePoint(nPoint), noiseSeuil(nSeuil)
 {
 }
 

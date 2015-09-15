@@ -17,13 +17,13 @@ double TerrainOctaves::getHauteur(const Vector2D &p)
     return resu;
 }
 
-double TerrainOctaves::getHauteurMin(Vector2D a, Vector2D b)
+double TerrainOctaves::getHauteurMin(const Vector2D &aa, const Vector2D &bb)
 {
-    double min=getHauteur(b);
+    double min=getHauteur(bb);
     Vector2D vtmp;
     double tmp;
-    for(int i=(int)a.y();i<b.y();i++){
-        for(int j=(int)a.x();j<b.x();j++){
+    for(int i=(int)aa.y();i<bb.y();i++){
+        for(int j=(int)aa.x();j<bb.x();j++){
             vtmp=Vector2D(j,i);
             tmp=getHauteur(vtmp);
             if(min>tmp)
@@ -33,13 +33,13 @@ double TerrainOctaves::getHauteurMin(Vector2D a, Vector2D b)
     return min;
 }
 
-double TerrainOctaves::getHauteurMax(Vector2D a,Vector2D b)
+double TerrainOctaves::getHauteurMax(const Vector2D &aa, const Vector2D &bb)
 {
-    double max=getHauteur(b);
+    double max=getHauteur(bb);
     Vector2D vtmp;
     double tmp;
-    for(int i=(int)a.y();i<b.y();i++){
-        for(int j=(int)a.x();j<b.x();j++){
+    for(int i=(int)aa.y();i<bb.y();i++){
+        for(int j=(int)aa.x();j<bb.x();j++){
             vtmp=Vector2D(j,i);
             tmp=getHauteur(vtmp);
             if(max<tmp)
@@ -49,7 +49,7 @@ double TerrainOctaves::getHauteurMax(Vector2D a,Vector2D b)
     return max;
 }
 
-double TerrainOctaves::getPenteMax(Vector2D a,Vector2D b)
+double TerrainOctaves::getPenteMax(const Vector2D &aa, const Vector2D &bb)
 {
 
     double max=0;
@@ -57,8 +57,8 @@ double TerrainOctaves::getPenteMax(Vector2D a,Vector2D b)
     Vector2D vtmp2;
     int tmp;
     double htmp;
-    for(int i=(int)a.y();i<b.y();i++){
-        for(int j=(int)a.x();j<b.x();j++){
+    for(int i=(int)aa.y();i<bb.y();i++){
+        for(int j=(int)aa.x();j<bb.x();j++){
             vtmp=Vector2D(j,i);
             vtmp2=Vector2D(j,i+1);
             htmp=getHauteur(vtmp);
