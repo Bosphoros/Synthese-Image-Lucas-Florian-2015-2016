@@ -26,6 +26,8 @@ public:
     virtual double getHauteurMin() const =0;
     virtual double getHauteurMax() const =0;
     virtual double getPenteMax() const =0;
+    Vector2D getA() const;
+    Vector2D getB() const;
     bool intersectRayMarching(const Ray &r, const Vector3D &aBox, const Vector3D &bBox, Vector3D &resu, bool &isBox);
     bool intersectAdvanced(const Ray &r, const Vector2D &aa, const Vector2D &bb, Vector3D &resu) const;
 };
