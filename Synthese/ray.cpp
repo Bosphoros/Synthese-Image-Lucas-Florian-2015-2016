@@ -177,7 +177,7 @@ int Ray::intersectsBox(const Vector3D &a, const Vector3D &b, Vector3D &in, Vecto
             return 0;
         }
 
-        if(origine.distanceToPoint(in) > origine.distanceToPoint(out)) // Inversion si les deux points trouvés ne l'ont pas été dans le bon ordre
+        if(origine.distanceToPointSquared(in) > origine.distanceToPointSquared(out)) // Inversion si les deux points trouvés ne l'ont pas été dans le bon ordre
         {
             Vector3D tmp = in;
             in = out;
