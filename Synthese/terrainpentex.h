@@ -4,6 +4,9 @@
 #include "vector2d.h"
 #include <cmath>
 
+/**
+ * @brief The TerrainPenteX class, test class
+ */
 class TerrainPenteX:public Terrain
 {
 public:

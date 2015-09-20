@@ -27,12 +27,12 @@ public:
     Vector3D getPoint(double f) const;
 
     /**
-     * Tries to intersect the Ray with a plan, described by two vectors, ab and ac
-     * @param[in] a the first point of the plan
-     * @param[in] b the second point of the plan
-     * @param[in] c the third point of the plan
-     * @param[out] out the point at the intersection of the Ray and the plan
-     * @return true if the Ray intersects the plan, false else
+     * Tries to intersect the Ray with a plane, described by two vectors, ab and ac
+     * @param[in] a the first point on the plane
+     * @param[in] b the second point on the plane
+     * @param[in] c the third point on the plane
+     * @param[out] out the point at the intersection of the Ray and the plane
+     * @return true if the Ray intersects the plane, false else
      */
     bool intersects(const Vector3D& a, const Vector3D& b, const Vector3D& c, Vector3D& out) const;
 

@@ -21,8 +21,8 @@ public:
      * @param[in] i The image to read the grey value from
      * @param[in] bl The height value to associate with white
      * @param[in] no The height value to associate with black
-     * @param[in] a the first point of definition of the TerrainImage on the plan
-     * @param[in] b the second point of definition of the TerrainImage on the plan
+     * @param[in] a the first point of definition of the TerrainImage on the plane
+     * @param[in] b the second point of definition of the TerrainImage on the plane
      */
     TerrainImage(const QImage &i, double bl, double no, const Vector2D& a, const Vector2D& b);
 

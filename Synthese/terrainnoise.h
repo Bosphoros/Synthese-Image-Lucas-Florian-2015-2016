@@ -17,8 +17,8 @@ public:
      * @param[in] am the minimal height of the TerrainNoise
      * @param[in] ampl the maximal additive height the noise can add
      * @param[in] freq the frequence of height changes, will be passed as 1/freq to invfrequence
-     * @param[in] aa the first point of definition of the Terrain on the plan
-     * @param[in] bb the second point of definition of the Terrain on the plan
+     * @param[in] aa the first point of definition of the Terrain on the plane
+     * @param[in] bb the second point of definition of the Terrain on the plane
      */
     TerrainNoise(double am, double ampl, double freq, const Vector2D &aa, const Vector2D &bb);
 

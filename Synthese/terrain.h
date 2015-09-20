@@ -27,8 +27,8 @@ protected:
 public:
     /**
      * Constructor of Terrain
-     * @param[in] aa the first point of definition of the Terrain on the plan
-     * @param[in] bb the second point of definition of the Terrain on the plan
+     * @param[in] aa the first point of definition of the Terrain on the plane
+     * @param[in] bb the second point of definition of the Terrain on the plane
      */
     Terrain(const Vector2D& aa, const Vector2D& bb);
 
@@ -104,10 +104,10 @@ public:
 
     /**
      * TODO
-     * @param r
-     * @param aa
-     * @param bb
-     * @param resu
+     * @param[in] r
+     * @param[in] aa
+     * @param[in] bb
+     * @param[out] resu
      * @return
      */
     bool intersectAdvanced(const Ray &r, const Vector2D &aa, const Vector2D &bb, Vector3D &resu) const;
