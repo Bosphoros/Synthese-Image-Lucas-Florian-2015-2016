@@ -15,7 +15,7 @@ protected:
 
     /**
      * Finds the normal at point p
-     * @param p the point containing the coordinates on the Terrain we want the normal of
+     * @param[in] p the point containing the coordinates on the Terrain we want the normal of
      * @return
      */
     Vector3D norm(const Vector2D &p);
@@ -27,28 +27,28 @@ protected:
 public:
     /**
      * Constructor of Terrain
-     * @param aa the first point of definition of the Terrain on the plan
-     * @param bb the second point of definition of the Terrain on the plan
+     * @param[in] aa the first point of definition of the Terrain on the plan
+     * @param[in] bb the second point of definition of the Terrain on the plan
      */
     Terrain(const Vector2D& aa, const Vector2D& bb);
 
     /**
      * Checks if a point is under the surface of the Terrain or not
-     * @param p the point to check the position of
+     * @param[in] p the point to check the position of
      * @return true if is under the surface, else false
      */
     bool isIn(const Vector3D& p);
 
     /**
      * Checks if a point is above the surface of the Terrain or not
-     * @param p the point to check the position of
+     * @param[in] p the point to check the position of
      * @return true if is above the surface, else false
      */
     bool isOut(const Vector3D& p);
 
     /**
      * Calculates the height of a point based on its 2D coordinates and the normal at this point
-     * @param p the coordinates to find the corresponding height
+     * @param[in] p the coordinates to find the corresponding height
      * @param[out] n the normal at p
      * @see getHauteur()
      * @return the height at p
@@ -57,7 +57,7 @@ public:
 
     /**
      * @brief Gets the height associated to 2D coordinates
-     * @param p the coordinates to find the corresponding height
+     * @param[in] p the coordinates to find the corresponding height
      * @return the height at p
      */
     virtual double getHauteur(const Vector2D& p) const =0;
@@ -92,9 +92,9 @@ public:
 
     /**
      * Ray Marching. Uses a Ray to calculate its intersection with the Terrain and find the corresponding point. Each step, checks a little further if still in the bounding box of the Terrain, at a steady pace.
-     * @param r The Ray to check the collision with
-     * @param aBox the first point defining the bounding box
-     * @param bBox the second point defining the bounding box
+     * @param[in] r The Ray to check the collision with
+     * @param[in] aBox the first point defining the bounding box
+     * @param[in] bBox the second point defining the bounding box
      * @param[out] resu the intersection of the Ray and the surface of the Terrain
      * @param[out] isBox if the intersection of the ray and the Terrain is situated on the bounding box. Used to check if under the Terrain on the first iteration.
      * @see isIn()

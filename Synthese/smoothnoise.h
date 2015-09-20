@@ -4,8 +4,8 @@
 
 /**
  * Finds a noise value based on two values, hashed with predefined values of perm
- * @param x
- * @param y
+ * @param[in] x
+ * @param[in] y
  * @return
  */
 double raw_noise_2d(const double x, const double y);

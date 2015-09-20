@@ -18,17 +18,17 @@ private:
 public:
     /**
      * Constructor of TerrainImage
-     * @param i The image to read the grey value from
-     * @param bl The height value to associate with white
-     * @param no The height value to associate with black
-     * @param a the first point of definition of the TerrainImage on the plan
-     * @param b the second point of definition of the TerrainImage on the plan
+     * @param[in] i The image to read the grey value from
+     * @param[in] bl The height value to associate with white
+     * @param[in] no The height value to associate with black
+     * @param[in] a the first point of definition of the TerrainImage on the plan
+     * @param[in] b the second point of definition of the TerrainImage on the plan
      */
     TerrainImage(const QImage &i, double bl, double no, const Vector2D& a, const Vector2D& b);
 
     /**
      * @brief Gets the height associated to 2D coordinates
-     * @param p the coordinates to find the corresponding height
+     * @param[in] p the coordinates to find the corresponding height
      * @return the height at p
      */
     virtual double getHauteur(const Vector2D &p) const;
