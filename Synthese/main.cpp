@@ -22,12 +22,12 @@ int main(int argc, char *argv[])
     ampl.push_back(200);
     ampl.push_back(100);
     ampl.push_back(10);
-    ampl.push_back(2);
+    ampl.push_back(20);
     std::vector<double> freq;
     freq.push_back(500);
     freq.push_back(250);
     freq.push_back(80);
-    freq.push_back(20);
+    freq.push_back(200);
     TerrainNoisesMultiples t(0,freq,ampl,a,b);//0,100,100
 
     /*FoncteurWarp w;
