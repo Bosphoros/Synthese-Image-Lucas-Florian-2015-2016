@@ -12,8 +12,6 @@ Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
     v= (w^u).normalized();
     lh=1;
     lw=16/9;
-
-
 }
 
 QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& bBox, const Vector3D& s, int i, int j, int l, int h) const

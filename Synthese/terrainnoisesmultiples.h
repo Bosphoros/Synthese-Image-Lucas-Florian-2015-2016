@@ -16,7 +16,7 @@ public:
     /**
      * Constructor of TerrainNoisesMultiples
      * @param[in] am the minimal height of the TerrainNoisesMultiples
-     * @param[in] lFreqs vector of frequencies to apply
+     * @param[in] lFreqs vector of frequencies to apply, will be passed to 1/lFreqs[i]
      * @param[in] lAmpl vector of heights to add
      * @param[in] aa the first point of definition of the Terrain on the plane
      * @param[in] bb the second point of definition of the Terrain on the plane

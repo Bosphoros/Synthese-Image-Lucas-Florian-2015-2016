@@ -13,12 +13,12 @@ int main(int argc, char *argv[])
     Vector2D a(0,0);
     Vector2D b(1000,1000);
 
-    /*QString nm="D:/degradeDroit.png";
+    QString nm="C:/Users/etu/Desktop/Heightmap.png";
     QImage im;
     im.load(nm);
-    TerrainImage t(im,300,0,a,b);//*/
+    TerrainImage t(im,0,300,a,b);//*/
     //TerrainPenteX t(a,b);
-    std::vector<double> ampl;
+    /*std::vector<double> ampl;
     ampl.push_back(200);
     ampl.push_back(100);
     ampl.push_back(10);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     Mesh m =bu.terrain(t,a,b,300,nom,0.01);
     QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);//*/
-    Vector3D o(-300, 700, -200);
+    Vector3D o(-3000, 3500, -2000);
     Vector3D d(1,-1,1);
     Ray r(o, d);
     /*Vector3D a(-3,-3,0);
@@ -72,10 +72,12 @@ int main(int argc, char *argv[])
     std::cout << time.restart() << std::endl;*/
     //std::cout << touche << " en " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
 
-    Vector3D dirCam(o+d);
-    Camera cam(o, dirCam,o.distanceToPoint(dirCam));
+    Vector3D dirCam(1000,0,1000);
+    Vector3D dist(o+d);
+    std::cout << o.distanceToPoint(dist) << std::endl;
+    Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
     QImage result = cam.printScreen(&t,d.normalized(),192*3,108*3);
-    QString nameImage = "D:/result.png";
+    QString nameImage = "C:/Users/etu/Desktop/result4.png";
     result.save(nameImage);
 
     return 0;

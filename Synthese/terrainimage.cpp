@@ -12,9 +12,9 @@ TerrainImage::TerrainImage(const QImage& i, double bl, double no, const Vector2D
     mat.resize(h*w);
     for(int j=0;j<h;j++){
         for(int k=0;k<w;k++){
-            QRgb p=i.pixel(k,j);
+            QRgb p=i.pixel(k,h-j-1);
             quint8 c=(quint8)qGray(p);
-            mat.push_back(c);
+            mat[k*w+j] = c;
         }
     }
 }
@@ -47,7 +47,9 @@ double TerrainImage::getHauteur(const Vector2D &p) const
                 (1-rx)*ry*((double)mat[(j+1)*w+i])+
                 rx*ry*((double)mat[(j+1)*w+i+1]);
 
+    //std::cout << (1-rx)*(1-ry)*((double)mat[j*w+i]) << " / " << rx*(1-ry)*((double)mat[j*w+i+1]) << " / " << (1-rx)*ry*((double)mat[(j+1)*w+i]) << " / " << rx*ry*((double)mat[(j+1)*w+i+1]) << std::endl;
 
+    //std::cout << z << std::endl;
     return noir +(z*(blanc-noir)/255.0);
 }
 

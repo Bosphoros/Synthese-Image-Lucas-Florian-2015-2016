@@ -29,7 +29,7 @@ public:
     /**
      * @brief Gets the height associated to 2D coordinates
      * @param[in] p the coordinates to find the corresponding height
-     * @return the height at p
+     * @return the height at p, 0 if out of the space of definition
      */
     virtual double getHauteur(const Vector2D &p) const;
 

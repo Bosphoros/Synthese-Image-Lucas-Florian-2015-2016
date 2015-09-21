@@ -19,7 +19,7 @@ public:
     static double fonctionQuadratique(double min, double max, double x);
 
     /**
-     * Find the value corresponding to x scaled tetween min and max, from max to min
+     * Find the value corresponding to x scaled between min and max, from max to min
      * @param[in] min the minimal value of the scale
      * @param[in] max the maximal value of the scale
      * @param[in] x the value to process
