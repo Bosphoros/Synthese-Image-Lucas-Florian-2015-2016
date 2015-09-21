@@ -24,7 +24,9 @@ SOURCES += main.cpp \
     vector2d.cpp \
     vector3d.cpp \
     terrainnoise.cpp \
-    terrainnoisesmultiples.cpp
+    terrainnoisesmultiples.cpp \
+    mesh.cpp \
+    meshbuilder.cpp
 
 HEADERS += \
     terrain.h \
@@ -37,4 +39,6 @@ HEADERS += \
     vector2d.h \
     vector3d.h \
     terrainnoise.h \
-    terrainnoisesmultiples.h
+    terrainnoisesmultiples.h \
+    mesh.h \
+    meshbuilder.h

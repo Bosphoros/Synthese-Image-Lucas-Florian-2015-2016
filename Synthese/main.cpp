@@ -6,6 +6,7 @@
 #include "camera.h"
 #include "terrainnoisesmultiples.h"
 #include <vector>
+#include "meshbuilder.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,11 +14,11 @@ int main(int argc, char *argv[])
     Vector2D a(0,0);
     Vector2D b(1000,1000);
 
-    QString nm="C:/Users/etu/Desktop/Heightmap.png";
+    /*QString nm="C:/Users/etu/Desktop/Heightmap.png";
     QImage im;
     im.load(nm);
     TerrainImage t(im,0,300,a,b);//*/
-    //TerrainPenteX t(a,b);
+    TerrainPenteX t(a,b);
     /*std::vector<double> ampl;
     ampl.push_back(200);
     ampl.push_back(100);
@@ -39,21 +40,23 @@ int main(int argc, char *argv[])
     QVector<Octave> os;
     os.push_back(o1);
     //os.push_back(o2);
-    TerrainOctaves t(os,a,b);
-    MeshBuilder bu;
+    TerrainOctaves t(os,a,b);//*/
+
+    /*MeshBuilder bu;
     QString nom="terrain";
-    Mesh m =bu.terrain(t,a,b,300,nom,0.01);
-    QString fichier="D:/terrain.obj";
+    Mesh m =bu.terrain(t,1000,nom);
+    QString fichier="C:/Users/etu/Desktop/terrain.obj";
     bu.saveMesh(fichier,m);//*/
+
     Vector3D o(-3000, 3500, -2000);
     Vector3D d(1,-1,1);
     Ray r(o, d);
     /*Vector3D a(-3,-3,0);
     Vector3D b(3, 3, 5);
     Vector3D c(1.62,1.24,3);*/
-    Vector3D resu;
-    //Vector3D resuIn;
-    //Vector3D resuOut;
+    /*Vector3D resu;
+    Vector3D resuIn;
+    Vector3D resuOut;
     /*bool i = r.intersects(a,b,c,resu);
     int j = r.intersectsBox(a,b,resuIn, resuOut);
     //std::cout << i << " " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
@@ -72,13 +75,14 @@ int main(int argc, char *argv[])
     std::cout << time.restart() << std::endl;*/
     //std::cout << touche << " en " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
 
+
     Vector3D dirCam(1000,0,1000);
     Vector3D dist(o+d);
     std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
-    QImage result = cam.printScreen(&t,d.normalized(),192*3,108*3);
+    QImage result = cam.printScreen(&t,d.normalized(),192*4,108*4);
     QString nameImage = "C:/Users/etu/Desktop/result4.png";
-    result.save(nameImage);
+    result.save(nameImage);//*/
 
     return 0;
 }
