@@ -65,7 +65,7 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
     else{
         col=mix(mil,hau,(inter.y()-80)/20);
     }
-    col*=(lu/255);
+    col*=((lu/255+0.4)/1.4);
 
 
     QColor couleur(col.x(),col.y(),col.z(),255);
