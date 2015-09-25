@@ -30,7 +30,6 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
     dir.normalize();
     Ray r(origine,dir);
 
-    //std::cout << origine.x()  <<", "<<origine.y()<<", "<<origine.z()<<"/"<<dir.x()<<", "<<dir.y()<<", "<<dir.z()<< std::endl;
     Vector3D inter;
     bool isBox=false;
    //if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
@@ -39,20 +38,18 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
         return couleur.rgba();
     }
 
-    //std::cout << "Touch" << std::endl;
     Vector3D normale;
     t->getHauteurNormale(Vector2D(inter.x(),inter.z()),normale);
     if(isBox) {
         QColor couleur(0,0,0,255);
         return couleur.rgba();
     }
-    //std::cout << normale.x()  <<", "<<normale.y()<<", "<<normale.z()<<std::endl;
     Vector3D dirSoleil=(s-inter).normalized();
     double lu=normale*dirSoleil;
-    //std::cout <<lu<<std::endl;
+
+
     if(lu<0)
         lu=0;
-
 
     lu*=200.0;
 
