@@ -37,14 +37,14 @@ public:
      * @param[in] p the point to check the position of
      * @return true if is under the surface, else false
      */
-    bool isIn(const Vector3D& p);
+    bool isIn(const Vector3D& p) const;
 
     /**
      * Checks if a point is above the surface of the Terrain or not
      * @param[in] p the point to check the position of
      * @return true if is above the surface, else false
      */
-    bool isOut(const Vector3D& p);
+    bool isOut(const Vector3D& p) const;
 
     /**
      * Calculates the height of a point based on its 2D coordinates and the normal at this point

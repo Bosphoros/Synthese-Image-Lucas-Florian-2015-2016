@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
     Vector3D dist(o+d);
     std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
-    QImage result = cam.printScreen(&t,d.normalized(),192*2,108*2);
+    QImage result = cam.printScreen(&t,d.normalized(),192*10,108*10);
     QString nameImage = "D:/result4.png";
     result.save(nameImage);//*/
 

@@ -27,7 +27,7 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
     //std::cout << origine.x()  <<", "<<origine.y()<<", "<<origine.z()<<"/"<<dir.x()<<", "<<dir.y()<<", "<<dir.z()<< std::endl;
     Vector3D inter;
     bool isBox=false;
-//   if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
+   //if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
     if(!t->intersectAdvanced(r,aBox,bBox,pMax,inter,isBox)){
         QColor couleur(0,0,255,255);
         return couleur.rgb();
@@ -69,7 +69,7 @@ QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) c
 
     for(int i=0;i<l;++i){
         for(int j=0;j<h;++j){
-            im.setPixel(i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h,pMax));
+            im.setPixel(l-1-i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h,pMax));
         }
     }
 

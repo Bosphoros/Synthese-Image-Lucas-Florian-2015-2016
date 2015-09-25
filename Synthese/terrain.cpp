@@ -49,13 +49,13 @@ Vector3D Terrain::norm(const Vector2D &p) const
 }
 
 
-bool Terrain::isIn(const Vector3D &p)
+bool Terrain::isIn(const Vector3D &p) const
 {
     Vector2D p2(p.x(),p.z());
     return p.y()<=getHauteur(p2);
 }
 
-bool Terrain::isOut(const Vector3D &p)
+bool Terrain::isOut(const Vector3D &p) const
 {
     Vector2D p2(p.x(),p.z());
     return p.y()>getHauteur(p2);
@@ -131,7 +131,8 @@ bool Terrain::intersectAdvanced(const Ray &ray, const Vector3D &aBox, const Vect
     for(double tt = 0; tt <= distInOut+pas; tt+= step)
     {
         //std::cout<<r.getPoint(tt).y()<<std::endl;
-        double dz=r.getPoint(tt).y()-getHauteur(Vector2D(r.getPoint(tt).x(),r.getPoint(tt).y()));
+        Vector3D pointTemp=r.getPoint(tt);
+        double dz=pointTemp.y()-getHauteur(Vector2D(pointTemp.x(),pointTemp.z()));
         if(dz<=0){
 
             resu=r.getPoint(tt-pas/2);
@@ -142,50 +143,8 @@ bool Terrain::intersectAdvanced(const Ray &ray, const Vector3D &aBox, const Vect
          }
 
         step=max(pas,dz/pMax);
-
     }
 
-    return false;
-
-    /*resu=origine;
-    double min =t.getHauteurMin(a,b);
-    double max =t.getHauteurMax(a,b);
-
-    Vector3D aBox(a.x(), min, a.y());
-    Vector3D bBox(b.x(), max, b.y());
-    Vector3D in;
-    Vector3D out;
-
-    int pointsBox = intersectsBox(aBox, bBox, in, out);
-
-    if(pointsBox == 0) {
-        //std::cout<<"return false"<<std::endl;
-        return false;
-    }
-    double distInOut = in.distanceToPoint(out);
-    Vector3D dir=direction;
-    Ray r(in,dir);
-    double penteMax=t.getPenteMax(a,b);
-    for(double tt = 0; tt <= distInOut+pas; tt+= pas)
-    {
-        //std::cout<<r.getPoint(tt).y()<<std::endl;
-        Vector3D point=r.getPoint(tt);
-        if(t.isIn(point)){
-            resu=r.getPoint(tt-pas/2);
-            return true;
-        }
-
-        Vector2D p(point.x(),point.z());
-        double hauteur=t.getHauteur(p);
-        double dif=point.y()-hauteur;
-        if (direction.y()>penteMax){
-            return false;
-        }
-        //std::cout << dif/(penteMax-direction.y()) << std::endl;
-        tt+=dif/(penteMax-direction.y());
-
-    }
-*/
     return false;
 }
 
