@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include "mathutils.h"
+#include "smoothnoise.h"
 
 Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
 {
@@ -59,11 +60,13 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
     Vector3D mil(91,75,55);
     Vector3D hau(234,234,234);
     Vector3D col;
-    if(inter.y()<80){
-        col=mix(bas,mil,inter.y()/80);
+    double intery=inter.y();
+    intery+=-5+10*raw_noise_2d(inter.x()/20,inter.z()/20);
+    if(intery<80){
+        col=mix(bas,mil,intery/80);
     }
     else{
-        col=mix(mil,hau,(inter.y()-80)/20);
+        col=mix(mil,hau,(intery-80)/20);
     }
     col*=((lu/255+0.4)/1.4);
 
