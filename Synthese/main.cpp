@@ -50,29 +50,39 @@ void shoot(Terrain* const t, const QString& img){
 
 void shootMulti(Terrain* const t, const QString& img, int nbShoot){
     Vector3D o(-3400, 2800, -2200);
-    Vector3D d(1,-1,1);
 
     Vector3D soleil(100000000,0,0);
 
     Vector3D dirCam(500,0,500);
-    Vector3D dist(o+d);
-    std::cout << o.distanceToPoint(dist) << std::endl;
-    Camera cam(o, dirCam, o.distanceToPoint(dist)*4);
+
 
     QMatrix3x3 mat;
-        mat(0,0)=cos(M_PI/nbShoot);
-        mat(0,1)=-sin(M_PI/nbShoot);
+        mat(0,0)=cos(2*M_PI/nbShoot);
+        mat(0,1)=-sin(2*M_PI/nbShoot);
         mat(0,2)=0;
-        mat(1,0)=sin(M_PI/nbShoot);
-        mat(1,1)=cos(M_PI/nbShoot);
+        mat(1,0)=sin(2*M_PI/nbShoot);
+        mat(1,1)=cos(2*M_PI/nbShoot);
         mat(1,2)=0;
         mat(2,0)=0;
         mat(2,1)=0;
         mat(2,2)=1;
 
+    QMatrix3x3 matcam;
+        matcam(0,0)=cos(2*M_PI/nbShoot);
+        matcam(0,1)=0;
+        matcam(0,2)=sin(2*M_PI/nbShoot);
+        matcam(1,0)=0;
+        matcam(1,1)=1;
+        matcam(1,2)=0;
+        matcam(2,0)=-sin(2*M_PI/nbShoot);
+        matcam(2,1)=0;
+        matcam(2,2)=cos(2*M_PI/nbShoot);
+
 
     for(int i=0; i<nbShoot;++i){
+        Camera cam(o, dirCam, 6.92820);
         soleil.rotate(mat);
+        o.rotate(matcam);
         QImage result = cam.printScreen(t,soleil,192*10,108*10);
         QString nameImage =img;
         nameImage+=std::to_string(i).c_str();
@@ -95,10 +105,10 @@ int main(int argc, char *argv[])
 {
     int arg=1;
 
-    QString img=argv[arg++];
+   /* QString img=argv[arg++];
     Terrain* t=generationImage(img);//*/
 
-    //Terrain* t=generationProcedural();
+    Terrain* t=generationProcedural();
 
     /*QString obj=argv[arg++];
     generateMesh(t,obj,300);//*/
@@ -107,7 +117,7 @@ int main(int argc, char *argv[])
     shoot(t,destination);//*/
 
     QString destination=argv[arg++];
-    shootMulti(t,destination,20);//*/
+    shootMulti(t,destination,100);//*/
 
     delete t;
 
