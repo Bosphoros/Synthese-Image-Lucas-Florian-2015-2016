@@ -93,7 +93,7 @@ const QList<int> &Mesh::getTopo() const{
     return topo;
 }
 
-QString Mesh::getNom() const
+const QString &Mesh::getNom() const
 {
     return nom;
 }

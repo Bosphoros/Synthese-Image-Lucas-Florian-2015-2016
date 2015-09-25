@@ -73,10 +73,30 @@ public:
      * @return The index of the vertice. -1 if not found
      */
     int containsNorm(const Vector3D& n);
+
+    /**
+     * Getter of geom
+     * @return A const reference of geom
+     */
     const QList<Vector3D> &getGeom() const;
+
+    /**
+     * Getter of norm
+     * @return A const reference of norm
+     */
     const QList<Vector3D> &getNorm() const;
+
+    /**
+     * Getter of topo
+     * @return A const reference of topo
+     */
     const QList<int> &getTopo() const;
-    QString getNom() const;
+
+    /**
+     * Getter of nom
+     * @return A const reference of nom
+     */
+    const QString& getNom() const;
     ~Mesh();
 };
 
