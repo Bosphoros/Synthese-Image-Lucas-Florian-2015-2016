@@ -32,7 +32,7 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
 
     Vector3D inter;
     bool isBox=false;
-   //if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
+    //if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
     if(!t->intersectAdvanced(r,aBox,bBox,pMax,inter,isBox)){
         QColor couleur(255,255,255,0);
         return couleur.rgba();
@@ -83,6 +83,7 @@ QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) c
     Vector3D aBox(t->getA().x(),min,t->getA().y());
     Vector3D bBox(t->getB().x(),max*1.5,t->getB().y());
 
+    #pragma omp parallel for
     for(int i=0;i<l;++i){
         for(int j=0;j<h;++j){
             im.setPixel(l-1-i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h,pMax));
