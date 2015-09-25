@@ -18,8 +18,7 @@ double TerrainNoisesMultiples::getHauteur(const Vector2D& p) const {
     for(i; i < nbFreq && i < nbAmpl; ++i) {
         h += amplitudes[i]*raw_noise_2d(p.x()*frequences[i], p.y()*frequences[i]);
     }
-    //std::cout << i << std::endl;
-    //return 100*raw_noise_2d(p.x()*(1/100), p.y()*(1/100));//+25*raw_noise_2d(p.x()*(1/1000), p.y()*(1/1000));
+
     return h;
 
 }

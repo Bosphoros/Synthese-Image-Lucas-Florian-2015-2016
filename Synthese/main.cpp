@@ -42,7 +42,6 @@ void shoot(Terrain* const t, const QString& img){
 
     Vector3D dirCam(500,0,500);
     Vector3D dist(o+d);
-    std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);
     QImage result = cam.printScreen(t,soleil,192*10,108*10);
     result.save(img);
@@ -56,7 +55,6 @@ void shootMulti(Terrain* const t, const QString& img, int nbShoot){
 
     Vector3D dirCam(500,0,500);
     Vector3D dist(o+d);
-    std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);
 
     QMatrix3x3 mat;

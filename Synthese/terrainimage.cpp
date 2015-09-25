@@ -38,19 +38,11 @@ double TerrainImage::getHauteur(const Vector2D &p) const
         return 0;
     }
 
-    //std::cout << pTmp.x() << "/" << pTmp.y() << std::endl;
-    //std::cout << u << "/" << v << " " << rx << "/" << ry << std::endl;
-    //double rx= resteI; //(p.x()-a.x())*w/(b.x()-a.x())-i;
-    //double ry= resteJ;//(p.y()-a.y())*h/(b.y()-a.y())-j;
-
     double z=(1-rx)*(1-ry)*((double)mat[j*w+i])+
                 rx*(1-ry)*((double)mat[j*w+i+1])+
                 (1-rx)*ry*((double)mat[(j+1)*w+i])+
                 rx*ry*((double)mat[(j+1)*w+i+1]);
 
-    //std::cout << (1-rx)*(1-ry)*((double)mat[j*w+i]) << " / " << rx*(1-ry)*((double)mat[j*w+i+1]) << " / " << (1-rx)*ry*((double)mat[(j+1)*w+i]) << " / " << rx*ry*((double)mat[(j+1)*w+i+1]) << std::endl;
-
-    //std::cout << z << std::endl;
     return noir +(z*(blanc-noir)/255.0);
 }
 
