@@ -58,7 +58,7 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
 
     if(lu>255)
         lu=255;
-    Vector3D bas(47,155,15);
+    Vector3D bas(74,97,77);
     Vector3D mil(91,75,55);
     Vector3D hau(234,234,234);
     Vector3D col;

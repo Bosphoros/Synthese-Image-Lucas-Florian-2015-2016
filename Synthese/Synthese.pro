@@ -25,13 +25,13 @@ SOURCES += main.cpp \
     smoothnoise.cpp \
     ray.cpp \
     camera.cpp \
-    terrainpentex.cpp \
     vector2d.cpp \
     vector3d.cpp \
     terrainnoise.cpp \
     terrainnoisesmultiples.cpp \
     mesh.cpp \
-    meshbuilder.cpp
+    meshbuilder.cpp \
+    terraintest.cpp
 
 HEADERS += \
     terrain.h \
@@ -40,10 +40,10 @@ HEADERS += \
     smoothnoise.h \
     ray.h \
     camera.h \
-    terrainpentex.h \
     vector2d.h \
     vector3d.h \
     terrainnoise.h \
     terrainnoisesmultiples.h \
     mesh.h \
-    meshbuilder.h
+    meshbuilder.h \
+    terraintest.h

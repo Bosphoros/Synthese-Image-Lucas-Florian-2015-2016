@@ -14,9 +14,10 @@ TerrainImage::TerrainImage(const QImage& i, double bl, double no, const Vector2D
         for(int k=0;k<w;k++){
             QRgb p=i.pixel(k,h-j-1);
             quint8 c=(quint8)qGray(p);
-            mat[k*w+j] = c;
+            mat[k+w*j] = c;
         }
     }
+
 }
 
 double TerrainImage::getHauteur(const Vector2D &p) const

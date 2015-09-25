@@ -1,5 +1,5 @@
-#ifndef TERRAINPENTEX_H
-#define TERRAINPENTEX_H
+#ifndef TERRAINTEST_H
+#define TERRAINTEST_H
 #include "terrain.h"
 #include "vector2d.h"
 #include <cmath>
@@ -7,19 +7,19 @@
 #include "mathutils.h"
 
 /**
- * @brief The TerrainPenteX class, test class
+ * @brief The TerrainTest class, test class
  */
-class TerrainPenteX:public Terrain
+class TerrainTest:public Terrain
 {
 public:
-    TerrainPenteX(Vector2D& a, Vector2D& b);
+    TerrainTest(Vector2D& a, Vector2D& b);
     virtual double getHauteur(const Vector2D &p) const;
     virtual double getHauteurMin() const;
     virtual double getHauteurMax() const;
     virtual double getPenteMax() const;
 };
 
-inline TerrainPenteX::TerrainPenteX(Vector2D &a, Vector2D &b):Terrain(a,b)
+inline TerrainTest::TerrainTest(Vector2D &a, Vector2D &b):Terrain(a,b)
 {
 
 }
@@ -28,7 +28,7 @@ Vector2D warp(const Vector2D& p, double freq, double ampl, double mod1, double m
     return p+Vector2D(-ampl/2+ampl*raw_noise_2d(p.x()*(1/freq)+mod1, p.y()*(1/freq)),-ampl/2+ampl*raw_noise_2d(p.x()*(1/freq)+0.162, p.y()*(1/freq)+mod2));
 }
 
-inline double TerrainPenteX::getHauteur(const Vector2D &p) const
+inline double TerrainTest::getHauteur(const Vector2D &p) const
 {
     //return 255/2*(sin(p.x()/100)+1);
     double h = 0;
@@ -54,20 +54,20 @@ inline double TerrainPenteX::getHauteur(const Vector2D &p) const
     return h;
 }
 
-inline double TerrainPenteX::getHauteurMin() const
+inline double TerrainTest::getHauteurMin() const
 {
     return 0;
 }
 
-inline double TerrainPenteX::getHauteurMax() const
+inline double TerrainTest::getHauteurMax() const
 {
     return 510;
 }
 
-inline double TerrainPenteX::getPenteMax() const
+inline double TerrainTest::getPenteMax() const
 {
     return 510.0/600.0*2.0;
 }
 
 
-#endif // TERRAINPENTEX_H
+#endif // TERRAINTEST_H
