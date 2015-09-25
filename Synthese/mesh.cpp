@@ -9,7 +9,7 @@ Mesh::Mesh(const Mesh &m):geom(m.geom),norm(m.norm),topo(m.topo),nom(m.nom)
 
 }
 
-Mesh::Mesh(QList<Vector3D> &v, QList<int> &t, QList<Vector3D> &n,QString& no):geom(v),topo(t),norm(n),nom(no)
+Mesh::Mesh(const QList<Vector3D> &v, const QList<int> &t, const QList<Vector3D> &n, const QString &no):geom(v),topo(t),norm(n),nom(no)
 {
 
 }
@@ -35,7 +35,7 @@ void Mesh::rotate(const QMatrix3x3 &mat)
         }
 }
 
-void Mesh::homotecie(Vector3D &c, double h)
+void Mesh::homotecie(const Vector3D &c, double h)
 {
     QList<Vector3D>::iterator itv=geom.begin();
         for(;itv!=geom.end();++itv){
@@ -81,19 +81,19 @@ int Mesh::containsNorm(const Vector3D &n)
     return norm.indexOf(n);
 }
 
-QList<Vector3D>& Mesh::getGeom(){
+const QList<Vector3D>& Mesh::getGeom(){
     return geom;
 }
 
-QList<Vector3D>& Mesh::getNorm(){
+const QList<Vector3D>& Mesh::getNorm(){
     return norm;
 }
 
-QList<int>& Mesh::getTopo(){
+const QList<int> &Mesh::getTopo(){
     return topo;
 }
 
-QString &Mesh::getNom()
+const QString &Mesh::getNom()
 {
     return nom;
 }

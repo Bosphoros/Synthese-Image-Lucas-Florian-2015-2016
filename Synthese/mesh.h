@@ -14,17 +14,17 @@ private:
 public:
     Mesh();
     Mesh(const Mesh& m);
-    Mesh(QList<Vector3D>& v, QList<int>& t, QList<Vector3D>& n,QString& no);
-    void translate(Vector3D& t);
+    Mesh(const QList<Vector3D>& v, const QList<int>& t, const QList<Vector3D>& n,const QString& no);
+    void translate(const Vector3D& t);
     void rotate(const QMatrix3x3& mat);
-    void homotecie(Vector3D &c, double h);
+    void homotecie(const Vector3D &c, double h);
     void merge(const Mesh& mesh);
     int containsGeom(const Vector3D& g);
-    int containsNorm(const Vector3D &n);
-    QList<Vector3D>& getGeom();
-    QList<Vector3D>& getNorm();
-    QList<int>& getTopo();
-    QString& getNom();
+    int containsNorm(const Vector3D& n);
+    const QList<Vector3D>& getGeom() const;
+    const QList<Vector3D>& getNorm() const;
+    const QList<int>& getTopo();
+    const QString &getNom();
     ~Mesh();
 };
 

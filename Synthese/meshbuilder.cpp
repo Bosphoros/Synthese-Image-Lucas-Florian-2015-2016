@@ -12,7 +12,7 @@ MeshBuilder::MeshBuilder()
 {
 }
 
-void MeshBuilder::saveMesh(QString &nom, Mesh& mesh)
+void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh)
 {
     QFile file(nom);
     cout<<"fichier créé"<<endl;
@@ -50,7 +50,7 @@ void MeshBuilder::saveMesh(QString &nom, Mesh& mesh)
     cout<<"fichier fermé"<<endl;
 }
 
-Mesh MeshBuilder::terrain(Terrain &t, int e, QString nom){
+Mesh MeshBuilder::terrain(const Terrain &t, int e, const QString &nom) const{
    /* Vector2D aa,bb;
     if(a.x()<b.x()){
          aa.setX(a.x());
@@ -122,7 +122,7 @@ Mesh MeshBuilder::terrain(Terrain &t, int e, QString nom){
     return Mesh(geom,topo,norm,nom);
 }
 // Ne prend pas les textures en compte
-Mesh MeshBuilder::loadMesh(QString &nom)
+Mesh MeshBuilder::loadMesh(const QString &nom) const
 {
     QList<Vector3D> geoms;
     QList<Vector3D> norms;

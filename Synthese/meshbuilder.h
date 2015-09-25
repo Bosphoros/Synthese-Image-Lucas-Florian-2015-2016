@@ -10,10 +10,10 @@ private:
 
 public:
     MeshBuilder();
-    Mesh loadMesh(QString& nom);
-    void saveMesh(QString& nom, Mesh &mesh);
+    Mesh loadMesh(const QString& nom) const;
+    void saveMesh(const QString& nom, const Mesh &mesh) const;
     ~MeshBuilder();
-    Mesh terrain(Terrain &t, int e, QString nom);
+    Mesh terrain(const Terrain &t, int e, const QString &nom) const;
 
 
 };
