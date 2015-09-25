@@ -41,7 +41,8 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
         return couleur.rgb();
     }
     //std::cout << normale.x()  <<", "<<normale.y()<<", "<<normale.z()<<std::endl;
-    double lu=normale*(-s);
+    Vector3D dirSoleil=(s-inter).normalized();
+    double lu=normale*dirSoleil;
     //std::cout <<lu<<std::endl;
     if(lu<0)
         lu=0;

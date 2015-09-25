@@ -50,6 +50,8 @@ int main(int argc, char *argv[])
 
     Vector3D o(-3000, 3500, -2000);
     Vector3D d(1,-1,1);
+
+    Vector3D soleil(100000000,100000000,100000000);
     Ray r(o, d);
     /*Vector3D a(-3,-3,0);
     Vector3D b(3, 3, 5);
@@ -80,7 +82,7 @@ int main(int argc, char *argv[])
     Vector3D dist(o+d);
     std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
-    QImage result = cam.printScreen(&t,d.normalized(),192*10,108*10);
+    QImage result = cam.printScreen(&t,soleil,192*5,108*5);
     QString nameImage = "D:/result4.png";
     result.save(nameImage);//*/
 
