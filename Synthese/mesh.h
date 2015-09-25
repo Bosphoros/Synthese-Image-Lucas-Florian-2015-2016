@@ -21,10 +21,10 @@ public:
     void merge(const Mesh& mesh);
     int containsGeom(const Vector3D& g);
     int containsNorm(const Vector3D& n);
-    const QList<Vector3D>& getGeom() const;
-    const QList<Vector3D>& getNorm() const;
-    const QList<int>& getTopo();
-    const QString &getNom();
+    QList<Vector3D> getGeom() const;
+    QList<Vector3D> getNorm() const;
+    QList<int> getTopo() const;
+    QString getNom() const;
     ~Mesh();
 };
 

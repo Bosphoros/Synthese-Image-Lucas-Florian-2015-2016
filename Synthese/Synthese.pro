@@ -12,6 +12,9 @@ TARGET = Synthese
 
 TEMPLATE = app
 
+QMAKE_CXXFLAGS += -fopenmp
+LIBS += -fopenmp
+
 
 SOURCES += main.cpp \
     terrainimage.cpp \

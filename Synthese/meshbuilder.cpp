@@ -12,7 +12,7 @@ MeshBuilder::MeshBuilder()
 {
 }
 
-void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh)
+void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh) const
 {
     QFile file(nom);
     cout<<"fichier créé"<<endl;

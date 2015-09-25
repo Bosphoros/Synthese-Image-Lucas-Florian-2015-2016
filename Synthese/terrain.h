@@ -18,7 +18,7 @@ protected:
      * @param[in] p the point containing the coordinates on the Terrain we want the normal of
      * @return
      */
-    Vector3D norm(const Vector2D &p);
+    Vector3D norm(const Vector2D &p) const;
     double penteMax;
     Vector2D a; /**< The first coordinate defining the Terrain */
     Vector2D b; /**< The second coordinate defining the Terrain */
@@ -53,7 +53,7 @@ public:
      * @see getHauteur()
      * @return the height at p
      */
-    double getHauteurNormale(const Vector2D& p, Vector3D &n);
+    double getHauteurNormale(const Vector2D& p, Vector3D &n) const;
 
     /**
      * @brief Gets the height associated to 2D coordinates

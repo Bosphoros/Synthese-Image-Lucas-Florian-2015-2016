@@ -81,7 +81,7 @@ int main(int argc, char *argv[])
     std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
     QImage result = cam.printScreen(&t,d.normalized(),192*4,108*4);
-    QString nameImage = "C:/Users/etu/Desktop/result4.png";
+    QString nameImage = "D:/result4.png";
     result.save(nameImage);//*/
 
     return 0;

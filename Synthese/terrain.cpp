@@ -5,7 +5,7 @@ Terrain::Terrain(const Vector2D &aa, const Vector2D &bb):penteMax(-1),a(aa),b(bb
 
 }
 
-Vector3D Terrain::norm(const Vector2D &p)
+Vector3D Terrain::norm(const Vector2D &p) const
 {
    /* Vector2D px(p.x()+epsilon,p.y());
     Vector2D py(p.x(),p.y()+epsilon);
@@ -61,7 +61,7 @@ bool Terrain::isOut(const Vector3D &p)
     return p.y()>getHauteur(p2);
 }
 
-double Terrain::getHauteurNormale(const Vector2D &p, Vector3D &n)
+double Terrain::getHauteurNormale(const Vector2D &p, Vector3D &n) const
 {
     n=norm(p);
     double resu=getHauteur(p);

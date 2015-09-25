@@ -14,7 +14,7 @@ Mesh::Mesh(const QList<Vector3D> &v, const QList<int> &t, const QList<Vector3D> 
 
 }
 
-void Mesh::translate(Vector3D &t)
+void Mesh::translate(const Vector3D &t)
 {
     QList<Vector3D>::iterator itv=geom.begin();
         for(;itv!=geom.end();++itv){
@@ -81,19 +81,19 @@ int Mesh::containsNorm(const Vector3D &n)
     return norm.indexOf(n);
 }
 
-const QList<Vector3D>& Mesh::getGeom(){
+QList<Vector3D> Mesh::getGeom() const{
     return geom;
 }
 
-const QList<Vector3D>& Mesh::getNorm(){
+QList<Vector3D> Mesh::getNorm() const{
     return norm;
 }
 
-const QList<int> &Mesh::getTopo(){
+QList<int> Mesh::getTopo() const{
     return topo;
 }
 
-const QString &Mesh::getNom()
+QString Mesh::getNom() const
 {
     return nom;
 }
