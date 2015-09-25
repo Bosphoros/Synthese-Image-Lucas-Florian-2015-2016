@@ -81,15 +81,15 @@ int Mesh::containsNorm(const Vector3D &n)
     return norm.indexOf(n);
 }
 
-QList<Vector3D> Mesh::getGeom() const{
+const QList<Vector3D> &Mesh::getGeom() const{
     return geom;
 }
 
-QList<Vector3D> Mesh::getNorm() const{
+const QList<Vector3D> &Mesh::getNorm() const{
     return norm;
 }
 
-QList<int> Mesh::getTopo() const{
+const QList<int> &Mesh::getTopo() const{
     return topo;
 }
 

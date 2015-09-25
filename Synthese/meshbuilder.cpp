@@ -21,21 +21,21 @@ void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh) const
     QTextStream out(&file);
     cout<<"flux créé"<<endl;
     out << "o "<<mesh.getNom()<<"\n";
-    for(QList<Vector3D>::iterator itVect = mesh.getGeom().begin(); itVect != mesh.getGeom().end(); ++itVect) {
+    for(QList<Vector3D>::const_iterator itVect = mesh.getGeom().begin(); itVect != mesh.getGeom().end(); ++itVect) {
     out << "v " << itVect->x() << " " << itVect->y() << " " << itVect->z() << "\n";
     }
     out << "\n";
 
     cout<<"geom ok"<<endl;
 
-    for(QList<Vector3D>::iterator itNorm = mesh.getNorm().begin(); itNorm != mesh.getNorm().end(); ++itNorm) {
+    for(QList<Vector3D>::const_iterator itNorm = mesh.getNorm().begin(); itNorm != mesh.getNorm().end(); ++itNorm) {
     out << "vn " << itNorm->x() << " " << itNorm->y() << " " << itNorm->z() << "\n";
     }
     out << "\n";
 
     out << "vt 0.0 0.0 \n\n";
 
-    for(QList<int>::iterator it = mesh.getTopo().begin(); it != mesh.getTopo().end();) {
+    for(QList<int>::const_iterator it = mesh.getTopo().begin(); it != mesh.getTopo().end();) {
     out << "f ";
     for(int i = 0; i < 3; i++) {
     int face = (*(it++)) + 1;

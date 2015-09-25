@@ -42,10 +42,10 @@ int main(int argc, char *argv[])
     //os.push_back(o2);
     TerrainOctaves t(os,a,b);//*/
 
-    /*MeshBuilder bu;
+    MeshBuilder bu;
     QString nom="terrain";
-    Mesh m =bu.terrain(t,1000,nom);
-    QString fichier="C:/Users/etu/Desktop/terrain.obj";
+    Mesh m =bu.terrain(t,300,nom);
+    QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);//*/
 
     Vector3D o(-3000, 3500, -2000);
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
     //std::cout << touche << " en " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
 
 
-    Vector3D dirCam(1000,0,1000);
+    /*Vector3D dirCam(1000,0,1000);
     Vector3D dist(o+d);
     std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
