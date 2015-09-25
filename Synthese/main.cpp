@@ -95,19 +95,31 @@ int main(int argc, char *argv[])
 {
     int arg=1;
 
+    QTime time;
+
+    /*time.restart();
     QString img=argv[arg++];
-    Terrain* t=generationImage(img);//*/
+    Terrain* t=generationImage(img);
+    std::cout << "Terrain from image generated : " << time.restart() << "ms." << std::endl;//*/
 
-    //Terrain* t=generationProcedural();
+    time.restart();
+     Terrain* t=generationProcedural();
+    std::cout << "Terrain generated : " << time.restart() << "ms." << std::endl;//*///*/
 
-    /*QString obj=argv[arg++];
-    generateMesh(t,obj,300);//*/
+    /*time.restart();
+    QString obj=argv[arg++];
+    generateMesh(t,obj,300);
+    std::cout << "Mesh generated : " << time.restart() << "ms." << std::endl;//*/
 
+    time.restart();
     QString destination=argv[arg++];
-    shoot(t,destination);//*/
+    shoot(t,destination);
+    std::cout << "Image generated from ray launching : " << time.restart() << "ms." << std::endl;//*/
 
-    /*QString destination=argv[arg++];
-    shootMulti(t,destination,20);//*/
+    /*time.restart();
+    QString destination=argv[arg++];
+    shootMulti(t,destination,20);
+    std::cout << "20 images generated from ray launching : " << time.restart() << "ms." << std::endl;//*/
 
     delete t;
 
