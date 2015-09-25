@@ -7,7 +7,7 @@
 #include "terrainnoisesmultiples.h"
 #include <vector>
 #include "meshbuilder.h"
-
+#define M_PI 3.14159265358979323846
 int main(int argc, char *argv[])
 {
 
@@ -48,10 +48,22 @@ int main(int argc, char *argv[])
     QString fichier="D:/terrain.obj";
     bu.saveMesh(fichier,m);//*/
 
-    Vector3D o(-3000, 3500, -2000);
+    Vector3D o(-3400, 2800, -2200);
     Vector3D d(1,-1,1);
 
-    Vector3D soleil(100000000,100000000,100000000);
+    Vector3D soleil(100000000,0,0);
+   /* QMatrix3x3 mat1;
+        mat1(0,0)=cos(M_PI/4);
+        mat1(0,1)=-sin(M_PI/4);
+        mat1(0,2)=0;
+        mat1(1,0)=sin(M_PI/4);
+        mat1(1,1)=cos(M_PI/4);
+        mat1(1,2)=0;
+        mat1(2,0)=0;
+        mat1(2,1)=0;
+        mat1(2,2)=1;
+        soleil.rotate(mat1);*/
+
     Ray r(o, d);
     /*Vector3D a(-3,-3,0);
     Vector3D b(3, 3, 5);
@@ -78,13 +90,35 @@ int main(int argc, char *argv[])
     //std::cout << touche << " en " << resu.x() << ", " << resu.y() << ", " << resu.z() << std::endl;
 
 
-    Vector3D dirCam(1000,0,1000);
+    Vector3D dirCam(500,0,500);
     Vector3D dist(o+d);
     std::cout << o.distanceToPoint(dist) << std::endl;
     Camera cam(o, dirCam, o.distanceToPoint(dist)*4);//o.distanceToPoint(dirCam));
-    QImage result = cam.printScreen(&t,soleil,192*5,108*5);
+    QImage result = cam.printScreen(&t,soleil,192*10,108*10);
     QString nameImage = "D:/result4.png";
     result.save(nameImage);//*/
+
+    int nbShoot=10;
+    QMatrix3x3 mat;
+        mat(0,0)=cos(M_PI/nbShoot);
+        mat(0,1)=-sin(M_PI/nbShoot);
+        mat(0,2)=0;
+        mat(1,0)=sin(M_PI/nbShoot);
+        mat(1,1)=cos(M_PI/nbShoot);
+        mat(1,2)=0;
+        mat(2,0)=0;
+        mat(2,1)=0;
+        mat(2,2)=1;
+
+
+    for(int i=0; i<nbShoot;++i){
+        soleil.rotate(mat);
+        QImage result = cam.printScreen(&t,soleil,192*10,108*10);
+        std::string str="D:/1shoot/result"+ std::to_string (i)+".png";
+        QString nameImage(str.c_str());
+        result.save(nameImage);//
+        std::cerr<<"\r"<<100.0*(i+1)/nbShoot<<"%";
+    }
 
     return 0;
 }

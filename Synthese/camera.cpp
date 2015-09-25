@@ -3,6 +3,7 @@
 #include <QColor>
 #include <iostream>
 #include <cmath>
+#include "mathutils.h"
 
 Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
 {
@@ -13,6 +14,11 @@ Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
     lh=1;
     lw=16/9;
 }
+Vector3D mix(const Vector3D& a,const Vector3D& b, double d){
+    double quadra=MathUtils::fonctionQuadratique(0,1,d);
+    return b*quadra+a*(1-quadra);
+}
+
 
 QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& bBox, const Vector3D& s, int i, int j, int l, int h,double pMax) const
 {
@@ -29,16 +35,16 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
     bool isBox=false;
    //if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
     if(!t->intersectAdvanced(r,aBox,bBox,pMax,inter,isBox)){
-        QColor couleur(0,0,255,255);
-        return couleur.rgb();
+        QColor couleur(255,255,255,0);
+        return couleur.rgba();
     }
 
     //std::cout << "Touch" << std::endl;
     Vector3D normale;
     t->getHauteurNormale(Vector2D(inter.x(),inter.z()),normale);
     if(isBox) {
-        QColor couleur(255,0,0,255);
-        return couleur.rgb();
+        QColor couleur(0,0,0,255);
+        return couleur.rgba();
     }
     //std::cout << normale.x()  <<", "<<normale.y()<<", "<<normale.z()<<std::endl;
     Vector3D dirSoleil=(s-inter).normalized();
@@ -52,9 +58,21 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
 
     if(lu>255)
         lu=255;
+    Vector3D bas(47,155,15);
+    Vector3D mil(91,75,55);
+    Vector3D hau(234,234,234);
+    Vector3D col;
+    if(inter.y()<80){
+        col=mix(bas,mil,inter.y()/80);
+    }
+    else{
+        col=mix(mil,hau,(inter.y()-80)/20);
+    }
+    col*=(lu/255);
 
-    QColor couleur(lu,lu,lu,255);
-    return couleur.rgb();
+
+    QColor couleur(col.x(),col.y(),col.z(),255);
+    return couleur.rgba();
 
 
 }

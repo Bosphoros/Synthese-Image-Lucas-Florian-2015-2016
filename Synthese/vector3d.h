@@ -3,6 +3,7 @@
 #include "vector2d.h"
 #include <cmath>
 #include <iostream>
+#include <QMatrix3x3>
 
 class Vector2D;
 /**
@@ -92,6 +93,9 @@ public:
      * @param[in] vector the vector to add
      * @return a reference to the vector
      */
+
+    void rotate(const QMatrix3x3 &mat);
+
     Vector3D &operator+=(const Vector3D &vector);
     /**
      * Substracts a vector to this vector and returns its reference
