@@ -7,29 +7,6 @@ Terrain::Terrain(const Vector2D &aa, const Vector2D &bb):penteMax(-1),a(aa),b(bb
 
 Vector3D Terrain::norm(const Vector2D &p) const
 {
-   /* Vector2D px(p.x()+epsilon,p.y());
-    Vector2D py(p.x(),p.y()+epsilon);
-
-    double hp=getHauteur(p);
-    double hpx=getHauteur(px);
-    double hpy=getHauteur(py);
-
-    Vector3D vp(p.x(),p.y(),(double)hp);
-
-    Vector3D vpx(px.x(),px.y(),(double)hpx);
-
-    Vector3D vpy(py.x(),py.y(),(double)hpy);
-
-    Vector3D u=vpx-vp;
-    Vector3D v=vpy-vp;
-
-    Vector3D n(-u.z()/u.x(),1.0f,-v.z()/v.y());
-    n.normalize();
-
-    return n;*/
-
-    //std::cout<<p.x()<<" "<<p.x()+epsilon<<std::endl;
-
     Vector2D px(p.x()+epsilon,p.y());
     Vector2D pxminus(p.x()-epsilon, p.y());
     Vector2D py(p.x(),p.y()+epsilon);
@@ -39,8 +16,6 @@ Vector3D Terrain::norm(const Vector2D &p) const
     double hpxminus = getHauteur(pxminus);
     double hpy=getHauteur(py);
     double hpyminus = getHauteur(pyminus);
-    //std::cout<<hpx<<" "<<hpxminus << "/ " << hpy << " " << hpyminus<<std::endl;
-    //std::cout<<(hpx-hpxminus)/(2*epsilon)<<std::endl;
     Vector3D resu(-(hpx-hpxminus),2*epsilon,-(hpy-hpyminus));
     resu.normalize();
     return resu;
@@ -80,16 +55,14 @@ bool Terrain::intersectRayMarching(const Ray& ray, const Vector3D &aBox, const V
     int pointsBox = ray.intersectsBox(aBox, bBox, in, out);
 
     if(pointsBox == 0) {
-        //std::cout<<"return false"<<std::endl;
         return false;
     }
     double distInOut = in.distanceToPoint(out);
     Vector3D dir=ray.direction;
     Ray r(in,dir);
-    //std::cout << pas << " " << dir.x() << "," << dir.y() << "," << dir.z() << " / " << origine.x() << "," << origine.y() << "," << origine.z() << std::endl;
+
     for(double tt = 0; tt <= distInOut+pas; tt+= pas)
     {
-        //std::cout<<r.getPoint(tt).y()<<std::endl;
         if(isIn(r.getPoint(tt))){
 
             resu=r.getPoint(tt-pas/2);
@@ -121,16 +94,13 @@ bool Terrain::intersectAdvanced(const Ray &ray, const Vector3D &aBox, const Vect
     int pointsBox = ray.intersectsBox(aBox, bBox, in, out);
 
     if(pointsBox == 0) {
-        //std::cout<<"return false"<<std::endl;
         return false;
     }
     double distInOut = in.distanceToPoint(out);
     Vector3D dir=ray.direction;
     Ray r(in,dir);
-    //std::cout << pas << " " << dir.x() << "," << dir.y() << "," << dir.z() << " / " << origine.x() << "," << origine.y() << "," << origine.z() << std::endl;
     for(double tt = 0; tt <= distInOut+pas; tt+= step)
     {
-        //std::cout<<r.getPoint(tt).y()<<std::endl;
         Vector3D pointTemp=r.getPoint(tt);
         double dz=pointTemp.y()-getHauteur(Vector2D(pointTemp.x(),pointTemp.z()));
         if(dz<=0){

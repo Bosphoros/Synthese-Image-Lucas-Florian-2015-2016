@@ -17,11 +17,11 @@ bool Ray::intersects(const Vector3D &a, const Vector3D &b, const Vector3D &c, Ve
     Vector3D w =u^v;//Vector3D::crossProduct(u, v);
 
     // Produit scalaire, si 0 pas de solution ou une infinité
-    double scalaire = direction*w;//Vector3D::dotProduct(direction, w); //direction.x()*w.x()+direction.y()*w.y()+direction.z()*w.z();
+    double scalaire = direction*w;
     if(abs(scalaire) < 0.0001)
         return false;
-    double delta = a*w;//Vector3D::dotProduct(a, w);
-    double t = (delta - origine*w)/scalaire; //Vector3D::dotProduct(origine, w)
+    double delta = a*w;
+    double t = (delta - origine*w)/scalaire;
 
     out = getPoint(t);
     return true;

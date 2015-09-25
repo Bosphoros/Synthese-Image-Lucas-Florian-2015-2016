@@ -103,10 +103,10 @@ int main(int argc, char *argv[])
     /*QString obj=argv[arg++];
     generateMesh(t,obj,300);//*/
 
-    QString destination=argv[arg++];
+    /*QString destination=argv[arg++];
     shoot(t,destination);//*/
 
-    /*QString destination=argv[arg++];
+    QString destination=argv[arg++];
     shootMulti(t,destination,20);//*/
 
     delete t;

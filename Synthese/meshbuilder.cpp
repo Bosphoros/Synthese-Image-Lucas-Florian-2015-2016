@@ -15,18 +15,18 @@ MeshBuilder::MeshBuilder()
 void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh) const
 {
     QFile file(nom);
-    cout<<"fichier créé"<<endl;
+    cout<<"file create"<<endl;
     file.open((QIODevice::WriteOnly | QIODevice::Text));
-    cout<<"fichier ouvert"<<endl;
+    cout<<"file open"<<endl;
     QTextStream out(&file);
-    cout<<"flux créé"<<endl;
+    cout<<"stream create"<<endl;
     out << "o "<<mesh.getNom()<<"\n";
     for(QList<Vector3D>::const_iterator itVect = mesh.getGeom().begin(); itVect != mesh.getGeom().end(); ++itVect) {
     out << "v " << itVect->x() << " " << itVect->y() << " " << itVect->z() << "\n";
     }
     out << "\n";
 
-    cout<<"geom ok"<<endl;
+    cout<<"vertices ok"<<endl;
 
     for(QList<Vector3D>::const_iterator itNorm = mesh.getNorm().begin(); itNorm != mesh.getNorm().end(); ++itNorm) {
     out << "vn " << itNorm->x() << " " << itNorm->y() << " " << itNorm->z() << "\n";
@@ -47,7 +47,7 @@ void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh) const
     }
 
     file.close();
-    cout<<"fichier fermé"<<endl;
+    cout<<"file close"<<endl;
 }
 
 Mesh MeshBuilder::terrain(const Terrain &t, int e, const QString &nom) const{
