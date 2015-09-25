@@ -32,7 +32,7 @@ public:
      * @param[in] t the Terrain the Camera has to launch ray towards
      * @param[in] aBox the coordinates of the first point describing the bounding box of the Terrain
      * @param[in] bBox the coordinates of the second point describing the bounding box of the Terrain
-     * @param[in] s the direction of the light rays, must be normalized
+     * @param[in] s the position of the sun
      * @param[in] i the number of the column of the pixel
      * @param[in] j the number of the row of the pixel
      * @param[in] l the the width of the screen
@@ -45,7 +45,7 @@ public:
     /**
      * Crates a QImage representing the Camera's point of view of a Terrain
      * @param[in] t the Terrain the Camera has to launch ray towards
-     * @param[in] s the direction of the light rays, must be normalized
+     * @param[in] s the position of the sun
      * @param[in] l the the width of the screen
      * @param[in] h the height of the screen
      * @return the QImage containing the screen shot
