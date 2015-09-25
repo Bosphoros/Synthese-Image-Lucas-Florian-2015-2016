@@ -104,13 +104,15 @@ public:
 
     /**
      * TODO
-     * @param[in] r
-     * @param[in] aa
-     * @param[in] bb
-     * @param[out] resu
+     * @param[in] r The Ray to check the collision with
+     * @param[in] aBox the first point defining the bounding box
+     * @param[in] bBox the second point defining the bounding box
+     * @param[in] pMax the max slope
+     * @param[out] resu the intersection of the Ray and the surface of the Terrain
+     * @param[out] isBox if the intersection of the ray and the Terrain is situated on the bounding box. Used to check if under the Terrain on the first iteration.
      * @return
      */
-    bool intersectAdvanced(const Ray &r, const Vector2D &aa, const Vector2D &bb, Vector3D &resu) const;
+    bool intersectAdvanced(const Ray &ray, const Vector3D &aBox, const Vector3D &bBox, double pMax, Vector3D &resu, bool &isBox) const;
 };
 
     inline Vector2D Terrain::getA() const{

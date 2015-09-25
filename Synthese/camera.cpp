@@ -14,7 +14,7 @@ Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
     lw=16/9;
 }
 
-QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& bBox, const Vector3D& s, int i, int j, int l, int h) const
+QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& bBox, const Vector3D& s, int i, int j, int l, int h,double pMax) const
 {
     double x=i*2*lw/l-lw;
     double y=j*2*lh/h-lh;
@@ -27,7 +27,8 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
     //std::cout << origine.x()  <<", "<<origine.y()<<", "<<origine.z()<<"/"<<dir.x()<<", "<<dir.y()<<", "<<dir.z()<< std::endl;
     Vector3D inter;
     bool isBox=false;
-    if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
+//   if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
+    if(!t->intersectAdvanced(r,aBox,bBox,pMax,inter,isBox)){
         QColor couleur(0,0,255,255);
         return couleur.rgb();
     }
@@ -59,6 +60,7 @@ QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& b
 
 QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) const
 {
+    double pMax=t->getPenteMax();
     QImage im(l,h,QImage::Format_ARGB32);
     double min=t->getHauteurMin();
     double max=t->getHauteurMax();
@@ -67,7 +69,7 @@ QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) c
 
     for(int i=0;i<l;++i){
         for(int j=0;j<h;++j){
-            im.setPixel(i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h));
+            im.setPixel(i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h,pMax));
         }
     }
 

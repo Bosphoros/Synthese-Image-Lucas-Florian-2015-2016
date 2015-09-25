@@ -37,10 +37,11 @@ public:
      * @param[in] j the number of the row of the pixel
      * @param[in] l the the width of the screen
      * @param[in] h the height of the screen
+     * @param[in] pMax the max slope
      * @see printScreen()
      * @return the QRgb value of the pixel
      */
-    QRgb ptScreen(Terrain* const t, const Vector3D &aBox, const Vector3D &bBox, const Vector3D &s, int i, int j, int l, int h) const;
+    QRgb ptScreen(Terrain* const t, const Vector3D &aBox, const Vector3D &bBox, const Vector3D &s, int i, int j, int l, int h, double pMax) const;
     /**
      * Crates a QImage representing the Camera's point of view of a Terrain
      * @param[in] t the Terrain the Camera has to launch ray towards

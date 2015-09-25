@@ -104,8 +104,48 @@ bool Terrain::intersectRayMarching(const Ray& ray, const Vector3D &aBox, const V
     return false;
 }
 
-bool Terrain::intersectAdvanced(const Ray &r, const Vector2D &aa, const Vector2D &bb, Vector3D &resu) const
+inline double max(double a,double b)
 {
+    return a>b?a:b;
+}
+
+bool Terrain::intersectAdvanced(const Ray &ray, const Vector3D &aBox, const Vector3D &bBox,double pMax, Vector3D &resu, bool& isBox) const
+{
+    double step=pas;
+    isBox=false;
+    resu=ray.origine;
+
+    Vector3D in;
+    Vector3D out;
+
+    int pointsBox = ray.intersectsBox(aBox, bBox, in, out);
+
+    if(pointsBox == 0) {
+        //std::cout<<"return false"<<std::endl;
+        return false;
+    }
+    double distInOut = in.distanceToPoint(out);
+    Vector3D dir=ray.direction;
+    Ray r(in,dir);
+    //std::cout << pas << " " << dir.x() << "," << dir.y() << "," << dir.z() << " / " << origine.x() << "," << origine.y() << "," << origine.z() << std::endl;
+    for(double tt = 0; tt <= distInOut+pas; tt+= step)
+    {
+        //std::cout<<r.getPoint(tt).y()<<std::endl;
+        double dz=r.getPoint(tt).y()-getHauteur(Vector2D(r.getPoint(tt).x(),r.getPoint(tt).y()));
+        if(dz<=0){
+
+            resu=r.getPoint(tt-pas/2);
+            if(tt==0){
+                isBox=true;
+            }
+            return true;
+         }
+
+        step=max(pas,dz/pMax);
+
+    }
+
+    return false;
 
     /*resu=origine;
     double min =t.getHauteurMin(a,b);
