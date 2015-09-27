@@ -18,15 +18,15 @@ public:
 
     /**
      * Loads a mesh for a file
-     * @param nom The file location to load from
+     * @param[in] nom The file location to load from
      * @return The constructed mesh
      */
     Mesh loadMesh(const QString& nom) const;
 
     /**
      * Saves the mesh to a file
-     * @param nom The file location to save in
-     * @param mesh The mesh to save
+     * @param[in] nom The file location to save in
+     * @param[in] mesh The mesh to save
      */
     void saveMesh(const QString& nom, const Mesh &mesh) const;
 
@@ -37,9 +37,9 @@ public:
 
     /**
      * Creates a Mesh based on a Terrain
-     * @param t The Terrain to base the Mesh on
-     * @param e The number of samples
-     * @param nom The name of the mesh to create
+     * @param[in] t The Terrain to base the Mesh on
+     * @param[in] e The number of samples
+     * @param[in] nom The name of the mesh to create
      * @return A Mesh based on samples of t
      */
     Mesh terrain(const Terrain &t, int e, const QString &nom) const;
