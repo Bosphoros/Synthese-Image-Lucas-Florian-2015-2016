@@ -4,6 +4,12 @@
 
 class CSGRotation : public CSGUnaire
 {
+protected:
+    double anglex;
+    double angley;
+    double anglez;
+    Vector3D centre;
+
 public:
     CSGRotation(CSGNode * n);
 
