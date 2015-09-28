@@ -4,6 +4,10 @@
 
 class CSGScale : public CSGUnaire
 {
+protected :
+    Vector3D centre;
+    double coefficient;
+
 public:
     CSGScale(CSGNode * n);
 
