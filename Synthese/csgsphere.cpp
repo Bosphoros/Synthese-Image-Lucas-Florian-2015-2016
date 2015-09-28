@@ -7,11 +7,11 @@ CSGSphere::CSGSphere()
 
 bool CSGSphere::isIn(const Vector3D &p) const
 {
-    return false;
+    return (p.distanceToPointSquared(centre) < rayon);
 }
 
-QVector<Vector3D> &CSGSphere::intersect(const Ray &r) const
+bool &CSGSphere::intersect(const Ray &r, QVector<double> &t) const
 {
-    return QVector<Vector3D>;
+    return Sphere::intersect(r,t);
 }
 

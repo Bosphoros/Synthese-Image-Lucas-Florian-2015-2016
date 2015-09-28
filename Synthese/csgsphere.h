@@ -1,13 +1,14 @@
 #ifndef CSGSPHERE_H
 #define CSGSPHERE_H
 #include "csgprimitive.h"
+#include "sphere.h"
 
-class CSGSphere : public CSGPrimitive
+class CSGSphere : public CSGPrimitive, public Sphere
 {
 public:
     CSGSphere();
     virtual bool isIn(const Vector3D& p) const;
-    virtual QVector<Vector3D>& intersect(const Ray& r) const;
+    virtual bool &intersect(const Ray& r, QVector<double> &t) const;
 
 };
 
