@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     Terrain* t=generationImage(img);
     std::cout << "Terrain from image generated : " << time.restart() << "ms." << std::endl;//*/
 
-      time.restart();
+     /* time.restart();
       Terrain* t=generationProcedural();
       std::cout << "Terrain generated : " << time.restart() << "ms." << std::endl;
      //*/
@@ -129,15 +129,15 @@ int main(int argc, char *argv[])
     shoot(t,destination);
     std::cout << "Image generated from ray launching : " << time.restart() << "ms." << std::endl;//*/
 
-    time.restart();
+   /* time.restart();
     QString destination=argv[arg++];
 
     shootMulti(t,destination,100);
     std::cout << "100 images generated from ray launching : " << time.restart() << "ms." << std::endl;//*/
 
-    delete t;
+    //delete t;
 
-   /* Vector3D centre(1.0f,0.0f,0.0f);
+    Vector3D centre(1.0f,0.0f,0.0f);
     Vector3D centre2(1.0f,2.0f,0.0f);
 
     Vector3D origine(-1.0f,0.0f,0.0f);
@@ -150,12 +150,12 @@ int main(int argc, char *argv[])
 
     CSGUnion union1(&sphere, &sphere2);
 
-    Camera cam(origine, direction);
+    Camera cam(origine, direction,1.0);
 
     QImage result = cam.printScreen(union1, soleil, 300, 300);
 
     QString nameImage = "C:/Users/etu/Documents/qtWorkspace/Procedural-TP2/sphereTest.png";
-    result.save(nameImage);*/
+    result.save(nameImage);
 
     return 0;
 }

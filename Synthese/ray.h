@@ -6,11 +6,12 @@
  */
 class Ray
 {
-private:
+protected:
     static double pas;/**< The length used for Ray Marching of the Terrains*/
+    Vector3D origine; /**< The origin of the Ray*/
+    Vector3D direction;/**< The direction of the Ray, normalized*/
 public:
-    const Vector3D origine; /**< The origin of the Ray*/
-    const Vector3D direction;/**< The direction of the Ray, normalized*/
+
 
     /**
      * Constructor of a Ray
@@ -47,10 +48,22 @@ public:
      */
     int intersectsBox(const Vector3D& a, const Vector3D& b, Vector3D& in, Vector3D& out) const;
 
+    Vector3D getOrigine() const;
+
+    Vector3D getDirection() const;
+
 };
 
     inline Vector3D Ray::getPoint(double f) const{
         return origine+direction*f;
+    }
+
+    inline Vector3D Ray::getOrigine() const{
+        return origine;
+    }
+
+    inline Vector3D Ray::getDirection() const{
+        return direction;
     }
 
 #endif // RAY_H
