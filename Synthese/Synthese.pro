@@ -28,7 +28,11 @@ SOURCES += main.cpp \
     camera.cpp \
     terrainpentex.cpp \
     vector2d.cpp \
-    vector3d.cpp
+    vector3d.cpp \
+    csgnode.cpp \
+    primitive.cpp \
+    csgunaire.cpp \
+    csgbinaire.cpp
 
 HEADERS += \
     mesh.h \
@@ -45,4 +49,8 @@ HEADERS += \
     camera.h \
     terrainpentex.h \
     vector2d.h \
-    vector3d.h
+    vector3d.h \
+    csgnode.h \
+    primitive.h \
+    csgunaire.h \
+    csgbinaire.h
