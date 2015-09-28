@@ -32,7 +32,10 @@ SOURCES += main.cpp \
     csgnode.cpp \
     csgunaire.cpp \
     csgbinaire.cpp \
-    csgprimitive.cpp
+    csgprimitive.cpp \
+    csgsphere.cpp \
+    csgbox.cpp \
+    csgunion.cpp
 
 HEADERS += \
     mesh.h \
@@ -53,4 +56,7 @@ HEADERS += \
     csgnode.h \
     csgunaire.h \
     csgbinaire.h \
-    csgprimitive.h
+    csgprimitive.h \
+    csgsphere.h \
+    csgbox.h \
+    csgunion.h
