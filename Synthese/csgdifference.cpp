@@ -24,7 +24,8 @@ bool CSGDifference::isIn(const Vector3D &p) const
     }
 }
 
-bool &CSGDifference::intersect(const Ray &r, Qvector<double> &t) const
+bool CSGDifference::intersect(const Ray &r, QVector<double>& intersects) const
+
 {
     Qvector<double> ta;
     Qvector<double> tb;
@@ -37,7 +38,7 @@ bool &CSGDifference::intersect(const Ray &r, Qvector<double> &t) const
         //alors on concerve ce point
         if(node2->isOut(r.getPoint(ta.at(cpt))))
         {
-            t.push_back(ta.at(cpt));
+            intersects.push_back(ta.at(cpt));
         }
     }
 
@@ -47,7 +48,7 @@ bool &CSGDifference::intersect(const Ray &r, Qvector<double> &t) const
         //alors on concerve ce point
         if(node1->isIn(r.getPoint(tb.at(cpt))))
         {
-            t.push_back(tb.at(cpt));
+            intersects.push_back(tb.at(cpt));
         }
     }
 }

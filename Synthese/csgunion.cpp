@@ -10,7 +10,7 @@ bool CSGUnion::isIn(const Vector3D &p) const
     return (node1->isIn(p)||node2->isIn(p));
 }
 
-bool &CSGUnion::intersect(const Ray &r, Qvector<double> &t) const
+bool &CSGUnion::intersect(const Ray &r, Qvector<double> &intersects) const
 {
     Qvector<double> ta;
     Qvector<double> tb;
@@ -23,7 +23,7 @@ bool &CSGUnion::intersect(const Ray &r, Qvector<double> &t) const
         //alors on concerve ce point
         if(node2->isOut(r.getPoint(ta.at(cpt))))
         {
-            t.push_back(ta.at(cpt));
+            intersects.push_back(ta.at(cpt));
         }
     }
 
@@ -33,7 +33,7 @@ bool &CSGUnion::intersect(const Ray &r, Qvector<double> &t) const
         //alors on concerve ce point
         if(node1->isOut(r.getPoint(tb.at(cpt))))
         {
-            t.push_back(tb.at(cpt));
+            intersects.push_back(tb.at(cpt));
         }
     }
 }

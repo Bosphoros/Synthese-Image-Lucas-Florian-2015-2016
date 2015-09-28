@@ -10,7 +10,7 @@ public:
 
     virtual bool isIn(const Vector3D& p) const =0;
     bool isOut(const Vector3D& p) const ;
-    virtual QVector<Vector3D>& intersect(const Ray& r) const =0;
+    virtual bool intersect(const Ray& r, QVector<double>& intersects) const =0;
 
 };
 

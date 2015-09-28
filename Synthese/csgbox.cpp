@@ -10,7 +10,7 @@ bool CSGBox::isIn(const Vector3D &p) const
 
 }
 
-QVector<Vector3D> &CSGBox::intersect(const Ray &r) const
+bool CSGBox::intersect(const Ray &r, QVector<double>& intersects) const
 {
 
 }

@@ -31,7 +31,7 @@ SOURCES += main.cpp \
     vector3d.cpp \
     box.cpp \
     plane.cpp \
-    sphere.cpp
+    sphere.cpp \
     csgnode.cpp \
     csgunaire.cpp \
     csgbinaire.cpp \
@@ -40,7 +40,10 @@ SOURCES += main.cpp \
     csgbox.cpp \
     csgunion.cpp \
     csgintersection.cpp \
-    csgdifference.cpp
+    csgdifference.cpp \
+    csgtranslation.cpp \
+    csgrotation.cpp \
+    csgscale.cpp
 
 HEADERS += \
     mesh.h \
@@ -60,7 +63,7 @@ HEADERS += \
     vector3d.h \
     box.h \
     plane.h \
-    sphere.h
+    sphere.h \
     csgnode.h \
     csgunaire.h \
     csgbinaire.h \
@@ -69,4 +72,7 @@ HEADERS += \
     csgbox.h \
     csgunion.h \
     csgintersection.h \
-    csgdifference.h
+    csgdifference.h \
+    csgtranslation.h \
+    csgrotation.h \
+    csgscale.h
