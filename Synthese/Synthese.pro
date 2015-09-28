@@ -38,7 +38,9 @@ SOURCES += main.cpp \
     csgunion.cpp \
     csgintersection.cpp \
     csgdifference.cpp \
-    csgtranslation.cpp
+    csgtranslation.cpp \
+    csgrotation.cpp \
+    csgscale.cpp
 
 HEADERS += \
     mesh.h \
@@ -65,4 +67,6 @@ HEADERS += \
     csgunion.h \
     csgintersection.h \
     csgdifference.h \
-    csgtranslation.h
+    csgtranslation.h \
+    csgrotation.h \
+    csgscale.h
