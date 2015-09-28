@@ -2,8 +2,12 @@
 #define SMOOTHNOISE_H
 #include "vector2d.h"
 
-double smooth_noise(Vector2D p, int seed);
-double smooth_noiseBilinear(Vector2D p, int seed);
+/**
+ * Finds a noise value based on two values, hashed with predefined values of perm
+ * @param[in] x
+ * @param[in] y
+ * @return
+ */
 double raw_noise_2d(const double x, const double y);
 
 static const int perm[512] = {

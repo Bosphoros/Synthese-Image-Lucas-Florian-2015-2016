@@ -1,60 +1,56 @@
 #ifndef RAY_H
 #define RAY_H
 #include "vector3d.h"
-#include "terrain.h"
+/**
+ * @brief The Ray class
+ */
 class Ray
 {
 private:
-    const Vector3D origine; /**< Origin of the ray*/
-    const Vector3D direction; /**< Direction of the ray*/
-    static double pas; /**< Step for Ray marching*/
+    static double pas;/**< The length used for Ray Marching of the Terrains*/
 public:
-    /**
-     * Constructor of Ray
-     * @param[in] o The origin of the ray
-     * @param[in] d The direction of the ray
-     */
-    Ray(Vector3D &o, Vector3D &d);
+    const Vector3D origine; /**< The origin of the Ray*/
+    const Vector3D direction;/**< The direction of the Ray, normalized*/
 
     /**
-     * Gets the point found f times the direction from the origin
-     * @param[in] f The factor of direction
-     * @return origin + f * direction
+     * Constructor of a Ray
+     * @param[in] o the origin of the Ray
+     * @param[in] d the direction of the Ray, is normalized by the constructor
      */
-    Vector3D getPoint(double f);
+    Ray(const Vector3D &o, const Vector3D &d);
 
     /**
-     * Finds if the ray intersects the plane defined by three points
-     * @param[in] a The first point on the plane
-     * @param[in] b The second point on the plane
-     * @param[in] c The third poitn on the plane
-     * @param[out] out The intersection point
-     * @return true if there is an intersection, else false
+     * Gets the point corresponding to f times the direction vector from the origin, is inlined
+     * @param[in] f the factor of the direction vector
+     * @return origine + f * direction
      */
-    bool intersects(const Vector3D& a, const Vector3D& b, const Vector3D& c, Vector3D& out);
+    Vector3D getPoint(double f) const;
 
     /**
-     * Finds the intersection points of the Ray with an Axis Aligned Box, defined by a and b.
-     * @param[in] a The bottom front left corner of the box
-     * @param[in] b The upper back right corner of the box
-     * @param[out] in The entry point of the ray in the box
-     * @param[out] out The out point of the ray out of the box
-     * @return The number of intersections found. If 0, in and out can't be trusted.
+     * Tries to intersect the Ray with a plane, described by two vectors, ab and ac
+     * @param[in] a the first point on the plane
+     * @param[in] b the second point on the plane
+     * @param[in] c the third point on the plane
+     * @param[out] out the point at the intersection of the Ray and the plane
+     * @return true if the Ray intersects the plane, false else
      */
-    int intersectsBox(const Vector3D& a, const Vector3D& b, Vector3D& in, Vector3D& out);
-    bool intersectRayMarching(Terrain &t, const Vector3D &aBox, const Vector3D &bBox, Vector3D &resu, bool &isBox);
-    bool intersectAdvanced(Terrain &t, Vector2D &a, Vector2D &b, Vector3D &resu);
+    bool intersects(const Vector3D& a, const Vector3D& b, const Vector3D& c, Vector3D& out) const;
 
-    inline const Vector3D& getOrigine() const;
-    inline const Vector3D& getDirection() const;
+    /**
+     * Counts the intersections of the Ray with a box
+     * @param[in] a the first corner describing the box
+     * @param[in] b the second corner describing the box
+     * @param[out] in the point on the box where the Ray enters
+     * @param[out] out the point on the box where the Ray exits
+     * @see intersects()
+     * @return the number of intersections of the ray with the box. If 1, in will be the origin of the Ray and out the only intersection. If 0, do not consider in and out are reliable.
+     */
+    int intersectsBox(const Vector3D& a, const Vector3D& b, Vector3D& in, Vector3D& out) const;
+
 };
 
-inline const Vector3D& Ray::getOrigine() const {
-    return origine;
-}
-
-inline const Vector3D& Ray::getDirection() const {
-    return direction;
-}
+    inline Vector3D Ray::getPoint(double f) const{
+        return origine+direction*f;
+    }
 
 #endif // RAY_H

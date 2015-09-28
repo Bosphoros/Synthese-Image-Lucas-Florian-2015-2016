@@ -7,6 +7,16 @@ Vector3D::Vector3D(const Vector2D &vector):xp(vector.x()), yp(vector.y()), zp(0.
 
 Vector3D::Vector3D(const Vector2D &vector, double zpos):xp(vector.x()), yp(vector.y()), zp(zpos){}
 
+void Vector3D::rotate(const QMatrix3x3 &mat)
+{
+    double xt=x()*mat(0,0)+y()*mat(0,1)+z()*mat(0,2);
+    double yt=x()*mat(1,0)+y()*mat(1,1)+z()*mat(1,2);
+    double zt=x()*mat(2,0)+y()*mat(2,1)+z()*mat(2,2);
+    setX(xt);
+    setY(yt);
+    setZ(zt);
+}
+
 Vector3D Vector3D::normal(const Vector3D &v1, const Vector3D &v2)
 {
     return (v1^v2).normalized();

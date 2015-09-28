@@ -11,6 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Synthese
 
 TEMPLATE = app
+CONFIG += c++11
+QMAKE_CXXFLAGS += -fopenmp
+LIBS += -fopenmp
 
 
 SOURCES += main.cpp \
@@ -18,15 +21,13 @@ SOURCES += main.cpp \
     meshbuilder.cpp \
     terrainimage.cpp \
     terrain.cpp \
+    terrainnoise.cpp \
+    terrainnoisesmultiples.cpp \
+    terraintest.cpp \
     mathutils.cpp \
-    foncteurwarp.cpp \
-    noise.cpp \
-    octave.cpp \
-    terrainoctaves.cpp \
     smoothnoise.cpp \
     ray.cpp \
     camera.cpp \
-    terrainpentex.cpp \
     vector2d.cpp \
     vector3d.cpp \
     box.cpp \
@@ -50,15 +51,13 @@ HEADERS += \
     meshbuilder.h \
     terrain.h \
     terrainimage.h \
+    terrainnoise.h \
+    terrainnoisesmultiples.h \
+    terraintest.h \
     mathutils.h \
-    foncteurwarp.h \
-    noise.h \
-    octave.h \
-    terrainoctaves.h \
     smoothnoise.h \
     ray.h \
     camera.h \
-    terrainpentex.h \
     vector2d.h \
     vector3d.h \
     box.h \

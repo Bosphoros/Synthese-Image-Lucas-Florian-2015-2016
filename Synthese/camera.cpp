@@ -3,21 +3,25 @@
 #include <QColor>
 #include <iostream>
 #include <cmath>
+#include "mathutils.h"
+#include "smoothnoise.h"
 
-Camera::Camera(Vector3D &o, Vector3D &at):origine(o)
+Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
 {
     Vector3D oat=(at-o);
     w=oat.normalized();
-    dw=oat.length();
     u=-(w^Vector3D(0,1,0)).normalized();
     v= (w^u).normalized();
     lh=1;
     lw=16/9;
-
-
+}
+Vector3D mix(const Vector3D& a,const Vector3D& b, double d){
+    double quadra=MathUtils::fonctionQuadratique(0,1,d);
+    return b*quadra+a*(1-quadra);
 }
 
-QRgb Camera::ptScreen(Terrain &t,const Vector3D& aBox, const Vector3D& bBox, const Vector3D& s, int i, int j, int l, int h)
+
+QRgb Camera::ptScreen(Terrain * const t, const Vector3D& aBox, const Vector3D& bBox, const Vector3D& s, int i, int j, int l, int h,double pMax) const
 {
     double x=i*2*lw/l-lw;
     double y=j*2*lh/h-lh;
@@ -27,54 +31,74 @@ QRgb Camera::ptScreen(Terrain &t,const Vector3D& aBox, const Vector3D& bBox, con
     dir.normalize();
     Ray r(origine,dir);
 
-    //std::cout << origine.x()  <<", "<<origine.y()<<", "<<origine.z()<<"/"<<dir.x()<<", "<<dir.y()<<", "<<dir.z()<< std::endl;
     Vector3D inter;
     bool isBox=false;
-    if(!r.intersectRayMarching(t,aBox,bBox,inter,isBox)){
-        QColor couleur(0,0,255,255);
-        return couleur.rgb();
+    //if(!t->intersectRayMarching(r,aBox,bBox,inter,isBox)){
+    if(!t->intersectAdvanced(r,aBox,bBox,pMax,inter,isBox)){
+        QColor couleur(255,255,255,0);
+        return couleur.rgba();
     }
 
-    //std::cout << "Touch" << std::endl;
     Vector3D normale;
-    double hauteur = t.getHauteurNormale(Vector2D(inter.x(),inter.z()),normale);
+    t->getHauteurNormale(Vector2D(inter.x(),inter.z()),normale);
     if(isBox) {
-        QColor couleur(255,0,0,255);
-        return couleur.rgb();
+        QColor couleur(0,0,0,255);
+        return couleur.rgba();
     }
-    //std::cout << normale.x()  <<", "<<normale.y()<<", "<<normale.z()<<std::endl;
-    double lu=normale*(-s);
-    //std::cout <<lu<<std::endl;
+    Vector3D dirSoleil=(s-inter).normalized();
+    double lu=normale*dirSoleil;
+
+
     if(lu<0)
         lu=0;
-
 
     lu*=200.0;
 
     if(lu>255)
         lu=255;
+    Vector3D bas(74,97,77);
+    Vector3D mil(91,75,55);
+    Vector3D hau(234,234,234);
+    Vector3D col;
+    double intery=inter.y();
+    intery+=-5+10*raw_noise_2d(inter.x()/20,inter.z()/20);
+    if(intery<80){
+        col=mix(bas,mil,intery/80);
+    }
+    else{
+        col=mix(mil,hau,(intery-80)/20);
+    }
+    col*=((lu/255+0.4)/1.4);
 
-    QColor couleur(lu,lu,lu,255);
-    return couleur.rgb();
+
+    QColor couleur(col.x(),col.y(),col.z(),255);
+    return couleur.rgba();
 
 
 }
 
-QImage Camera::printScreen(Terrain &t,const Vector2D& a, const Vector2D& b, const Vector3D& s, int l, int h)
+QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) const
 {
+    double pMax=t->getPenteMax();
     QImage im(l,h,QImage::Format_ARGB32);
-    double min=t.getHauteurMin(a,b);
-    double max=t.getHauteurMax(a,b);
-    Vector3D aBox(a.x(),min,a.y());
-    Vector3D bBox(b.x(),max*1.5,b.y());
+    double min=t->getHauteurMin();
+    double max=t->getHauteurMax();
+    Vector3D aBox(t->getA().x(),min,t->getA().y());
+    Vector3D bBox(t->getB().x(),max*1.5,t->getB().y());
 
+    #pragma omp parallel for
     for(int i=0;i<l;++i){
         for(int j=0;j<h;++j){
-            im.setPixel(i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h));
+            im.setPixel(l-1-i,h-1-j,ptScreen(t,aBox,bBox,s,i,j,l,h,pMax));
         }
     }
 
     return im;
 
+}
+
+void Camera::translate(const Vector3D &v)
+{
+    origine+=v;
 }
 

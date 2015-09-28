@@ -13,16 +13,16 @@ Plane::Plane(const Vector3D &a, const Vector3D &b, const Vector3D &c) : point(a)
     normal = u^v;
 }
 
-bool Plane::intersect(const Ray &r, Vector3D &out)
+bool Plane::intersects(const Ray &r, Vector3D &out)
 {
     // Produit scalaire, si 0 pas de solution ou une infinité
-    double scalaire = direction*normal;//Vector3D::dotProduct(direction, w); //direction.x()*w.x()+direction.y()*w.y()+direction.z()*w.z();
+    double scalaire = r.getDirection()*normal;//Vector3D::dotProduct(direction, w); //direction.x()*w.x()+direction.y()*w.y()+direction.z()*w.z();
     if(abs(scalaire) < 0.0001)
         return false;
     double delta = point*normal;//Vector3D::dotProduct(a, w);
-    double t = (delta - origine*normal)/scalaire; //Vector3D::dotProduct(origine, w)
+    double t = (delta - r.getDirection()*normal)/scalaire; //Vector3D::dotProduct(origine, w)
 
-    out = getPoint(t);
+    out = r.getPoint(t);
     return true;
 }
 

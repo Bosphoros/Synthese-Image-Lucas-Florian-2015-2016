@@ -37,3 +37,7 @@ double MathUtils::mod(double a, double b) {
     while(a>b) {a-=b;}
     return a;
 }
+
+double MathUtils::dabs(double d) {
+    return d>=0?d:-d;
+}

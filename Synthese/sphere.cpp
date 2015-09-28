@@ -8,7 +8,7 @@ double Sphere::distanceToPoint(const Vector3D &p)
     return centre.distanceToPoint(p) - rayon;
 }
 
-int Sphere::intersect(const Ray &r, QVector<double>& l)
+int Sphere::intersect(const Ray &r, QVector<double>& li)
 {
     Vector3D oc = centre - r.getOrigine();		// Solve t^2*d.d + 2*t*(o-p).d + (o-p).(o-p)-R^2 = 0
     double t;
@@ -23,13 +23,13 @@ int Sphere::intersect(const Ray &r, QVector<double>& l)
     if(det == 0) {
         list.resize(1);
         list[0] = l - det;
-        l = list;
+        li = list;
         return 1;
     }
     list.resize(2);
     list[0] = l - det;
     list[1] = l + det;
-    l = list;
+    li = list;
     return 2;
 
 }
