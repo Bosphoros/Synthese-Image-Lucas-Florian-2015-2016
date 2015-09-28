@@ -30,9 +30,9 @@ SOURCES += main.cpp \
     vector2d.cpp \
     vector3d.cpp \
     csgnode.cpp \
-    primitive.cpp \
     csgunaire.cpp \
-    csgbinaire.cpp
+    csgbinaire.cpp \
+    csgprimitive.cpp
 
 HEADERS += \
     mesh.h \
@@ -51,6 +51,6 @@ HEADERS += \
     vector2d.h \
     vector3d.h \
     csgnode.h \
-    primitive.h \
     csgunaire.h \
-    csgbinaire.h
+    csgbinaire.h \
+    csgprimitive.h
