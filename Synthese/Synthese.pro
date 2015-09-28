@@ -28,7 +28,10 @@ SOURCES += main.cpp \
     camera.cpp \
     terrainpentex.cpp \
     vector2d.cpp \
-    vector3d.cpp
+    vector3d.cpp \
+    box.cpp \
+    plane.cpp \
+    sphere.cpp
 
 HEADERS += \
     mesh.h \
@@ -45,4 +48,7 @@ HEADERS += \
     camera.h \
     terrainpentex.h \
     vector2d.h \
-    vector3d.h
+    vector3d.h \
+    box.h \
+    plane.h \
+    sphere.h
