@@ -44,7 +44,8 @@ SOURCES += main.cpp \
     csgdifference.cpp \
     csgtranslation.cpp \
     csgrotation.cpp \
-    csgscale.cpp
+    csgscale.cpp \
+    matrix3x3.cpp
 
 HEADERS += \
     mesh.h \
@@ -74,4 +75,5 @@ HEADERS += \
     csgdifference.h \
     csgtranslation.h \
     csgrotation.h \
-    csgscale.h
+    csgscale.h \
+    matrix3x3.h
