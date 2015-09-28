@@ -14,14 +14,14 @@ public:
      * @param[in] o The origin of the ray
      * @param[in] d The direction of the ray
      */
-    Ray(Vector3D &o, Vector3D &d);
+    Ray(const Vector3D &o, const Vector3D &d);
 
     /**
      * Gets the point found f times the direction from the origin
      * @param[in] f The factor of direction
      * @return origin + f * direction
      */
-    Vector3D getPoint(double f);
+    Vector3D getPoint(double f) const;
 
     /**
      * Finds if the ray intersects the plane defined by three points

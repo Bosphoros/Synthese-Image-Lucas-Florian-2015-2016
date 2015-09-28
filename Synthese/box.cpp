@@ -33,7 +33,7 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out)
     {
         in=r.getOrigine();
 
-        if(paazax.intersects(r, out)){ // Intersection du plan a az ax
+        if(paaxaz.intersects(r, out)){ // Intersection du plan a az ax
             if(out.x() >= a.x() && out.x() <= b.x() && out.z() >= a.z() && out.z() <= b.z()){ // In da box
                 return 1;
             }

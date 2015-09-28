@@ -1,6 +1,6 @@
 #include "csgsphere.h"
 
-CSGSphere::CSGSphere()
+CSGSphere::CSGSphere(const Vector3D c, double r):CSGPrimitive(),Sphere(c,r)
 {
 
 }
