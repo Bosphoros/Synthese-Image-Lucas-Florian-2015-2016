@@ -35,7 +35,9 @@ SOURCES += main.cpp \
     csgprimitive.cpp \
     csgsphere.cpp \
     csgbox.cpp \
-    csgunion.cpp
+    csgunion.cpp \
+    csgintersection.cpp \
+    csgdifference.cpp
 
 HEADERS += \
     mesh.h \
@@ -59,4 +61,6 @@ HEADERS += \
     csgprimitive.h \
     csgsphere.h \
     csgbox.h \
-    csgunion.h
+    csgunion.h \
+    csgintersection.h \
+    csgdifference.h
