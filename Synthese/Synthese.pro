@@ -29,6 +29,9 @@ SOURCES += main.cpp \
     terrainpentex.cpp \
     vector2d.cpp \
     vector3d.cpp \
+    box.cpp \
+    plane.cpp \
+    sphere.cpp \
     csgnode.cpp \
     csgunaire.cpp \
     csgbinaire.cpp \
@@ -58,6 +61,9 @@ HEADERS += \
     terrainpentex.h \
     vector2d.h \
     vector3d.h \
+    box.h \
+    plane.h \
+    sphere.h \
     csgnode.h \
     csgunaire.h \
     csgbinaire.h \
