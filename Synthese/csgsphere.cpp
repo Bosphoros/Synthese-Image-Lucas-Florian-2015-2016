@@ -10,7 +10,7 @@ bool CSGSphere::isIn(const Vector3D &p) const
     return false;
 }
 
-QVector<Vector3D> &CSGSphere::intersect(const Ray &r) const
+bool CSGSphere::intersect(const Ray &r, QVector<double>& intersects) const
 {
     return QVector<Vector3D>;
 }

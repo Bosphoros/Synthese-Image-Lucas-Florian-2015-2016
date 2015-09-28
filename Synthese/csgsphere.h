@@ -7,7 +7,7 @@ class CSGSphere : public CSGPrimitive
 public:
     CSGSphere();
     virtual bool isIn(const Vector3D& p) const;
-    virtual QVector<Vector3D>& intersect(const Ray& r) const;
+    virtual bool intersect(const Ray& r, QVector<double>& intersects) const;
 
 };
 
