@@ -14,7 +14,7 @@ public:
 
 };
 
-inline bool isOut(const Vector3D& p)const{
+inline bool CSGNode::isOut(const Vector3D& p)const{
     return !isIn(p);
 }
 
