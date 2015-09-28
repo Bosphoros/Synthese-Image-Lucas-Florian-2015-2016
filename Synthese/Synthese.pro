@@ -32,6 +32,15 @@ SOURCES += main.cpp \
     box.cpp \
     plane.cpp \
     sphere.cpp
+    csgnode.cpp \
+    csgunaire.cpp \
+    csgbinaire.cpp \
+    csgprimitive.cpp \
+    csgsphere.cpp \
+    csgbox.cpp \
+    csgunion.cpp \
+    csgintersection.cpp \
+    csgdifference.cpp
 
 HEADERS += \
     mesh.h \
@@ -52,3 +61,12 @@ HEADERS += \
     box.h \
     plane.h \
     sphere.h
+    csgnode.h \
+    csgunaire.h \
+    csgbinaire.h \
+    csgprimitive.h \
+    csgsphere.h \
+    csgbox.h \
+    csgunion.h \
+    csgintersection.h \
+    csgdifference.h
