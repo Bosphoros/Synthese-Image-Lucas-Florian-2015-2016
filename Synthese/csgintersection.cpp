@@ -38,4 +38,5 @@ bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
             intersects.push_back(tb.at(cpt));
         }
     }
+    return intersects.size()>0;
 }

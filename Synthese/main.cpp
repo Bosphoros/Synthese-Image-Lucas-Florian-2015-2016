@@ -6,6 +6,9 @@
 #include "ray.h"
 #include <QTime>
 #include "camera.h"
+#include "csgsphere.h"
+#include "csgunion.h"
+#include "csgintersection.h"
 
 int main(int argc, char *argv[])
 {
@@ -65,6 +68,26 @@ int main(int argc, char *argv[])
     QImage result = cam.printScreen(t,a,b,d.normalized(),192*3,108*3);
     QString nameImage = "D:/result.png";
     result.save(nameImage);*/
+
+    Vector3D centre(1.0f,0.0f,0.0f);
+    Vector3D centre2(1.0f,2.0f,0.0f);
+
+    Vector3D origine(-1.0f,0.0f,0.0f);
+    Vector3D direction(1.0f,0.0f,0.0f);
+
+    Vector3D soleil(2.0f,2.0f,2.0f);
+
+    CSGSphere sphere(centre, 0.5f);
+    CSGSphere sphere2(centre2, 0.5f);
+
+    CSGUnion union1(&sphere, &sphere2);
+
+    Camera cam(origine, direction);
+
+    QImage result = cam.printScreen(union1, soleil, 300, 300);
+
+    QString nameImage = "C:/Users/etu/Documents/qtWorkspace/Procedural-TP2/sphereTest.png";
+    result.save(nameImage);
 
 
 

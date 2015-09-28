@@ -3,6 +3,7 @@
 #include <QColor>
 #include <iostream>
 #include <cmath>
+#include <limits>
 
 Camera::Camera(Vector3D &o, Vector3D &at):origine(o)
 {
@@ -94,14 +95,20 @@ QRgb Camera::ptScreen(CSGNode &t, const Vector3D &s, int i, int j, int l, int h)
         return couleur.rgba();
     }
 
-         double d=intersects.at(0);
+         double d=std::numeric_limits<double>::infinity();
 
-         for(int i=1;i<intersects.size();++i){
-             if(d>intersects.at(i))
+         for(int i=0;i<intersects.size();++i){
+             if(d>intersects.at(i)&&intersects.at(i)>0)
                  d=intersects.at(i);
          }
 
-          Vector3D inter=r.getPoint(d);
+         if (d==std::numeric_limits<double>::infinity()){
+             QColor couleur(0,0,0,0);
+             return couleur.rgba();
+         }
+
+
+         Vector3D inter=r.getPoint(d);
 
           QColor couleur(0,0,255,255);
           return couleur.rgba();

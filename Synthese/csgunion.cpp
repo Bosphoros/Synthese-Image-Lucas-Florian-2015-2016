@@ -20,21 +20,24 @@ bool CSGUnion::intersect(const Ray &r, QVector<double> &intersects) const
     for(int cpt = 0; cpt < ta.size(); ++cpt)
     {
         //si le point d'intersection avec le premier noeud n'appartient pas au second noeud
-        //alors on concerve ce point
+        //alors on conserve ce point
         if(node2->isOut(r.getPoint(ta.at(cpt))))
         {
             intersects.push_back(ta.at(cpt));
+
         }
     }
 
     for(int cpt = 0; cpt < tb.size(); ++cpt)
     {
         //si le point d'intersection avec le second noeud n'appartient pas au premier noeud
-        //alors on concerve ce point
+        //alors on conserve ce point
         if(node1->isOut(r.getPoint(tb.at(cpt))))
         {
             intersects.push_back(tb.at(cpt));
         }
     }
+
+    return intersects.size()>0;
 }
 
