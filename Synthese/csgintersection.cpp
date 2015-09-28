@@ -14,12 +14,12 @@ bool CSGIntersection::isIn(const Vector3D &p) const
 bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
 
 {
-    Qvector<double> ta;
-    Qvector<double> tb;
+    QVector<double> ta;
+    QVector<double> tb;
     node1->intersect(r, ta);
     node2->intersect(r, tb);
 
-    for(int cpt = 0; cpt < ta.size(); ta++)
+    for(int cpt = 0; cpt < ta.size(); ++cpt)
     {
         //si le point d'intersection avec le premier noeud appartient également au second noeud
         //alors on concerve ce point
@@ -29,7 +29,7 @@ bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
         }
     }
 
-    for(int cpt = 0; cpt < tb.size(); tb++)
+    for(int cpt = 0; cpt < tb.size(); ++cpt)
     {
         //si le point d'intersection avec le second noeud appartient également au premier noeud
         //alors on concerve ce point
@@ -38,4 +38,5 @@ bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
             intersects.push_back(tb.at(cpt));
         }
     }
+    return intersects.size()>0;
 }

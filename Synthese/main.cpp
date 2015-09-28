@@ -7,8 +7,10 @@
 #include "terrainnoisesmultiples.h"
 #include <vector>
 #include "meshbuilder.h"
+#include "csgsphere.h"
+#include "csgunion.h"
+#include "csgintersection.h"
 #define M_PI 3.14159265358979323846
-
 Terrain* generationImage(const QString& img){
     Vector2D a(0,0);
     Vector2D b(1000,1000);
@@ -17,11 +19,13 @@ Terrain* generationImage(const QString& img){
     return new TerrainImage(im,200,0,a,b);
 }
 
+
 Terrain* generationProcedural(){
     Vector2D a(0,0);
     Vector2D b(1000,1000);
     return new TerrainTest(a,b);
 }
+
 
 void shoot(Terrain* const t, const QString& img){
     Vector3D o(-3400, 2800, -2200);
@@ -132,6 +136,26 @@ int main(int argc, char *argv[])
     std::cout << "100 images generated from ray launching : " << time.restart() << "ms." << std::endl;//*/
 
     delete t;
+
+   /* Vector3D centre(1.0f,0.0f,0.0f);
+    Vector3D centre2(1.0f,2.0f,0.0f);
+
+    Vector3D origine(-1.0f,0.0f,0.0f);
+    Vector3D direction(1.0f,0.0f,0.0f);
+
+    Vector3D soleil(2.0f,2.0f,2.0f);
+
+    CSGSphere sphere(centre, 0.5f);
+    CSGSphere sphere2(centre2, 0.5f);
+
+    CSGUnion union1(&sphere, &sphere2);
+
+    Camera cam(origine, direction);
+
+    QImage result = cam.printScreen(union1, soleil, 300, 300);
+
+    QString nameImage = "C:/Users/etu/Documents/qtWorkspace/Procedural-TP2/sphereTest.png";
+    result.save(nameImage);*/
 
     return 0;
 }

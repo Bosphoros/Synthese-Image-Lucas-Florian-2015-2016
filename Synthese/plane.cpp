@@ -20,7 +20,9 @@ bool Plane::intersects(const Ray &r, Vector3D &out)
     if(abs(scalaire) < 0.0001)
         return false;
     double delta = point*normal;//Vector3D::dotProduct(a, w);
-    double t = (delta - r.getDirection()*normal)/scalaire; //Vector3D::dotProduct(origine, w)
+
+    double t = (delta - r.getOrigine()*normal)/scalaire; //Vector3D::dotProduct(origine, w)
+
 
     out = r.getPoint(t);
     return true;

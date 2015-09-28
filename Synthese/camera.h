@@ -4,6 +4,7 @@
 #include <QImage>
 #include <QRgb>
 #include "terrain.h"
+#include "csgnode.h"
 
 /**
  * @brief The Camera class
@@ -57,6 +58,9 @@ public:
      * @param[in] v the movement the Camera has to be moved by
      */
     void translate(const Vector3D& v);
+
+    QRgb ptScreen(CSGNode& t, const Vector3D &s, int i, int j, int l, int h);
+    QImage printScreen(CSGNode& node, const Vector3D &s, int l, int h);
 
 };
 

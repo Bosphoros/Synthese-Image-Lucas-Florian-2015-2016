@@ -5,6 +5,7 @@
 #include <cmath>
 #include "mathutils.h"
 #include "smoothnoise.h"
+#include <limits>
 
 Camera::Camera(const Vector3D &o, const Vector3D &at, double d):origine(o),dw(d)
 {
@@ -97,8 +98,58 @@ QImage Camera::printScreen(Terrain * const t, const Vector3D& s, int l, int h) c
 
 }
 
+
 void Camera::translate(const Vector3D &v)
 {
     origine+=v;
+}
+
+QRgb Camera::ptScreen(CSGNode &t, const Vector3D &s, int i, int j, int l, int h)
+{
+
+    double x=i*2*lw/l-lw;
+    double y=j*2*lh/h-lh;
+
+    Vector3D pt =origine+(dw*w)+(x*u)+(y*v);
+    Vector3D dir(pt-origine);
+    dir.normalize();
+    Ray r(origine,dir);
+    QVector<double> intersects;
+    if(!t.intersect(r,intersects)){
+        QColor couleur(0,0,0,0);
+        return couleur.rgba();
+    }
+
+         double d=std::numeric_limits<double>::infinity();
+
+         for(int i=0;i<intersects.size();++i){
+             if(d>intersects.at(i)&&intersects.at(i)>0)
+                 d=intersects.at(i);
+         }
+
+         if (d==std::numeric_limits<double>::infinity()){
+             QColor couleur(0,0,0,0);
+             return couleur.rgba();
+         }
+
+
+         Vector3D inter=r.getPoint(d);
+
+          QColor couleur(0,0,255,255);
+          return couleur.rgba();
+
+}
+
+QImage Camera::printScreen(CSGNode &node, const Vector3D &s, int l, int h)
+{
+    QImage im(l,h,QImage::Format_ARGB32);
+
+    for(int i=0;i<l;++i){
+        for(int j=0;j<h;++j){
+            im.setPixel(i,h-1-j,ptScreen(node,s,i,j,l,h));
+        }
+    }
+
+    return im;
 }
 
