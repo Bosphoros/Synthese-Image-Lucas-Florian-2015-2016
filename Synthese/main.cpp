@@ -10,6 +10,8 @@
 #include "csgsphere.h"
 #include "csgunion.h"
 #include "csgintersection.h"
+#include "csgdifference.h"
+#include "csgbox.h"
 #define M_PI 3.14159265358979323846
 Terrain* generationImage(const QString& img){
     Vector2D a(0,0);
@@ -138,7 +140,7 @@ int main(int argc, char *argv[])
     //delete t;
 
     Vector3D centre(1.0f,0.0f,0.0f);
-    Vector3D centre2(1.0f,2.0f,0.0f);
+    Vector3D centre2(1.0f,.5f,0.0f);
 
     Vector3D origine(-1.0f,0.0f,0.0f);
     Vector3D direction(1.0f,0.0f,0.0f);
@@ -148,13 +150,14 @@ int main(int argc, char *argv[])
     CSGSphere sphere(centre, 0.5f);
     CSGSphere sphere2(centre2, 0.5f);
 
-    CSGUnion union1(&sphere, &sphere2);
+
+    CSGDifference union1(&sphere, &sphere2);
 
     Camera cam(origine, direction,1.0);
 
     QImage result = cam.printScreen(union1, soleil, 300, 300);
 
-    QString nameImage = "C:/Users/etu/Documents/qtWorkspace/Procedural-TP2/sphereTest.png";
+    QString nameImage = "C:/Users/etu/Desktop/sphereTest.png";
     result.save(nameImage);
 
     return 0;

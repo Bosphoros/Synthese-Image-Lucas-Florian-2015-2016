@@ -134,8 +134,10 @@ QRgb Camera::ptScreen(CSGNode &t, const Vector3D &s, int i, int j, int l, int h)
 
 
          Vector3D inter=r.getPoint(d);
-
-          QColor couleur(0,0,255,255);
+         d*=d*d*d*d;
+            if(d>20)
+                d=20;
+          QColor couleur(0,255*(1-d/20),0,255);
           return couleur.rgba();
 
 }
