@@ -1,8 +1,9 @@
 #ifndef CSGBOX_H
 #define CSGBOX_H
 #include "csgprimitive.h"
+#include "box.h"
 
-class CSGBox: public CSGPrimitive
+class CSGBox: public CSGPrimitive, public Box
 {
 public:
     CSGBox();

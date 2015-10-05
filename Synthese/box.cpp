@@ -6,6 +6,14 @@ Box::Box(const Vector3D &aa, const Vector3D &bb) : a(aa), b(bb)
 
 }
 
+Box::Box(const Vector3D &c, float r)
+{
+    Vector3D aa(c.x()-r, c.y()-r, c.z()-r);
+    Vector3D bb(c.x()+r, c.y()+r, c.z()+r);
+    a = aa;
+    b = bb;
+}
+
 /** Gaffe à intersection de plans
  * @brief Box::intersect
  * @param r

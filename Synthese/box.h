@@ -6,10 +6,11 @@
 class Box
 {
 private:
-    const Vector3D a;
-    const Vector3D b;
+    Vector3D a;
+    Vector3D b;
 public:
     Box(const Vector3D& aa, const Vector3D& bb);
+    Box(const Vector3D &c, float r);
     int intersect(const Ray& r, Vector3D& in, Vector3D& out);
 };
 
