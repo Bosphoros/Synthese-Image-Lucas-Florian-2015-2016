@@ -45,7 +45,8 @@ SOURCES += main.cpp \
     csgtranslation.cpp \
     csgrotation.cpp \
     csgscale.cpp \
-    matrix3x3.cpp
+    matrix3x3.cpp \
+    cylindre.cpp
 
 HEADERS += \
     mesh.h \
@@ -76,4 +77,5 @@ HEADERS += \
     csgtranslation.h \
     csgrotation.h \
     csgscale.h \
-    matrix3x3.h
+    matrix3x3.h \
+    cylindre.h
