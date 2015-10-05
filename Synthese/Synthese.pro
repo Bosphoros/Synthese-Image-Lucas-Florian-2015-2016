@@ -46,7 +46,8 @@ SOURCES += main.cpp \
     csgrotation.cpp \
     csgscale.cpp \
     tableauvoxel.cpp \
-    matrix3.cpp
+    matrix3.cpp \
+    cylindre.cpp
 
 HEADERS += \
     mesh.h \
@@ -78,4 +79,5 @@ HEADERS += \
     csgrotation.h \
     csgscale.h \
     tableauvoxel.h \
-    matrix3.h
+    matrix3.h \
+    cylindre.h
