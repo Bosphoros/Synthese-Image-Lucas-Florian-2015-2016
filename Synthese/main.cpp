@@ -13,6 +13,7 @@
 #include "csgdifference.h"
 #include "csgbox.h"
 #include "tableauvoxel.h"
+#include "matrix3.h"
 #define M_PI 3.14159265358979323846
 Terrain* generationImage(const QString& img){
     Vector2D a(0,0);
@@ -111,6 +112,14 @@ int main(int argc, char *argv[])
     int arg=1;
     QTime time;
 
+    float values[9] = {1.0f,2.0f,3.0f,4.0f,5.0f,6.0f,7.0f,8.0f,9.0f};
+
+    Matrix3 mat(values);
+
+    cout << mat << endl;
+
+    cout << mat.transpose() << endl;
+
    /* time.restart();
     QString img=argv[arg++];
     Terrain* t=generationImage(img);
@@ -140,9 +149,8 @@ int main(int argc, char *argv[])
 
     //delete t;
 
-    /*
-    Vector3D centre(1.0f,0.0f,0.0f);
-    Vector3D centre2(0.0f,.5f,0.0f);
+    /*Vector3D centre(1.0f,0.0f,0.0f);
+    Vector3D centre2(1.0f,.5f,0.0f);
 
     Vector3D origine(-3.0f,0.0f,0.0f);
     Vector3D direction(1.0f,0.0f,0.0f);
@@ -165,7 +173,7 @@ int main(int argc, char *argv[])
     QString nameImage = "C:/Users/etu/Desktop/sphereTest.png";
     result.save(nameImage);*/
 
-   MeshBuilder mb;
+    MeshBuilder mb;
     TableauVoxel tab(3,3,3,10);
     tab(0,0,0)=1;
     tab(0,1,0)=1;

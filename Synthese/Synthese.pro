@@ -45,8 +45,8 @@ SOURCES += main.cpp \
     csgtranslation.cpp \
     csgrotation.cpp \
     csgscale.cpp \
-    matrix3x3.cpp \
-    tableauvoxel.cpp
+    tableauvoxel.cpp \
+    matrix3.cpp
 
 HEADERS += \
     mesh.h \
@@ -77,5 +77,5 @@ HEADERS += \
     csgtranslation.h \
     csgrotation.h \
     csgscale.h \
-    matrix3x3.h \
-    tableauvoxel.h
+    tableauvoxel.h \
+    matrix3.h
