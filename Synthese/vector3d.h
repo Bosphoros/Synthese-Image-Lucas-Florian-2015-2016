@@ -140,7 +140,7 @@ public:
      * @param i the number of the member
      * @return
      */
-    double& operator()(int i) const;
+    double& operator()(int i);
 
     /**
      * Returns the normal of the plane described by the two vectors
@@ -356,18 +356,18 @@ inline const Vector3D Vector3D::operator^(const Vector3D &v1) const
 
 inline double Vector3D::operator()(int i) const {
     if(i == 0)
-        return x;
+        return xp;
     if(i == 1)
-        return y;
-    return z;
+        return yp;
+    return zp;
 }
 
-inline double& Vector3D::operator()(int i) const {
+inline double& Vector3D::operator()(int i) {
     if(i == 0)
-        return x;
+        return xp;
     if(i == 1)
-        return y;
-    return z;
+        return yp;
+    return zp;
 }
 
 inline const Vector3D operator-(const Vector3D &vector)
