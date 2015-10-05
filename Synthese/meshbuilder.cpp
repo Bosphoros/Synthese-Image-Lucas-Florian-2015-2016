@@ -12,6 +12,161 @@ MeshBuilder::MeshBuilder()
 {
 }
 
+Mesh MeshBuilder::box(const Box &box, const QString& nom) const
+{
+    Vector3D a = box.getA();
+    Vector3D b = box.getB();
+
+    QList<Vector3D> v;
+    QList<Vector3D> vn;
+    QList<int> t;
+
+    float ax=a.x();
+    float bx=b.x();
+    float ay=a.y();
+    float by=b.y();
+    float az=a.z();
+    float bz=b.z();
+
+    v.append(a);
+    v.append(Vector3D(bx,ay,az));
+    v.append(Vector3D(ax,by,az));
+    v.append(Vector3D(bx,by,az));
+    v.append(Vector3D(ax,ay,bz));
+    v.append(Vector3D(bx,ay,bz));
+    v.append(Vector3D(ax,by,bz));
+    v.append(b);
+
+    vn.append(Vector3D(1.0,0.0,0.0));
+    vn.append(Vector3D(-1.0,0.0,0.0));
+    vn.append(Vector3D(0.0,1.0,0.0));
+    vn.append(Vector3D(0.0,-1.0,0.0));
+    vn.append(Vector3D(0.0,0.0,1.0));
+    vn.append(Vector3D(0.0,0.0,-1.0));
+
+    t.append(1);
+    t.append(0);
+    t.append(0);
+    t.append(3);
+    t.append(0);
+    t.append(0);
+    t.append(7);
+    t.append(0);
+    t.append(0);
+
+    t.append(1);
+    t.append(0);
+    t.append(0);
+    t.append(7);
+    t.append(0);
+    t.append(0);
+    t.append(5);
+    t.append(0);
+    t.append(0);
+
+    t.append(2);
+    t.append(0);
+    t.append(1);
+    t.append(0);
+    t.append(0);
+    t.append(1);
+    t.append(4);
+    t.append(0);
+    t.append(1);
+
+    t.append(2);
+    t.append(0);
+    t.append(1);
+    t.append(4);
+    t.append(0);
+    t.append(1);
+    t.append(6);
+    t.append(0);
+    t.append(1);
+
+    t.append(3);
+    t.append(0);
+    t.append(2);
+    t.append(2);
+    t.append(0);
+    t.append(2);
+    t.append(6);
+    t.append(0);
+    t.append(2);
+
+    t.append(3);
+    t.append(0);
+    t.append(2);
+    t.append(6);
+    t.append(0);
+    t.append(2);
+    t.append(7);
+    t.append(0);
+    t.append(2);
+
+    t.append(0);
+    t.append(0);
+    t.append(3);
+    t.append(1);
+    t.append(0);
+    t.append(3);
+    t.append(5);
+    t.append(0);
+    t.append(3);
+
+    t.append(0);
+    t.append(0);
+    t.append(3);
+    t.append(5);
+    t.append(0);
+    t.append(3);
+    t.append(4);
+    t.append(0);
+    t.append(3);
+
+    t.append(4);
+    t.append(0);
+    t.append(4);
+    t.append(5);
+    t.append(0);
+    t.append(4);
+    t.append(7);
+    t.append(0);
+    t.append(4);
+
+    t.append(4);
+    t.append(0);
+    t.append(4);
+    t.append(7);
+    t.append(0);
+    t.append(4);
+    t.append(6);
+    t.append(0);
+    t.append(4);
+
+    t.append(2);
+    t.append(0);
+    t.append(5);
+    t.append(3);
+    t.append(0);
+    t.append(5);
+    t.append(1);
+    t.append(0);
+    t.append(5);
+
+    t.append(2);
+    t.append(0);
+    t.append(5);
+    t.append(1);
+    t.append(0);
+    t.append(5);
+    t.append(0);
+    t.append(0);
+    t.append(5);
+
+    return Mesh(v,t,vn, nom);
+}
+
 void MeshBuilder::saveMesh(const QString &nom, const Mesh &mesh) const
 {
     QFile file(nom);
