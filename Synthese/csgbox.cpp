@@ -18,18 +18,22 @@ bool CSGBox::isIn(const Vector3D &p) const
 
 bool CSGBox::intersect(const Ray &r, QVector<double>& intersects, QVector<Vector3D> &normals) const
 {
-    Vector3D in, out;
-    int nbInter = Box::intersect(r, in, out);
+    Vector3D in, out, nin, nout;
+    int nbInter = Box::intersect(r, in, out, nin, nout);
     double din = in.distanceToPoint(r.getOrigine());
     double dout = out.distanceToPoint(r.getOrigine());
     QVector<double> inters;
+    QVector<Vector3D> norms;
     if(nbInter == 2) {
         inters.push_back(din);
+        norms.push_back(nin);
     }
     if(nbInter >= 1) {
         inters.push_back(dout);
+        norms.push_back(nout);
     }
     intersects = inters;
+    normals = norms;
     return nbInter > 0;
 }
 

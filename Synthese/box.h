@@ -12,7 +12,7 @@ public:
     Box();
     Box(const Vector3D& aa, const Vector3D& bb);
     Box(const Vector3D &c, float r);
-    int intersect(const Ray& r, Vector3D& in, Vector3D& out) const;
+    int intersect(const Ray& r, Vector3D& in, Vector3D& out, Vector3D& nin, Vector3D& nout) const;
 
 };
 

@@ -22,7 +22,7 @@ Box::Box(const Vector3D &c, float r)
  * @param out
  * @return
  */
-int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
+int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out, Vector3D &nin, Vector3D &nout) const
 {
     Vector3D ax(b.x(), a.y(), a.z()); // a décalé en x
     Vector3D az(a.x(), a.y(), b.z()); // a décalé en z
@@ -44,31 +44,43 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
 
         if(paaxaz.intersects(r, out)){ // Intersection du plan a az ax
             if(out.x() >= a.x() && out.x() <= b.x() && out.z() >= a.z() && out.z() <= b.z()){ // In da box
+                Vector3D tmpnout(0,-1,0);
+                nout = tmpnout;
                 return 1;
             }
         }
         if(paazbx.intersects(r, out)) { // Intersection du plan a az bx
             if(out.y() >= a.y() && out.y() <= b.y() && out.z() >= a.z() && out.z() <= b.z()){ // In da box
+                Vector3D tmpnout(-1,0,0);
+                nout = tmpnout;
                 return 1;
             }
         }
         if(paaxbz.intersects(r, out)){ // Intersection du plan a ax bz
             if(out.x() >= a.x() && out.x() <= b.x() && out.y() >= a.y() && out.y() <= b.y()){ // In da box
+                Vector3D tmpnout(0,0,-1);
+                nout = tmpnout;
                 return 1;
             }
         }
         if(pbbxbz.intersects(r, out)){ // Intersection du plan b bx bz
             if(out.x() >= a.x() && out.x() <= b.x() && out.z() >= a.z() && out.z() <= b.z()){ // In da box
+                Vector3D tmpnout(0,1,0);
+                nout = tmpnout;
                 return 1;
             }
         }
         if(pbbxaz.intersects(r, out)){ // Intersection du plan b bx az
             if(out.x() >= a.x() && out.x() <= b.x() && out.y() >= a.y() && out.y() <= b.y()){ // In da box
+                Vector3D tmpnout(1,0,0);
+                nout = tmpnout;
                 return 1;
             }
         }
         if(pbbzax.intersects(r, out)){ // Intersection du plan b bz ax
             if(out.y() >= a.y() && out.y() <= b.y() && out.z() >= a.z() && out.z() <= b.z()){ // In da box
+                Vector3D tmpnout(0,0,1);
+                nout = tmpnout;
                 return 1;
             }
         }
@@ -95,11 +107,15 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
             if(aaxaz.x() >= a.x() && aaxaz.x() <= b.x() && aaxaz.z() >= a.z() && aaxaz.z() <= b.z()){ // In da box
                 if(resu==0){
                     in=aaxaz;
+                    Vector3D tmpnin(0,-1,0);
+                    nin = tmpnin;
                     ++resu;
                 }
                 else{
                     if(resu==1&&aaxaz.distanceToPoint(in)>0.001){
                         out=aaxaz;
+                        Vector3D tmpnout(0,-1,0);
+                        nout = tmpnout;
                         ++resu;
                     }
                 }
@@ -109,11 +125,15 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
             if(aazbx.y() >= a.y() && aazbx.y() <= b.y() && aazbx.z() >= a.z() && aazbx.z() <= b.z()){ // In da box
                 if(resu==0){
                     in=aazbx;
+                    Vector3D tmpnin(-1,0,0);
+                    nin = tmpnin;
                     ++resu;
                 }
                 else{
                     if(resu==1&&aazbx.distanceToPoint(in)>0.001){
                         out=aazbx;
+                        Vector3D tmpnout(-1,0,0);
+                        nout = tmpnout;
                         ++resu;
                     }
                 }
@@ -123,11 +143,15 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
             if(aaxbz.x() >= a.x() && aaxbz.x() <= b.x() && aaxbz.y() >= a.y() && aaxbz.y() <= b.y()){ // In da box
                 if(resu==0){
                     in=aaxbz;
+                    Vector3D tmpnin(0,0,-1);
+                    nin = tmpnin;
                     ++resu;
                 }
                 else{
                     if(resu==1&&aaxbz.distanceToPoint(in)>0.001){
                         out=aaxbz;
+                        Vector3D tmpnout(0,0,-1);
+                        nout = tmpnout;
                         ++resu;
                     }
                 }
@@ -137,11 +161,15 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
             if(bbxbz.x() >= a.x() && bbxbz.x() <= b.x() && bbxbz.z() >= a.z() && bbxbz.z() <= b.z()){ // In da box
                 if(resu==0){
                     in=bbxbz;
+                    Vector3D tmpnin(0,1,0);
+                    nin = tmpnin;
                     ++resu;
                 }
                 else{
                     if(resu==1&&bbxbz.distanceToPoint(in)>0.001){
                         out=bbxbz;
+                        Vector3D tmpnout(0,1,0);
+                        nout = tmpnout;
                         ++resu;
                     }
                 }
@@ -151,11 +179,15 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
             if(bbxaz.x() >= a.x() && bbxaz.x() <= b.x() && bbxaz.y() >= a.y() && bbxaz.y() <= b.y()){ // In da box
                 if(resu==0){
                     in=bbxaz;
+                    Vector3D tmpnin(1,0,0);
+                    nin = tmpnin;
                     ++resu;
                 }
                 else{
                     if(resu==1&&bbxaz.distanceToPoint(in)>0.001){
                         out=bbxaz;
+                        Vector3D tmpnout(1,0,0);
+                        nout = tmpnout;
                         ++resu;
                     }
                 }
@@ -165,11 +197,14 @@ int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
             if(bbzax.y() >= a.y() && bbzax.y() <= b.y() && bbzax.z() >= a.z() && bbzax.z() <= b.z()){ // In da box
                 if(resu==0){
                     in=bbzax;
+                    Vector3D tmpnin(0,0,1);
+                    nin = tmpnin;
                     ++resu;
                 }
                 else{
                     if(resu==1&&bbzax.distanceToPoint(in)>0.001){
-                        out=bbzax;
+                        out=bbzax;Vector3D tmpnout(0,0,1);
+                        nout = tmpnout;
                         ++resu;
                     }
                 }
