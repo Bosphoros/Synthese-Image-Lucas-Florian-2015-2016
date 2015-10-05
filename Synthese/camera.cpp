@@ -122,10 +122,14 @@ QRgb Camera::ptScreen(CSGNode &t, const Vector3D &s, int i, int j, int l, int h)
     }
 
          double d=std::numeric_limits<double>::infinity();
+         Vector3D norm;
 
          for(int i=0;i<intersects.size();++i){
              if(d>intersects.at(i)&&intersects.at(i)>0)
+             {
                  d=intersects.at(i);
+                norm = normals.at(i);
+             }
          }
 
          if (d==std::numeric_limits<double>::infinity()){
@@ -135,11 +139,23 @@ QRgb Camera::ptScreen(CSGNode &t, const Vector3D &s, int i, int j, int l, int h)
 
 
          Vector3D inter=r.getPoint(d);
-         d*=d*d*d*d;
+
+         Vector3D dirSoleil=(s-inter).normalized();
+         double lu=norm*dirSoleil;
+
+
+         if(lu<0)
+             lu=0;
+
+         lu*=255.0;
+
+
+         /*d*=d*d*d*d;
             if(d>20)
                 d=20;
           QColor couleur(0,255*(1-d/20),0,255);
-          return couleur.rgba();
+          return couleur.rgba();*/
+         return QColor(lu, lu, lu, 255).rgba();
 
 }
 

@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
     Vector3D origine(-1.0f,0.0f,0.0f);
     Vector3D direction(1.0f,0.0f,0.0f);
 
-    Vector3D soleil(2.0f,2.0f,2.0f);
+    Vector3D soleil(-10000.0f,0.0f,0.0f);
 
     CSGSphere sphere(centre, 0.5f);
     CSGSphere sphere2(centre2, 0.5f);
