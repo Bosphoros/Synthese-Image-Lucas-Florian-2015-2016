@@ -1,6 +1,7 @@
 #include "box.h"
 #include "plane.h"
 
+
 Box::Box(const Vector3D &aa, const Vector3D &bb) : a(aa), b(bb)
 {
 
@@ -21,7 +22,7 @@ Box::Box(const Vector3D &c, float r)
  * @param out
  * @return
  */
-int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out)
+int Box::intersect(const Ray &r, Vector3D &in, Vector3D &out) const
 {
     Vector3D ax(b.x(), a.y(), a.z()); // a décalé en x
     Vector3D az(a.x(), a.y(), b.z()); // a décalé en z
