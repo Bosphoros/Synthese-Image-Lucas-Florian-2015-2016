@@ -10,11 +10,11 @@ bool CSGScale::isIn(const Vector3D &p) const
     return node->isIn((p-centre)/coefficient+centre);
 }
 
-bool CSGScale::intersect(const Ray &r, QVector<double>& intersects) const
+bool CSGScale::intersect(const Ray &r, QVector<double>& intersects, QVector<Vector3D> &normals) const
 {
     //on creer un nouveau rayon à partir du premier et selon l'homotéthie
     Ray newRay((r.getOrigine()-centre)/coefficient+centre,r.getDirection());
 
-    return node->intersect(newRay, intersects);
+    return node->intersect(newRay, intersects, normals);
 }
 

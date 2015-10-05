@@ -10,8 +10,8 @@ bool CSGSphere::isIn(const Vector3D &p) const
     return (p.distanceToPointSquared(centre) < rayon*rayon);
 }
 
-bool CSGSphere::intersect(const Ray &r, QVector<double>& intersects) const
+bool CSGSphere::intersect(const Ray &r, QVector<double>& intersects, QVector<Vector3D> &normals) const
 {
-    return Sphere::intersect(r,intersects);
+    return Sphere::intersect(r,intersects, normals);
 }
 

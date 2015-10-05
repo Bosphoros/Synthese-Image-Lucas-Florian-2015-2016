@@ -10,7 +10,7 @@ public:
     CSGTranslation(CSGNode * n, Vector3D t);
 
     virtual bool isIn(const Vector3D& p) const;
-    virtual bool intersect(const Ray& r, QVector<double>& intersects) const;
+    virtual bool intersect(const Ray& r, QVector<double>& intersects, QVector<Vector3D>& normals) const;
 };
 
 #endif // CSGTRANSLATION_H

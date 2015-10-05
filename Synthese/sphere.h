@@ -12,7 +12,7 @@ protected:
 public:
     Sphere(const Vector3D& c, double r);
     double distanceToPoint(const Vector3D& p);
-    int intersect(const Ray& r, QVector<double>& l) const;
+    int intersect(const Ray& r, QVector<double>& l, QVector<Vector3D> &normals) const;
 };
 
 #endif // SPHERE_H

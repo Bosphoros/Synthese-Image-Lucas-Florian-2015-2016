@@ -115,7 +115,8 @@ QRgb Camera::ptScreen(CSGNode &t, const Vector3D &s, int i, int j, int l, int h)
     dir.normalize();
     Ray r(origine,dir);
     QVector<double> intersects;
-    if(!t.intersect(r,intersects)){
+    QVector<Vector3D> normals;
+    if(!t.intersect(r,intersects, normals)){
         QColor couleur(0,0,0,0);
         return couleur.rgba();
     }

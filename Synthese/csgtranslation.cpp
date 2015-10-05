@@ -12,9 +12,9 @@ bool CSGTranslation::isIn(const Vector3D &p) const
 
 }
 
-bool CSGTranslation::intersect(const Ray &r, QVector<double>& intersects) const
+bool CSGTranslation::intersect(const Ray &r, QVector<double>& intersects, QVector<Vector3D> &normals) const
 {
     Ray rTemp(r.getOrigine()-trans,r.getDirection());
-    return node->intersect(rTemp,intersects);
+    return node->intersect(rTemp,intersects, normals);
 }
 

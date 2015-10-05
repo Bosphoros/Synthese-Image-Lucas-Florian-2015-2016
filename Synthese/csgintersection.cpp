@@ -11,13 +11,15 @@ bool CSGIntersection::isIn(const Vector3D &p) const
 }
 
 
-bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
+bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects, QVector<Vector3D> &normals) const
 
 {
     QVector<double> ta;
     QVector<double> tb;
-    node1->intersect(r, ta);
-    node2->intersect(r, tb);
+    QVector<Vector3D> normalA;
+    QVector<Vector3D> normalB;
+    node1->intersect(r, ta, normalA);
+    node2->intersect(r, tb, normalB);
 
     for(int cpt = 0; cpt < ta.size(); ++cpt)
     {
@@ -26,6 +28,7 @@ bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
         if(node2->isIn(r.getPoint(ta.at(cpt))))
         {
             intersects.push_back(ta.at(cpt));
+            normals.push_back(normalA.at(cpt));
         }
     }
 
@@ -36,6 +39,7 @@ bool CSGIntersection::intersect(const Ray &r, QVector<double>& intersects) const
         if(node1->isIn(r.getPoint(tb.at(cpt))))
         {
             intersects.push_back(tb.at(cpt));
+            normals.push_back(normalB.at(cpt));
         }
     }
     return intersects.size()>0;
