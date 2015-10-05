@@ -5,6 +5,7 @@
 #include "terrain.h"
 #include "vector2d.h"
 #include "tableauvoxel.h"
+#include "box.h"
 
 /**
  * @brief The MeshBuilder class, contains methods to create and load meshes
@@ -16,6 +17,14 @@ public:
      * Empty MeshBuilder constructor
      */
     MeshBuilder();
+
+    /**
+     * Creates the Mesh of a Box
+     * @param[in] box the Box we want the Mesh of
+     * @param[in] nom the name of the Mesh
+     * @return The Mesh of the Box
+     */
+    Mesh box(const Box& box, const QString &nom) const;
 
     /**
      * Loads a mesh for a file
