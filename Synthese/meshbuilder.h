@@ -4,6 +4,7 @@
 #include <QString>
 #include "terrain.h"
 #include "vector2d.h"
+#include "tableauvoxel.h"
 
 /**
  * @brief The MeshBuilder class, contains methods to create and load meshes
@@ -44,6 +45,7 @@ public:
      */
     Mesh terrain(const Terrain &t, int e, const QString &nom) const;
 
+    Mesh voxel(const TableauVoxel &t, const QString &nom) const;
 
 };
 #endif // MESHBUILDER_H

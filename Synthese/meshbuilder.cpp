@@ -100,6 +100,56 @@ Mesh MeshBuilder::terrain(const Terrain &t, int e, const QString &nom) const{
 
     return Mesh(geom,topo,norm,nom);
 }
+
+Mesh MeshBuilder::voxel(const TableauVoxel &t, const QString &nom) const
+{
+    QList<Vector3D> geoms;
+    QList<Vector3D> norms;
+    QList<int> topos;
+    Mesh res(geoms, topos, norms, nom);
+    for(int i=0;i<t.getLongueur();++i){
+        for(int j=0;j<t.getLargeur();++j){
+            for(int k=0;k<t.getHauteur();++k){
+                if(t(i,j,k)!=0){
+                    if(i==0||j==0||k==0
+                       ||i==t.getLongueur()-1||j==t.getLargeur()-1||k==t.getHauteur()-1
+                       ||t(i-1,j,k)==0||t(i+1,j,k)==0
+                       ||t(i,j-1,k)==0||t(i,j+1,k)==0
+                       ||t(i,j,k-1)==0||t(i,j,k+1)==0){
+                            res.merge(box(t.getBox(i,j,k),nom));
+                       }
+
+
+
+                    /*if(i==0||t(i-1,j,k)==0){
+
+                    }
+
+                    if(i==t.getLongueur()-1||t(i+1,j,k)==0){
+
+                    }
+
+                    if(j==0||t(i,j-1,k)==0){
+
+                    }
+
+                    if(j==t.getLargeur()-1||t(i,j+1,k)==0){
+
+                    }
+                    if(k==0||t(i,j,k-1)==0){
+
+                    }
+                    if(k==t.getHauteur()-1||t(i,j,k+1)==0){
+
+                    }*/
+
+                }
+            }
+        }
+    }
+
+    return res;
+}
 // Ne prend pas les textures en compte
 Mesh MeshBuilder::loadMesh(const QString &nom) const
 {
