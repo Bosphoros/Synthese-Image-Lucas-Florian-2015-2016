@@ -12,6 +12,7 @@
 #include "csgintersection.h"
 #include "csgdifference.h"
 #include "csgbox.h"
+#include "tableauvoxel.h"
 #define M_PI 3.14159265358979323846
 Terrain* generationImage(const QString& img){
     Vector2D a(0,0);
@@ -139,26 +140,40 @@ int main(int argc, char *argv[])
 
     //delete t;
 
+    /*
     Vector3D centre(1.0f,0.0f,0.0f);
-    Vector3D centre2(1.0f,.5f,0.0f);
+    Vector3D centre2(0.0f,.5f,0.0f);
 
-    Vector3D origine(-1.0f,0.0f,0.0f);
+    Vector3D origine(-3.0f,0.0f,0.0f);
     Vector3D direction(1.0f,0.0f,0.0f);
 
     Vector3D soleil(-10000.0f,0.0f,0.0f);
 
-    CSGSphere sphere(centre, 0.5f);
-    CSGSphere sphere2(centre2, 0.5f);
+    CSGSphere sphere(centre, 1.0f);
+    CSGSphere sphere2(centre2, 0.75f);
+    CSGBox box(Vector3D(-1,-0.5,-1), Vector3D(1,-0.25,1));
 
 
-    CSGDifference union1(&sphere, &sphere2);
+    CSGDifference dif(&sphere, &sphere2);
+
+    CSGUnion union2(&dif, &box);
 
     Camera cam(origine, direction,1.0);
 
-    QImage result = cam.printScreen(union1, soleil, 300, 300);
+    QImage result = cam.printScreen(box, soleil, 900, 900);
 
     QString nameImage = "C:/Users/etu/Desktop/sphereTest.png";
-    result.save(nameImage);
+    result.save(nameImage);*/
+
+   MeshBuilder mb;
+    TableauVoxel tab(3,3,3,10);
+    tab(0,0,0)=1;
+    tab(0,1,0)=1;
+    tab(0,1,1)=1;
+    tab(0,1,2)=1;
+    QString nameImage = "C:/Users/etu/Desktop/voxel.obj";
+    Mesh m=mb.voxel(tab,nameImage);
+    mb.saveMesh(nameImage,m);
 
     return 0;
 }

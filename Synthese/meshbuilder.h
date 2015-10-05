@@ -54,6 +54,12 @@ public:
      */
     Mesh terrain(const Terrain &t, int e, const QString &nom) const;
 
+    /**
+     * Creates the Mesh of a Voxel Matrix
+     * @param[in] t the Voxel Matric we want the Mesh of
+     * @param[in] nom the name of the Mesh
+     * @return The Mesh of the Voxel Matrix
+     */
     Mesh voxel(const TableauVoxel &t, const QString &nom) const;
 
 };
