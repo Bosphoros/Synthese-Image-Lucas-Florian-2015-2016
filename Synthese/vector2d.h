@@ -202,7 +202,7 @@ public:
     friend class Vector3D;
 };
 
-inline Vector2D::Vector2D() : xp(0.0d), yp(0.0d) {}
+inline Vector2D::Vector2D() : xp(0.0), yp(0.0) {}
 
 inline Vector2D::Vector2D(double xpos, double ypos) : xp(xpos), yp(ypos) {}
 
