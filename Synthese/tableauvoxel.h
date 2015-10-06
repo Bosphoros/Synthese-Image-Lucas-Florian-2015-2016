@@ -3,7 +3,8 @@
 
 #include <QVector>
 #include "box.h"
-
+#include "csgnode.h"
+#include "vector3d.h"
 class TableauVoxel
 {
 private:
@@ -11,11 +12,12 @@ private:
     int longueur;
     int largeur;
     int hauteur;
-    QVector3D a;
+    Vector3D a;
     double definition;
 
 public:
     TableauVoxel(int lo, int la, int ha, double d, Vector3D aa);
+    TableauVoxel(int lo, int la, int ha, double d, const Vector3D& aa,const CSGNode& node);
     int operator()(int x, int y, int z) const;
     int& operator ()(int x, int y, int z) ;
     int getLongueur() const;

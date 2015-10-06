@@ -24,24 +24,24 @@ int Cylindre::intersect(const Ray& r, QVector<double>& li, QVector<Vector3D> &no
     //calcul des points d'intersections avec le cylindre infini.
     //solve t^2*(d.d - (d.u).(d.u)) + t*(2*(o-a).d-2*(d.u)*((o-a).u)) + (o-a).(o-a)-((o-a).u).((o-a).u))-R*R
     Vector3D ao = o-a;
-    Vector3D dScalu = d*u;
+    double dScalu = d*u;
 
-    float x = (d*d - dScalu*dScalu);
-    float y = (2*ao.d-2*dScalu*(oa*u));
-    float z = ao*ao-(ao*u)*(oa.u)-R*R;
+    double x = (d*d - dScalu*dScalu);
+    double y = (2*ao*d-2*dScalu*(ao*u));
+    double z = ao*ao-(ao*u)*(ao*u)-rayon*rayon;
 
-    float det = y*y - 4*(x*z);
+    double det = y*y - 4*(x*z);
 
     if(det < 0)
         return 0;
     else
         det = std::sqrt(det);
 
-    float tca = (-y-det)/(2*x);
-    float tcb = (-y+det)/(2*x);
+    double tca = (-y-det)/(2*x);
+    double tcb = (-y+det)/(2*x);
 
-    float tsa = -(ao*u/dScalu);
-    float tsb = -(((o-b)*u)/dScalu);
+    double tsa = -(ao*u/dScalu);
+    double tsb = -(((o-b)*u)/dScalu);
 
 
 

@@ -8,11 +8,11 @@ class Cylindre
 {
 
 protected:
-    const Vector3D a;
-    const Vector3D b;
-    const double rayon;
-    const double hauteur;
-    const QVector u;
+    Vector3D a;
+    Vector3D b;
+    double rayon;
+    double hauteur;
+    Vector3D u;
 public:
     Cylindre();
     Cylindre(const Vector3D& pointA, const Vector3D& pointB, double r, double h);

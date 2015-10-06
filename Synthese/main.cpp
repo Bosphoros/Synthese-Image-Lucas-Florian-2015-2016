@@ -109,7 +109,7 @@ void generateMesh(Terrain* const t,const QString& obj,int echantillion){
 
 int main(int argc, char *argv[])
 {
-    int arg=1;
+    /*int arg=1;
     QTime time;
 
     float values[9] = {1.0f,2.0f,3.0f,4.0f,5.0f,6.0f,7.0f,8.0f,9.0f};
@@ -118,7 +118,7 @@ int main(int argc, char *argv[])
 
     cout << mat << endl;
 
-    cout << mat.transpose() << endl;
+    cout << mat.transpose() << endl;*/
 
    /* time.restart();
     QString img=argv[arg++];
@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
 
     //delete t;
 
-    /*Vector3D centre(1.0f,0.0f,0.0f);
+    Vector3D centre(1.0f,0.0f,0.0f);
     Vector3D centre2(1.0f,.5f,0.0f);
 
     Vector3D origine(-3.0f,0.0f,0.0f);
@@ -159,29 +159,26 @@ int main(int argc, char *argv[])
 
     CSGSphere sphere(centre, 1.0f);
     CSGSphere sphere2(centre2, 0.75f);
-    CSGBox box(Vector3D(-1,-0.5,-1), Vector3D(1,-0.25,1));
 
 
-    CSGDifference dif(&sphere, &sphere2);
-
-    CSGUnion union2(&dif, &box);
+    CSGDifference uni(&sphere2,&sphere);
 
     Camera cam(origine, direction,1.0);
 
-    QImage result = cam.printScreen(box, soleil, 900, 900);
+    QImage result = cam.printScreen(uni, soleil, 900, 900);
 
     QString nameImage = "C:/Users/etu/Desktop/sphereTest.png";
-    result.save(nameImage);*/
+    result.save(nameImage);
+
+
 
     MeshBuilder mb;
-    TableauVoxel tab(3,3,3,10);
-    tab(0,0,0)=1;
-    tab(0,1,0)=1;
-    tab(0,1,1)=1;
-    tab(0,1,2)=1;
-    QString nameImage = "C:/Users/etu/Desktop/voxel.obj";
-    Mesh m=mb.voxel(tab,nameImage);
-    mb.saveMesh(nameImage,m);
+    TableauVoxel tab(500,500,500,10.0/500,Vector3D(-5,-5,-5),uni);
+    //TableauVoxel tab(3,3,3,10,Vector3D(0,0,0));
+    //tab(1,1,1)=1;
+    QString name2 = "C:/Users/etu/Desktop/voxel.obj";
+    Mesh m=mb.voxel(tab,name2);
+    mb.saveMesh(name2,m);
 
     return 0;
 }
