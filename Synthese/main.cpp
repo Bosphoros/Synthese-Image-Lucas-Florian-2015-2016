@@ -150,7 +150,7 @@ int main(int argc, char *argv[])
     //delete t;
 
     Vector3D centre(1.0f,0.0f,0.0f);
-    Vector3D centre2(1.0f,.5f,0.0f);
+    Vector3D centre2(.5f,.5f,0.0f);
 
     Vector3D origine(-3.0f,0.0f,0.0f);
     Vector3D direction(1.0f,0.0f,0.0f);
@@ -161,7 +161,7 @@ int main(int argc, char *argv[])
     CSGSphere sphere2(centre2, 0.75f);
 
 
-    CSGDifference uni(&sphere2,&sphere);
+    CSGDifference uni(&sphere,&sphere2);
 
     Camera cam(origine, direction,1.0);
 

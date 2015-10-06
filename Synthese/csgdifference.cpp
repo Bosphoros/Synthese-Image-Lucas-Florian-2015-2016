@@ -52,7 +52,7 @@ bool CSGDifference::intersect(const Ray &r, QVector<double>& intersects, QVector
         if(node1->isIn(r.getPoint(tb.at(cpt))))
         {
             intersects.push_back(tb.at(cpt));
-            normals.push_back(normalB.at(cpt));
+            normals.push_back(-normalB.at(cpt));
         }
     }
     return intersects.size()>0;
