@@ -64,6 +64,7 @@ public:
 
 
     static double clamp(double min, double max, double val);
+    static double random(double min, double max);
 
 };
 

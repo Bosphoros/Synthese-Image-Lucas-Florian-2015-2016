@@ -26,11 +26,12 @@ public:
 
     int determinant() const;
     Matrix3 transpose() const;
+    static Matrix3 identity();
     static Matrix3 rotateX(float angle);
     static Matrix3 rotateY(float angle);
     static Matrix3 rotateZ(float angle);
     static Matrix3 rotateXYZ(float angleX, float angleY, float angleZ);
-
+    static Matrix3 rotateAtoB(const Vector3D &a, const Vector3D &b);
 };
 
 #endif // MATRIX3X3_H

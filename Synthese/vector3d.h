@@ -264,6 +264,9 @@ public:
      */
     friend inline std::ostream& operator<<(std::ostream& out, const Vector3D& v);
 
+    static QList<Vector3D> rotateScaleTranslate(QList<Vector3D> points, Vector3D center, float radius, Vector3D normal);
+    static QList<Vector3D> randHemisphere(int nbPoints);
+
 private:
     double xp; /**< The x coordinate of the vector */
     double yp; /**< The y coordinate of the vector */

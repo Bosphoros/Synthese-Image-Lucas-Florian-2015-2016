@@ -46,3 +46,9 @@ double MathUtils::clamp(double min, double max, double val)
 {
     return val<min?min:val>max?max:val;
 }
+
+double MathUtils::random(double min, double max)
+{
+    double f = (double)rand() / RAND_MAX;
+    return min + f * (max - min);
+}

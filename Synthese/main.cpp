@@ -149,7 +149,7 @@ int main(int argc, char *argv[])
 
     //delete t;
 
-    Vector3D centre(1.0f,0.0f,0.0f);
+    /*Vector3D centre(1.0f,0.0f,0.0f);
     Vector3D centre2(.5f,.5f,0.0f);
 
     Vector3D origine(-3.0f,0.0f,0.0f);
@@ -178,7 +178,18 @@ int main(int argc, char *argv[])
     //tab(1,1,1)=1;
     QString name2 = "C:/Users/etu/Desktop/voxel.obj";
     Mesh m=mb.voxel(tab,name2);
-    mb.saveMesh(name2,m);
+    mb.saveMesh(name2,m);*/
+
+    QList<Vector3D> points = Vector3D::randHemisphere(1000);
+    QList<Vector3D> points2 = Vector3D::rotateScaleTranslate(points, Vector3D(0,0,0), 1, Vector3D(0,0.5,0.5).normalized());
+    QList<int> topo;
+    QList<Vector3D> normales;
+    Mesh m1(points, topo, normales, "ololo");
+    Mesh m2(points2, topo, normales, "ololo2");
+
+    MeshBuilder m;
+    m.saveMesh("m1.obj", m1);
+    m.saveMesh("m3.obj", m2);
 
     return 0;
 }

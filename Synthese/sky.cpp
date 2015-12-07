@@ -28,18 +28,20 @@ Sky::Sky()
 
 QColor clamp(QColor light)
 {
-    int r = (int)MathUtils.clamp(0,255, light.red());
-    int g = (int)MathUtils.clamp(0,255, light.green());
-    int b = (int)MathUtils.clamp(0,255, light.blue());
+    int r = (int)MathUtils::clamp(0,255, light.red());
+    int g = (int)MathUtils::clamp(0,255, light.green());
+    int b = (int)MathUtils::clamp(0,255, light.blue());
     return QColor(r,g,b,0);
 }
 
 QColor Sky::getLight(Vector3D direction)
 {
     direction.normalize();
-    QColor colConstante(255,255,255,0);
-    QColor colSoleil(255,255,255,0);
-    QColor light = (colConstante * nuage) + colSoleil * (1-nuage) * (dirsol*direction);
+    float red = 255*nuage + 255 * (1-nuage) * (dirSol*direction);
+    float green = 255*nuage + 255 * (1-nuage) * (dirSol*direction);
+    float blue = 255*nuage + 255 * (1-nuage) * (dirSol*direction);
+
+    QColor light(red, green, blue);
 
     return clamp(light);
 }
