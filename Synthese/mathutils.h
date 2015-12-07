@@ -61,6 +61,10 @@ public:
      * @return the absolute value of d
      */
     static double dabs(double d);
+
+
+    static double clamp(double min, double max, double val);
+
 };
 
 #endif // MATHUTILS_H

@@ -47,7 +47,8 @@ SOURCES += main.cpp \
     csgscale.cpp \
     tableauvoxel.cpp \
     matrix3.cpp \
-    cylindre.cpp
+    cylindre.cpp \
+    sky.cpp
 
 HEADERS += \
     mesh.h \
@@ -80,4 +81,5 @@ HEADERS += \
     csgscale.h \
     tableauvoxel.h \
     matrix3.h \
-    cylindre.h
+    cylindre.h \
+    sky.h
